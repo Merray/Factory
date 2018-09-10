@@ -59,6 +59,9 @@ public class Cursus {
 	//@JsonView(JsonViews.CursusByIdWithSalle.class)
 	private Salle salle;
 	
+	@Column(name = "nb_stagiaire")
+	private Integer nbStagiaire;
+	
 	@OneToMany(mappedBy="id_ressource_humaine")
 	//@JsonView(JsonViews.CursusByIdWithStagiaires.class)
     private Set<Stagiaire> stagiaires;
@@ -110,6 +113,16 @@ public class Cursus {
 
 	public void setVideoProjecteur(Optional<VideoProjecteur> videoProjecteur) {
 		this.videoProjecteur = videoProjecteur;
+	}
+	
+	
+
+	public Integer getNbStagiaire() {
+		return nbStagiaire;
+	}
+
+	public void setNbStagiaire(Integer nbStagiaire) {
+		this.nbStagiaire = nbStagiaire;
 	}
 
 	public Salle getSalle() {
