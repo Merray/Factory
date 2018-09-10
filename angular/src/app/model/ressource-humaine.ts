@@ -2,7 +2,8 @@ import {Adresse} from './adresse';
 import {Coordonnee} from './coordonnee';
 
 export abstract class RessourceHumaine {
-  constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _coordonnee?: Coordonnee, private _adresse?: Adresse) {
+  constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _coordonnee?: Coordonnee,
+              private _adresse?: Adresse) {
 
   }
 

@@ -6,4 +6,29 @@ public class JsonViews {
 
 	};
 
+	// Views du materiel
+	public static class OrdinateurByIdWithStagiaires extends Common {
+
+	};
+
+	public static class VideoProjecteurByIdWithCursus extends Common {
+
+	};
+
+	public static class CursusByIdWithSalle extends Common {
+
+	};
+
+	public static class CursusByIdWithStagiaires extends Common {
+
+	};
+
+	public static class CursusByIdWithGestionnaire extends Common {
+
+	};
+
+	public static class CursusByIdWithLessons extends Common {
+
+	};
+
 }
