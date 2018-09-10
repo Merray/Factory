@@ -3,8 +3,6 @@ package com.sopra.Factory.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,11 +13,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @Table(name="lesson")
@@ -60,6 +61,9 @@ public class Lesson {
 	@JsonView(JsonViews.Common.class)
 	private Cursus cursus;
 
+	@Version
+	private Integer version;
+	
 	public Lesson() {
 		super();
 	}
@@ -110,6 +114,14 @@ public class Lesson {
 
 	public void setCursus(Cursus cursus) {
 		this.cursus = cursus;
+	}
+	
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 	@Override
