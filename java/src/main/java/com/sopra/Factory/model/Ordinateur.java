@@ -8,8 +8,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 @Entity
 @DiscriminatorValue("ordinateur")
 public class Ordinateur extends RessourceMaterielle {
