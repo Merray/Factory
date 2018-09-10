@@ -1,15 +1,15 @@
 import {RessourceMaterielle} from './ressourceMaterielle';
-import {Salle} from './salle';
+import {Stagiaire} from '../RessourceHumaineHeritage/stagiaire';
+
 
 export class Ordinateur extends RessourceMaterielle {
   constructor(private _processeur?: string, private _ram?: number, private _disqueDur?: number, private _anneeAchat?: Date,
-              private _salles?: Salle[]) {
+              private _stagiaires?: Stagiaire[]) {
     super();
   }
   get processeur(): string {
     return this._processeur;
   }
-
   set processeur(value: string) {
     this._processeur = value;
   }
