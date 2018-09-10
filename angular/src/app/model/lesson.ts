@@ -1,5 +1,6 @@
 import {Formateur} from './RessourceHumaineHeritage/formateur';
 import {Cursus} from './cursus';
+import {Matiere} from './matiere';
 
 export class Lesson {
   constructor(private _dateDebut?: Date, private _dateFin?: Date, private _cursus?: Cursus, private _matiere?: Matiere,
