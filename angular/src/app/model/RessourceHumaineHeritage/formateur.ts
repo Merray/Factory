@@ -1,12 +1,14 @@
 import {RessourceHumaine} from '../ressource-humaine';
+import {Lesson} from '../lesson';
+import {Matiere} from '../matiere';
 
 export class Formateur extends RessourceHumaine {
   constructor(private _lessons?: Lesson, private _matieres?: Matiere[]) {
     super();
   }
 
-  get lecons(): Lecon {
-    return this._lecons;
+  get lessons(): Lesson {
+    return this._lessons;
   }
 
   set lessons(value: Lesson) {

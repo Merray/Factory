@@ -1,4 +1,6 @@
 import {RessourceHumaine} from '../ressource-humaine';
+import {Ordinateur} from '../RessourceMaterielle/ordinateur';
+import {Cursus} from '../cursus';
 
 export class Stagiaire extends RessourceHumaine {
   constructor(private _profil?: string, private _ordinateur?: Ordinateur, private _cursus?: Cursus) {

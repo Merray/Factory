@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @Table(name = "ressource_humaine")
