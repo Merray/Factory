@@ -1,7 +1,7 @@
 import {RessourceHumaine} from '../ressource-humaine';
 
 export class Formateur extends RessourceHumaine {
-  constructor(private _lecons?: Lecon, private _matieres?: Matiere[]) {
+  constructor(private _lessons?: Lesson, private _matieres?: Matiere[]) {
     super();
   }
 
@@ -9,8 +9,8 @@ export class Formateur extends RessourceHumaine {
     return this._lecons;
   }
 
-  set lecons(value: Lecon) {
-    this._lecons = value;
+  set lessons(value: Lesson) {
+    this._lessons = value;
   }
 
   get matieres(): Matiere[] {
