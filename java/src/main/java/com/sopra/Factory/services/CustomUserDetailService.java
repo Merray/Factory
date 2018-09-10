@@ -8,9 +8,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.videoclub.model.User;
-import com.example.demo.videoclub.repositories.UserRoleRepository;
-import com.example.demo.videoclub.repositories.UsersRepository;
+import com.sopra.Factory.model.User;
+import com.sopra.Factory.repositories.UserRoleRepository;
+import com.sopra.Factory.repositories.UsersRepository;
+
+
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {

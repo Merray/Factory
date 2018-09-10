@@ -13,7 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.demo.services.CustomUserDetailService;
+import com.sopra.Factory.services.CustomUserDetailService;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

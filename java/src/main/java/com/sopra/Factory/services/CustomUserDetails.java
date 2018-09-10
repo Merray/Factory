@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.StringUtils;
 
-import com.example.demo.videoclub.model.User;
+import com.sopra.Factory.model.User;
 
 public class CustomUserDetails implements UserDetails {
 
