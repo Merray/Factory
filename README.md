@@ -1,1 +1,1 @@
-TPFinalTeamGauche
+TPFinalTeamDroite
