@@ -64,3 +64,4 @@ angular/typings
 # System Files
 angular/.DS_Store
 angular/Thumbs.db
+/.metadata/
