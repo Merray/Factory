@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h1>
+    {{ title }}
+  </h1>
+  <p>Usine à talents</p>
+</div>
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="list-group-item"><a href="" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
