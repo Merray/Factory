@@ -5,8 +5,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,16 +22,12 @@ import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.sopra.TPVolAngular.model.view.JsonViews;
-
-
 @Entity
 @Table(name = "cursus")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @SequenceGenerator(name = "seqRessourceMateriel", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
 public class Cursus {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCursus")
 	@Column(name = "id_cursus")
@@ -48,32 +42,32 @@ public class Cursus {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateFin;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_materielle")
-	//@JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
+	// @JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
 	private Optional<VideoProjecteur> videoProjecteur;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_materielle")
-	//@JsonView(JsonViews.CursusByIdWithSalle.class)
+	// @JsonView(JsonViews.CursusByIdWithSalle.class)
 	private Salle salle;
-	
+
 	@Column(name = "nb_stagiaire")
 	private Integer nbStagiaire;
-	
-	@OneToMany(mappedBy="id_ressource_humaine")
-	//@JsonView(JsonViews.CursusByIdWithStagiaires.class)
-    private Set<Stagiaire> stagiaires;
-	
+
+	@OneToMany(mappedBy = "id_ressource_humaine")
+	// @JsonView(JsonViews.CursusByIdWithStagiaires.class)
+	private Set<Stagiaire> stagiaires;
+
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_humaine")
-	//@JsonView(JsonViews.CursusByIdWithGestionnaire.class)
+	// @JsonView(JsonViews.CursusByIdWithGestionnaire.class)
 	private Gestionnaire gestionnaire;
-	
-	@OneToMany(mappedBy="id_lecon")
-	//@JsonView(JsonViews.CursusByIdWithLessons.class)
-    private Set<Lesson> lessons;
+
+	@OneToMany(mappedBy = "id_lesson")
+	// @JsonView(JsonViews.CursusByIdWithLessons.class)
+	private Set<Lesson> lessons;
 
 	public Integer getId() {
 		return id;
@@ -114,8 +108,6 @@ public class Cursus {
 	public void setVideoProjecteur(Optional<VideoProjecteur> videoProjecteur) {
 		this.videoProjecteur = videoProjecteur;
 	}
-	
-	
 
 	public Integer getNbStagiaire() {
 		return nbStagiaire;
@@ -149,14 +141,6 @@ public class Cursus {
 		this.gestionnaire = gestionnaire;
 	}
 
-	public Set<Lesson> getLessons() {
-		return lessons;
-	}
-
-	public void setLessons(Set<Lesson> lessons) {
-		this.lessons = lessons;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -181,12 +165,18 @@ public class Cursus {
 			return false;
 		return true;
 	}
+	
+
+	public Set<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(Set<Lesson> lessons) {
+		this.lessons = lessons;
+	}
 
 	public Cursus() {
 		super();
 	}
-	
-	
-	
 
 }

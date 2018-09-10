@@ -7,10 +7,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.sopra.TPVolAngular.model.Reservation;
-import com.sopra.TPVolAngular.model.view.JsonViews;
-
 @Entity
 @DiscriminatorValue("salle")
 public class Salle extends RessourceMaterielle{

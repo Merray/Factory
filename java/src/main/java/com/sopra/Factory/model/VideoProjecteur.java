@@ -6,10 +6,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.sopra.TPVolAngular.model.Reservation;
-import com.sopra.TPVolAngular.model.view.JsonViews;
-
 @Entity
 @DiscriminatorValue("video_projecteur")
 public class VideoProjecteur extends RessourceMaterielle {
