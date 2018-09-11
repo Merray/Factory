@@ -10,6 +10,7 @@ import {RessourceMaterielleService} from '../service/ressource-materielle.servic
 export class RessourceMaterielleComponent implements OnInit {
   ressources: RessourceMaterielle[];
   calcul = 0;
+  value: string = '';
 
   constructor(private ressourceMaterielleService: RessourceMaterielleService) {
   }
@@ -43,6 +44,10 @@ export class RessourceMaterielleComponent implements OnInit {
       this.calcul = this.ressources[i].coutUtilisation + this.calcul;
     }
     return this.calcul;
+  }
+
+  testNom() {
+    return this.ressources.filter(c => c.type.indexOf(this.value) !== -1);
   }
 }
 

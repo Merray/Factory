@@ -1,5 +1,29 @@
-<table>
-<tr *ngFor="let c of cursus">
-  <td>{{c.id}}</td>
-</tr>
+<h1>Les Cursus</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <td>Id :</td>
+    <td>Date de début :</td>
+    <td>Date de fin :</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of cursus">
+    <td>{{c.id}}</td>
+    <td>{{c.dateDebut}}</td>
+    <td>{{c.dateFin}}</td>
+    <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a></td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(c.id)"> Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create']">Ajouter</a></td>
+  </tr>
+  </tfoot>
+
 </table>
