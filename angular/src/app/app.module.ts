@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {routes} from '../route';
 import { RessourceMaterielleComponent } from './ressource-materielle/ressource-materielle.component';
 import { RessourceMaterielleEditComponent } from './ressource-materielle/ressource-materielle-edit.component';
+import {RessourceMaterielleService} from './service/ressource-materielle.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { RessourceMaterielleEditComponent } from './ressource-materielle/ressour
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [RessourceMaterielleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

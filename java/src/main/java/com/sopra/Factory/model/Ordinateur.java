@@ -6,23 +6,32 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @DiscriminatorValue("ordinateur")
 public class Ordinateur extends RessourceMaterielle {
 	
+
 	@Column(name = "processeur")
+	@JsonView(JsonViews.Common.class)
 	private String processeur;
 	@Column(name = "ram")
+	@JsonView(JsonViews.Common.class)
 	private Integer ram;
 	@Column(name = "disque_dur")
+	@JsonView(JsonViews.Common.class)
 	private Integer disqueDur;
 	@Column(name = "annee_achat")
+	@JsonView(JsonViews.Common.class)
 	private Date anneeAchat;
 	
-	@OneToMany(mappedBy="ordinateur")
-	//@JsonView(JsonViews.OrdinateurByIdWithStagiaires.class)
+	@OneToMany(mappedBy="ordinateur" , fetch = FetchType.LAZY)
+	@JsonView(JsonViews.OrdinateurByIdWithStagiaires.class)
     private Set<Stagiaire> stagiaires;
 	
 	public String getProcesseur() {
