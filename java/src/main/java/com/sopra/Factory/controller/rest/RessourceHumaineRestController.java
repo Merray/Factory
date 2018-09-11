@@ -21,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.Factory.model.Formateur;
 import com.sopra.Factory.model.Gestionnaire;
 import com.sopra.Factory.model.RessourceHumaine;
 import com.sopra.Factory.model.Stagiaire;
 import com.sopra.Factory.model.Technicien;
+import com.sopra.Factory.model.view.JsonViews;
 import com.sopra.Factory.repositories.RessourceHumaineRepository;
 
 @CrossOrigin(origins = { "*" })
@@ -36,6 +38,7 @@ public class RessourceHumaineRestController {
 	@Autowired
 	RessourceHumaineRepository ressourceHumaineRepository;
 
+	@JsonView(JsonViews.Common.class)
 	@GetMapping(path = { "", "/" })
 	public ResponseEntity<List<RessourceHumaine>> findAll() {
 		ResponseEntity<List<RessourceHumaine>> response = null;
@@ -43,6 +46,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 
+	@JsonView(JsonViews.Common.class)
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<RessourceHumaine> findById(@PathVariable(name = "id") Integer id) {
 		ResponseEntity<RessourceHumaine> response = null;
@@ -55,7 +59,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 
-	@PostMapping(path = { "/stagaire/", "/stagiaire" })
+	@PostMapping(path = { "/stagiaire", "/stagiaire/" })
 	public ResponseEntity<Void> createStagiaire(@Valid @RequestBody Stagiaire stagiaire, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -121,6 +125,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
+	@JsonView(JsonViews.Common.class)
 	@PutMapping(path = { "/", "" })
 	public ResponseEntity<RessourceHumaine> update(@Valid @RequestBody RessourceHumaine ressourceHumaine,
 			BindingResult br) {
