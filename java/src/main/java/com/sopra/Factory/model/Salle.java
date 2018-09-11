@@ -20,7 +20,7 @@ public class Salle extends RessourceMaterielle{
 	private Integer nbPersonne;
 	
 	@OneToMany(mappedBy="salle", fetch = FetchType.LAZY)
-	//@JsonView(JsonViews.SalleByIdWithCursus.class)
+	@JsonView(JsonViews.SalleByIdWithCursus.class)
     private Set<Cursus> cursus;
 	
 	

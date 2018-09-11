@@ -117,7 +117,7 @@ public class RessourceMaterielleRestControler {
 				((Ordinateur) ressourceMaterielleEnBase).setRam(((Ordinateur)ressourceMaterielle).getRam());
 				((Ordinateur) ressourceMaterielleEnBase).setDisqueDur(((Ordinateur)ressourceMaterielle).getDisqueDur());
 				((Ordinateur) ressourceMaterielleEnBase).setAnneeAchat(((Ordinateur)ressourceMaterielle).getAnneeAchat());
-	//			((Ordinateur) ressourceMaterielleEnBase).setStagiaires(((Ordinateur)ressourceMaterielle).getStagiaires());
+				((Ordinateur) ressourceMaterielleEnBase).setStagiaires(((Ordinateur)ressourceMaterielle).getStagiaires());
 			} else if (RessourceMaterielle.class.getSimpleName() == "Salle") {
 				((Salle) ressourceMaterielleEnBase).setNbPersonne(((Salle)ressourceMaterielle).getNbPersonne());
 				((Salle) ressourceMaterielleEnBase).setCursus(((Salle)ressourceMaterielle).getCursus());
@@ -128,7 +128,7 @@ public class RessourceMaterielleRestControler {
 			ressourceMaterielleRepository.save(ressourceMaterielleEnBase);
 			return new ResponseEntity<RessourceMaterielle>(ressourceMaterielleEnBase, HttpStatus.OK);
 		} else {
-			// pas de client
+			// pas de ressourceMaterielle
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
 		}

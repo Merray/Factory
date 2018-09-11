@@ -1,11 +1,13 @@
 package com.sopra.Factory.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class MatiereFormateurPK {
+public class MatiereFormateurPK implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="id_matiere")
