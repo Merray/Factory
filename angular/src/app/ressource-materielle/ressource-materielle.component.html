@@ -9,6 +9,7 @@
     <td scope="rol">{{r.id}}</td>
     <td scope="rol">{{r.code}}</td>
     <td scope="rol">{{r.coutUtilisation}}</td>
+    <td scope="rol">{{r.type}}</td>
   </tr>
   <tr>
     <th>Total du coût d'utilisation /jour:</th>
@@ -20,6 +21,8 @@
 <h2>Liste des Ordinateurs</h2>
 <table class="table">
 <tr>
+  <th>ID materiel</th>
+  <th>Code materiel</th>
   <th>Processeur</th>
   <th>Ram</th>
   <th>Disque Dur</th>
@@ -27,6 +30,8 @@
 </tr>
   <tr *ngFor="let r of ressources">
     <td>{{r.id}}</td>
+    <td>{{r.code}}</td>
+    <td>{{r.processeur}}</td>
     <td>{{r.ram}}</td>
     <td>{{r.disqueDur}}</td>
     <td>{{r.anneeAchat}}</td>
@@ -35,8 +40,8 @@
 <h2>Liste des video-projecteurs</h2>
 <table class="table">
   <tr>
-    <th></th>
-    <th></th>
+    <th>ID materiel</th>
+    <th>Code materiel</th>
     <th></th>
   </tr>
 </table>

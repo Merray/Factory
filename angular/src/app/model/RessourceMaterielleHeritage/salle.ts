@@ -1,7 +1,8 @@
 import {RessourceMaterielle} from '../ressourceMaterielle';
+import {Cursus} from '../cursus';
 
 export class Salle extends RessourceMaterielle {
-  constructor(private _nbPersonne: number/*, private _cursuss: cursus[]*/) {
+  constructor(private _nbPersonne: number, private _cursus: Cursus[]) {
     super();
   }
 
@@ -12,13 +13,12 @@ export class Salle extends RessourceMaterielle {
   set nbPersonne(value: number) {
     this._nbPersonne = value;
   }
-/*
-  get cursuss(): cursus[] {
-    return this._cursuss;
+
+  get cursus(): Cursus[] {
+    return this._cursus;
   }
 
-  set cursuss(value: cursus[]) {
-    this._cursuss = value;
+  set cursus(value: Cursus[]) {
+    this._cursus = value;
   }
-  */
 }

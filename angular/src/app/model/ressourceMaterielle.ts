@@ -1,6 +1,6 @@
 export abstract class RessourceMaterielle {
 
-  constructor(private _id?: number, private _code?: string, private _coutUtilisation?: number) {
+  constructor(private _id?: number, private _code?: string, private _coutUtilisation?: number, private _type?: string) {
   }
 
   get id(): number {
@@ -25,5 +25,13 @@ export abstract class RessourceMaterielle {
 
   set coutUtilisation(value: number) {
     this._coutUtilisation = value;
+  }
+
+  get type(): string {
+    return this._type;
+  }
+
+  set type(value: string) {
+    this._type = value;
   }
 }
