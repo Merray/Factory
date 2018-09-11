@@ -4,6 +4,7 @@
     <th scope="col">ID</th>
     <th scope="col">Code Ressource</th>
     <th scope="col">Coût d'utilisation à la journée</th>
+    <th scope="col">Type de ressource</th>
   </tr>
   <tr *ngFor="let r of ressources">
     <td scope="rol">{{r.id}}</td>
@@ -42,15 +43,16 @@
   <tr>
     <th>ID materiel</th>
     <th>Code materiel</th>
-    <th></th>
+    <th>ID Cursus</th>
   </tr>
 </table>
 <h2>Liste des Salles</h2>
 <table class="table">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Id Salle</th>
+    <th>Code</th>
+    <th>Nombre de personnes</th>
+    <th>ID Cursus</th>
   </tr>
 </table>
 
