@@ -1,18 +1,33 @@
 <div class="jumbotron">
-  <h1>
-    {{ title }}
-  </h1>
-  <p>Usine à talents</p>
+
+  <div class="row">
+    <img class="logo col-sm-3" src="assets/images/logo.png" alt=" First slide">
+    <h1 class="col-sm-7 titre">
+
+      {{ title }}
+    </h1>
+  </div>
+
 </div>
-<div class="row">
-  <div class="col-3">
+<div class="row container">
+  <div class="col-2">
     <ul class="list-group">
-      <li class="list-group-item"><a href="" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      </li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/ressource','materielle']"
+                                                             routerLinkActive="active">Materiel</a></li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/ressourcehumaine']"
+                                                             routerLinkActive="active">Humain</a></li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/ressourcehumaine']"
+                                                             routerLinkActive="active">Humain</a></li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/ressourcehumaine']"
+                                                             routerLinkActive="active">Humain</a></li>
+      <li class="list-group-item list-group-item-primary"><a href="" [routerLink]="['/ressourcehumaine']"
+                                                             routerLinkActive="active">Humain</a></li>
     </ul>
   </div>
-  <div class="col-9">
-    <li><a href="" [routerLink]="['/ressource','materielle']" routerLinkActive="active">Retour au menu Ressources materielles</a></li>
-    <li><a href="" [routerLink]="['/ressourcehumaine']" routerLinkActive="active">Ressource humaine</a></li>
+  <div class="col-10">
+
     <router-outlet></router-outlet>
   </div>
 </div>
