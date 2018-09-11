@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
 import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 import {VideoProjecteur} from '../model/RessourceMaterielleHeritage/videoProjecteur';
-import {RessourceHumaine} from '../model/ressource-humaine';
 import {Salle} from '../model/RessourceMaterielleHeritage/salle';
 
 @Injectable({
@@ -31,29 +30,29 @@ export class RessourceMaterielleService {
     return this.http.get<RessourceMaterielle>(`${this.url}/rest/RessourceMaterielle/${id}`, {headers: this.header});
   }
 
-  public save(article: RessourceMaterielle[]): Observable<any> {
-    if (RessourceMaterielle.id) {
-      return this.http.put(`${this.url}/rest/RessourceMaterielle/`, article, {headers: this.header});
+  public save(ressourceMaterielle: RessourceMaterielle): Observable<any> {
+    if (ressourceMaterielle.id) {
+      return this.http.put(`${this.url}/rest/RessourceMaterielle/`, RessourceMaterielle, {headers: this.header});
     } else {
 
-      if (RessourceMaterielle instanceof Ordinateur) {
+      if (ressourceMaterielle instanceof Ordinateur) {
         const o = {
-          id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code,
-          processeur: RessourceMaterielle.processeur, ram: RessourceMaterielle.ram,
-          disqueDur: RessourceMaterielle.disqueDur, anneeAchat: RessourceMaterielle.anneeAchat, StagiaireRattache: RessourceHumaine.id
+          id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
+          processeur: ressourceMaterielle.processeur, ram: ressourceMaterielle.ram,
+          disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/RessourceMaterielle/VideoProjecteur`, o);
-      } else if (article instanceof VideoProjecteur) {
+      } else if (RessourceMaterielle instanceof VideoProjecteur) {
         const o = {
           id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/RessourceMaterielleHeritage/Salle`, o, {headers: this.header});
-      } else if (article instanceof Salle) {
+      } else if (RessourceMaterielle instanceof Salle) {
         const o = {
           id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code,
-          nbPersonne: Salle.nbPersonne
+          nbPersonne: RessourceMaterielle.nbPersonne
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/RessourceMaterielle/`, o, {headers: this.header});

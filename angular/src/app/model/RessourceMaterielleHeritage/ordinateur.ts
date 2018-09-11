@@ -37,4 +37,12 @@ export class Ordinateur extends RessourceMaterielle {
   set anneeAchat(value: Date) {
     this._anneeAchat = value;
   }
+
+  get stagiaires(): Stagiaire[] {
+    return this._stagiaires;
+  }
+
+  set stagiaires(value: Stagiaire[]) {
+    this._stagiaires = value;
+  }
 }
