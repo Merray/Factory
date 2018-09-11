@@ -21,44 +21,44 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.sopra.Factory.model.Cursus;
+import com.sopra.Factory.model.Matiere;
 import com.sopra.Factory.model.view.JsonViews;
-import com.sopra.Factory.repositories.CursusRepository;
+import com.sopra.Factory.repositories.MatiereRepository;
 
 @CrossOrigin(origins= {"*"})
 @RestController
-@RequestMapping("/rest/cursus")
-public class CursusRestController {
+@RequestMapping("/rest/matiere")
+public class MatiereRestController {
 
 	@Autowired
-	CursusRepository cursusRepository;
-	
+	MatiereRepository matiereRepository;
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(path = { "/", "" })
-	public ResponseEntity<List<Cursus>> findAll() {
-		return new ResponseEntity<>(cursusRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Matiere>> findAll() {
+		return new ResponseEntity<>(matiereRepository.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping(path = { "/", "" })
-	public ResponseEntity<Void> createCursus(@Valid @RequestBody Cursus cursus, BindingResult br,
+	public ResponseEntity<Void> createMatiere(@Valid @RequestBody Matiere matiere, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
 		if (br.hasErrors()) {
 			response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
-			cursusRepository.save(cursus);
-		//	HttpHeaders header = new HttpHeaders();
-		//	header.setLocation(uCB.path("/rest/cursus/{id}").buildAndExpand(cursus.getId()).toUri());
-			response = new ResponseEntity<Void>( HttpStatus.CREATED); //,header);
+			matiereRepository.save(matiere);
+			// HttpHeaders header = new HttpHeaders();
+			// header.setLocation(uCB.path("/rest/matiere/{id}").buildAndExpand(matiere.getId()).toUri());
+			response = new ResponseEntity<Void>(HttpStatus.CREATED); // ,header);
 		}
 		return response;
 	}
 
 	@GetMapping(value = "/{id}")
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Cursus> findById(@PathVariable(name = "id") Integer id) {
-		Optional<Cursus> opt = cursusRepository.findById(id);
-		ResponseEntity<Cursus> response = null;
+	public ResponseEntity<Matiere> findById(@PathVariable(name = "id") Integer id) {
+		Optional<Matiere> opt = matiereRepository.findById(id);
+		ResponseEntity<Matiere> response = null;
 		if (opt.isPresent()) {
 			response = new ResponseEntity<>(opt.get(), HttpStatus.OK);
 		} else {
@@ -69,26 +69,25 @@ public class CursusRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@PutMapping(path = { "/", "" })
-	public ResponseEntity<Cursus> update(@Valid @RequestBody Cursus cursus, BindingResult br) {
-		if (br.hasErrors() || cursus.getId() == null) {
+	public ResponseEntity<Matiere> update(@Valid @RequestBody Matiere matiere, BindingResult br) {
+		if (br.hasErrors() || matiere.getId() == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		Optional<Cursus> opt = cursusRepository.findById(cursus.getId());
+		Optional<Matiere> opt = matiereRepository.findById(matiere.getId());
 		if (opt.isPresent()) {
 			// update possible
-			Cursus cursusEnBase = opt.get();
-			cursusEnBase.setDateDebut(cursus.getDateDebut());
-			cursusEnBase.setDateFin(cursus.getDateFin());
-			cursusEnBase.setGestionnaire(cursus.getGestionnaire());
-			cursusEnBase.setLessons(cursus.getLessons());
-			cursusEnBase.setNbStagiaire(cursus.getNbStagiaire());
-			cursusEnBase.setSalle(cursus.getSalle());
-			cursusEnBase.setStagiaires(cursus.getStagiaires());
-			cursusEnBase.setVideoProjecteur(cursus.getVideoProjecteur());
-			cursusRepository.save(cursusEnBase);
-			return new ResponseEntity<Cursus>(cursusEnBase, HttpStatus.OK);
+			Matiere matiereEnBase = opt.get();
+			matiereEnBase.setContenu(matiere.getContenu());
+			matiereEnBase.setDuree(matiere.getDuree());
+			matiereEnBase.setFormateurs(matiere.getFormateurs());
+			matiereEnBase.setLessons(matiere.getLessons());
+			matiereEnBase.setNiveau(matiere.getNiveau());
+			matiereEnBase.setObjectif(matiere.getObjectif());
+			matiereEnBase.setPrerequis(matiere.getPrerequis());
+			matiereRepository.save(matiereEnBase);
+			return new ResponseEntity<Matiere>(matiereEnBase, HttpStatus.OK);
 		} else {
-			// pas de cursus
+			// pas de matiere
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
@@ -96,10 +95,10 @@ public class CursusRestController {
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable(name = "id") Integer id) {
-		Optional<Cursus> opt = cursusRepository.findById(id);
+		Optional<Matiere> opt = matiereRepository.findById(id);
 		ResponseEntity<Void> response = null;
 		if (opt.isPresent()) {
-			cursusRepository.deleteById(id);
+			matiereRepository.deleteById(id);
 			response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} else {
 			response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
