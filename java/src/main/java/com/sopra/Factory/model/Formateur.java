@@ -12,6 +12,9 @@ public class Formateur extends RessourceHumaine {
 	
 	@OneToMany(mappedBy="key.formateur")
 	private Set<MatiereFormateur> matieres;
+	
+	@OneToMany(mappedBy="formateur")
+	private Set<Lesson> lessons;
 
 	public Formateur() {
 		super();
@@ -25,5 +28,14 @@ public class Formateur extends RessourceHumaine {
 		this.matieres = matieres;
 	}
 
+	public Set<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(Set<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+
+	
 	
 }
