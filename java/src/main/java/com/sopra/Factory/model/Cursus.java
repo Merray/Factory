@@ -22,51 +22,58 @@ import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
+
 @Entity
 @Table(name = "cursus")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@SequenceGenerator(name = "seqRessourceMateriel", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "seqCursus", sequenceName = "seq_cursus", initialValue = 1, allocationSize = 1)
 public class Cursus {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCursus")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "id_cursus")
 	private Integer id;
 	@Version
 	private int version;
 	@Column(name = "date_debut")
+	@JsonView(JsonViews.Common.class)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDebut;
 	@Column(name = "date_fin")
+	@JsonView(JsonViews.Common.class)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateFin;
 
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_materielle")
-	// @JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
+	//@JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
 	private Optional<VideoProjecteur> videoProjecteur;
 
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_materielle")
-	// @JsonView(JsonViews.CursusByIdWithSalle.class)
+	@JsonView(JsonViews.CursusByIdWithSalle.class)
 	private Salle salle;
 
 	@Column(name = "nb_stagiaire")
+	@JsonView(JsonViews.Common.class)
 	private Integer nbStagiaire;
 
 	@OneToMany(mappedBy = "id_ressource_humaine")
-	// @JsonView(JsonViews.CursusByIdWithStagiaires.class)
+	@JsonView(JsonViews.CursusByIdWithStagiaires.class)
 	private Set<Stagiaire> stagiaires;
 
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_humaine")
-	// @JsonView(JsonViews.CursusByIdWithGestionnaire.class)
+	@JsonView(JsonViews.CursusByIdWithGestionnaire.class)
 	private Gestionnaire gestionnaire;
 
 	@OneToMany(mappedBy = "id_lesson")
-	// @JsonView(JsonViews.CursusByIdWithLessons.class)
+	@JsonView(JsonViews.CursusByIdWithLessons.class)
 	private Set<Lesson> lessons;
 
 	public Integer getId() {
