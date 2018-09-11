@@ -27,7 +27,10 @@ import com.sopra.Factory.model.RessourceMaterielle;
 import com.sopra.Factory.model.Salle;
 import com.sopra.Factory.model.VideoProjecteur;
 import com.sopra.Factory.model.view.JsonViews;
+import com.sopra.Factory.repositories.OrdinateurRepository;
 import com.sopra.Factory.repositories.RessourceMaterielleRepository;
+import com.sopra.Factory.repositories.SalleRepository;
+import com.sopra.Factory.repositories.VideoProjecteurRepository;
 
 @CrossOrigin(origins= {"*"})
 @RestController
@@ -36,6 +39,15 @@ public class RessourceMaterielleRestControler {
 
 	@Autowired
 	RessourceMaterielleRepository ressourceMaterielleRepository;
+	
+	@Autowired
+	OrdinateurRepository ordinateurRepository;
+	
+	@Autowired
+	SalleRepository salleRepository;
+	
+	@Autowired
+	VideoProjecteurRepository videoProjecteurRepository;
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(path = { "", "/" })
@@ -44,6 +56,31 @@ public class RessourceMaterielleRestControler {
 		response = new ResponseEntity<>(ressourceMaterielleRepository.findAll(), HttpStatus.OK);
 		return response;
 	}
+	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping(path = { "/ordinateur", "/ordinateur/" })
+	public ResponseEntity<List<Ordinateur>> findAllOrdinateur() {
+		ResponseEntity<List<Ordinateur>> response = null;
+		response = new ResponseEntity<>(ordinateurRepository.findAll(), HttpStatus.OK);
+		return response;
+	}
+	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping(path = { "/salle", "/salle/" })
+	public ResponseEntity<List<Salle>> findAllSalle() {
+		ResponseEntity<List<Salle>> response = null;
+		response = new ResponseEntity<>(salleRepository.findAll(), HttpStatus.OK);
+		return response;
+	}
+	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping(path = { "/videoprojecteur", "/videoprojecteur/" })
+	public ResponseEntity<List<VideoProjecteur>> findAllVideoProjecteur() {
+		ResponseEntity<List<VideoProjecteur>> response = null;
+		response = new ResponseEntity<>(videoProjecteurRepository.findAll(), HttpStatus.OK);
+		return response;
+	}
+	
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(value = "/{id}")
