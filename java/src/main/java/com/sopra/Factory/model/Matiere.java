@@ -53,9 +53,9 @@ public class Matiere {
 	@JsonView(JsonViews.Common.class)
 	private String contenu;
 
-	@OneToMany(mappedBy="cursus",  fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="matiere",  fetch = FetchType.LAZY)
 	@JsonView(JsonViews.Common.class)
-	private Lesson lesson;
+	private Set<Lesson> lessons;
 	
 	@OneToMany(mappedBy="key.matiere")
 	private Set<MatiereFormateur> formateurs;
@@ -120,12 +120,12 @@ public class Matiere {
 		this.contenu = contenu;
 	}
 
-	public Lesson getLesson() {
-		return lesson;
+	public Set<Lesson> getLessons() {
+		return lessons;
 	}
 
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
+	public void setLessons(Set<Lesson> lessons) {
+		this.lessons = lessons;
 	}
 
 	public Set<MatiereFormateur> getFormateurs() {
