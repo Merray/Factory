@@ -1,0 +1,34 @@
+<h1>Les Ressources Humaines</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <td>Id :</td>
+    <td>nom :</td>
+    <td>prenom :</td>
+    <td>role :</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let rh of ressourceHumaines">
+    <td>{{rh.id}}</td>
+    <td>{{rh.nom}}</td>
+    <td>{{rh.prenom}}</td>
+    <td>{{rh.type}}</td>
+    <td><a href="" class="btn btn-info" [routerLink]="['/ressourcehumaine', 'edit', rh.id]">Editer</a></td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(rh.id)"> Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'stagiaire']">Stagiaire</a></td>
+    <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'gestionnaire']">Gestionnaire</a></td>
+    <td><a href="" class="btn btn-tertiary" [routerLink]="['create', 'technicien']">Technicien</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'formateur']">Formateur</a></td>
+  </tr>
+  </tfoot>
+
+</table>

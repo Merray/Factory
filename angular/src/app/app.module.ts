@@ -9,13 +9,17 @@ import {routes} from '../route';
 import { RessourceMaterielleComponent } from './ressource-materielle/ressource-materielle.component';
 import { RessourceMaterielleEditComponent } from './ressource-materielle/ressource-materielle-edit.component';
 import {RessourceMaterielleService} from './service/ressource-materielle.service';
+import { RessourceHumaineComponent } from './ressource-humaine/ressource-humaine.component';
+import { RessourceHumaineEditComponent } from './ressource-humaine/ressource-humaine-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RessourceMaterielleComponent,
-    RessourceMaterielleEditComponent
+    RessourceMaterielleEditComponent,
+    RessourceHumaineComponent,
+    RessourceHumaineEditComponent
   ],
   imports: [
     BrowserModule,
