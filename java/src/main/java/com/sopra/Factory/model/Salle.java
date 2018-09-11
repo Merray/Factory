@@ -5,16 +5,21 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @DiscriminatorValue("salle")
 public class Salle extends RessourceMaterielle{
 	
 	@Column(name = "nb_personne")
+	@JsonView(JsonViews.Common.class)
 	private Integer nbPersonne;
 	
-	@OneToMany(mappedBy="salle")
+	@OneToMany(mappedBy="salle", fetch = FetchType.LAZY)
 	//@JsonView(JsonViews.SalleByIdWithCursus.class)
     private Set<Cursus> cursus;
 	

@@ -13,6 +13,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
+
 @Entity
 @Table(name = "ressource_materielle")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -23,12 +26,15 @@ public abstract class RessourceMaterielle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRessourceMateriel")
 	@Column(name = "id_ressource_materielle")
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@Version
 	private int version;
 	@Column(name = "code")
+	@JsonView(JsonViews.Common.class)
 	private String code;
 	@Column(name = "cout_utilisation")
+	@JsonView(JsonViews.Common.class)
 	private Integer coutUtilisation;
 	public Integer getId() {
 		return id;

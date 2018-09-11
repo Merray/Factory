@@ -4,14 +4,19 @@ import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @DiscriminatorValue("video_projecteur")
 public class VideoProjecteur extends RessourceMaterielle {
 	
-	@OneToMany(mappedBy="video_projecteur")
-	//@JsonView(JsonViews.VideoProjecteurByIdWithCursus.class)
+	
+	@OneToMany(mappedBy="videoProjecteur", fetch = FetchType.LAZY)
+	@JsonView(JsonViews.VideoProjecteurByIdWithCursus.class)
     private Set<Cursus> cursus;
 	
 	public VideoProjecteur() {

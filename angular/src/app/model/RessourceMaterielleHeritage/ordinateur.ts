@@ -1,4 +1,4 @@
-import {RessourceMaterielle} from './ressourceMaterielle';
+import {RessourceMaterielle} from '../ressourceMaterielle';
 import {Stagiaire} from '../RessourceHumaineHeritage/stagiaire';
 
 
