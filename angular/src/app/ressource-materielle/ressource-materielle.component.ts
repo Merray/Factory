@@ -38,7 +38,7 @@ export class RessourceMaterielleComponent implements OnInit {
     });
   }
 
-  public somme() {
+ public somme() {
     this.calcul = 0;
     for (let i = 0; i < this.ressources.length; i++) {
       this.calcul = this.ressources[i].coutUtilisation + this.calcul;

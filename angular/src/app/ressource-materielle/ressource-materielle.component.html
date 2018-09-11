@@ -1,13 +1,13 @@
 <h1>Liste des Ressources Materielles</h1>
 <table class="table">
-  <tr *ngFor="let c of testNom(), let index=index" >>
+  <tr >
     <th scope="col">ID</th>
     <th scope="col">Code Ressource</th>
     <th scope="col">Coût d'utilisation à la journée</th>
     <th scope="col">Type de ressource</th>
     <th><input type='text' [(ngModel)]="value"></th>
   </tr>
-  <tr *ngFor="let r of ressources"  >
+  <tr *ngFor="let r of testNom(), let index=index">
     <td scope="rol">{{r.id}}</td>
     <td scope="rol">{{r.code}}</td>
     <td scope="rol">{{r.coutUtilisation}}</td>
@@ -16,9 +16,10 @@
   </tr>
   <tr>
     <th>Total du coût d'utilisation /jour:</th>
+    <td scope="rol">{{somme()}}</td>
   </tr>
   <tr>
-    <td scope="rol">{{somme()}}</td>
+
   </tr>
 </table>
 <h2>Liste des Ordinateurs</h2>

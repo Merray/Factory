@@ -19,22 +19,22 @@ export class RessourceMaterielleService {
   }
 
   public list(): Observable<RessourceMaterielle[]> {
-    return this.http.get<RessourceMaterielle[]>(`${this.url}/rest/ressource/materielle/`, {headers: this.header});
+    return this.http.get<RessourceMaterielle[]>(`${this.url}/rest/ressourcematerielle/`, {headers: this.header});
   }
   public listO(): Observable<Ordinateur[]> {
-    return this.http.get<Ordinateur[]>(`${this.url}/rest/ressource/materielle/`, {headers: this.header});
+    return this.http.get<Ordinateur[]>(`${this.url}/rest/ressourcematerielle/`, {headers: this.header});
   }
   public delete(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/rest/ressource/materielle/${id}`, {headers: this.header});
+    return this.http.delete(`${this.url}/rest/ressourcematerielle/${id}`, {headers: this.header});
   }
 
   public findById(id: number): Observable<RessourceMaterielle> {
-    return this.http.get<RessourceMaterielle>(`${this.url}/rest/ressource/materielle/${id}`, {headers: this.header});
+    return this.http.get<RessourceMaterielle>(`${this.url}/rest/ressourcematerielle/${id}`, {headers: this.header});
   }
 
   public save(ressourceMaterielle: RessourceMaterielle): Observable<any> {
     if (ressourceMaterielle.id) {
-      return this.http.put(`${this.url}/rest/ressource/materielle/`, ressourceMaterielle, {headers: this.header});
+      return this.http.put(`${this.url}/rest/ressourcematerielle/`, ressourceMaterielle, {headers: this.header});
     } else {
 
       if (ressourceMaterielle instanceof Ordinateur) {
@@ -44,20 +44,20 @@ export class RessourceMaterielleService {
           disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressource/materielle/`, o);
+        return this.http.post(`${this.url}/rest/ressourcematerielle/`, o);
       } else if (ressourceMaterielle instanceof VideoProjecteur) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressource/materielle/`, o, {headers: this.header});
+        return this.http.post(`${this.url}/rest/ressourcematerielle/`, o, {headers: this.header});
       } else if (ressourceMaterielle instanceof Salle) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
           nbPersonne: ressourceMaterielle.nbPersonne
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressource/materielle/`, o, {headers: this.header});
+        return this.http.post(`${this.url}/rest/ressourcematerielle/`, o, {headers: this.header});
       }
     }
   }
