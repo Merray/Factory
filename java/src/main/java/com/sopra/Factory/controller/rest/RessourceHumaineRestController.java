@@ -139,7 +139,7 @@ public class RessourceHumaineRestController {
 			ressourceHumaineEnBase.setNom(ressourceHumaine.getNom());
 			ressourceHumaineEnBase.setPrenom(ressourceHumaine.getPrenom());
 
-			if (RessourceHumaine.class.getSimpleName() == "Stagiaire") {
+			if (ressourceHumaineEnBase.getClass().getName() == "Stagiaire") {
 
 				((Stagiaire) ressourceHumaineEnBase)
 						.setProfil(((Stagiaire) ressourceHumaine).getProfil());
