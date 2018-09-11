@@ -21,7 +21,9 @@ export class RessourceMaterielleService {
   public list(): Observable<RessourceMaterielle[]> {
     return this.http.get<RessourceMaterielle[]>(`${this.url}/rest/ressource/materielle/`, {headers: this.header});
   }
-
+  public listO(): Observable<Ordinateur[]> {
+    return this.http.get<Ordinateur[]>(`${this.url}/rest/ressource/materielle/`, {headers: this.header});
+  }
   public delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}/rest/ressource/materielle/${id}`, {headers: this.header});
   }
