@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -18,7 +19,7 @@ public class Salle extends RessourceMaterielle{
 	@JsonView(JsonViews.Common.class)
 	private Integer nbPersonne;
 	
-	@OneToMany(mappedBy="salle")
+	@OneToMany(mappedBy="salle", fetch = FetchType.LAZY)
 	//@JsonView(JsonViews.SalleByIdWithCursus.class)
     private Set<Cursus> cursus;
 	

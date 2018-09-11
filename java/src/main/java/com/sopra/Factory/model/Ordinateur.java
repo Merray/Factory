@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -29,7 +30,7 @@ public class Ordinateur extends RessourceMaterielle {
 	@JsonView(JsonViews.Common.class)
 	private Date anneeAchat;
 	
-	@OneToMany(mappedBy="ordinateur")
+	@OneToMany(mappedBy="ordinateur" , fetch = FetchType.LAZY)
 	@JsonView(JsonViews.OrdinateurByIdWithStagiaires.class)
     private Set<Stagiaire> stagiaires;
 	

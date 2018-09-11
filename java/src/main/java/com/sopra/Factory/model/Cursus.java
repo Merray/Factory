@@ -1,11 +1,11 @@
 package com.sopra.Factory.model;
 
 import java.util.Date;
-import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,12 +50,12 @@ public class Cursus {
 	private Date dateFin;
 
 	@ManyToOne
-	@JoinColumn(name = "id_ressource_materielle")
-	//@JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
-	private Optional<VideoProjecteur> videoProjecteur;
+	@JoinColumn(name = "id_video_projecteur")
+//	@JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
+	private VideoProjecteur videoProjecteur;
 
 	@ManyToOne
-	@JoinColumn(name = "id_ressource_materielle")
+	@JoinColumn(name = "id_salle")
 	@JsonView(JsonViews.CursusByIdWithSalle.class)
 	private Salle salle;
 
@@ -63,16 +63,16 @@ public class Cursus {
 	@JsonView(JsonViews.Common.class)
 	private Integer nbStagiaire;
 
-	@OneToMany(mappedBy = "id_ressource_humaine")
+	@OneToMany(mappedBy = "cursus", fetch = FetchType.LAZY)
 	@JsonView(JsonViews.CursusByIdWithStagiaires.class)
 	private Set<Stagiaire> stagiaires;
 
 	@ManyToOne
-	@JoinColumn(name = "id_ressource_humaine")
+	@JoinColumn(name = "id_gestionnaire")
 	@JsonView(JsonViews.CursusByIdWithGestionnaire.class)
 	private Gestionnaire gestionnaire;
 
-	@OneToMany(mappedBy = "id_lesson")
+	@OneToMany(mappedBy = "cursus", fetch = FetchType.LAZY)
 	@JsonView(JsonViews.CursusByIdWithLessons.class)
 	private Set<Lesson> lessons;
 
@@ -108,11 +108,11 @@ public class Cursus {
 		this.dateFin = dateFin;
 	}
 
-	public Optional<VideoProjecteur> getVideoProjecteur() {
+	public VideoProjecteur getVideoProjecteur() {
 		return videoProjecteur;
 	}
 
-	public void setVideoProjecteur(Optional<VideoProjecteur> videoProjecteur) {
+	public void setVideoProjecteur(VideoProjecteur videoProjecteur) {
 		this.videoProjecteur = videoProjecteur;
 	}
 
