@@ -1,7 +1,7 @@
 import {Stagiaire} from './RessourceHumaineHeritage/stagiaire';
 import {Lesson} from './lesson';
-import {VideoProjecteur} from './RessourceMaterielle/videoProjecteur';
-import {Salle} from './RessourceMaterielle/salle';
+import {VideoProjecteur} from './RessourceMaterielleHeritage/videoProjecteur';
+import {Salle} from './RessourceMaterielleHeritage/salle';
 
 export class Cursus {
   constructor(private _dateDebut?: Date, private _dateFin?: Date, private _nbStagiaire?: number, private _stagiaires?: Stagiaire[],
