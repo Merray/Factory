@@ -1,4 +1,4 @@
-import {RessourceMaterielle} from './ressourceMaterielle';
+import {RessourceMaterielle} from '../ressourceMaterielle';
 
 export class Salle extends RessourceMaterielle {
   constructor(private _nbPersonne: number, private _cursuss: cursus[]) {

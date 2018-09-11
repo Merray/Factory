@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {RessourceMaterielle} from '../model/RessourceMaterielle/ressourceMaterielle';
-import {Ordinateur} from '../model/RessourceMaterielle/ordinateur';
-import {VideoProjecteur} from '../model/RessourceMaterielle/videoProjecteur';
+import {RessourceMaterielle} from '../model/ressourceMaterielle';
+import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
+import {VideoProjecteur} from '../model/RessourceMaterielleHeritage/videoProjecteur';
 import {RessourceHumaine} from '../model/ressource-humaine';
+import {Salle} from '../model/RessourceMaterielleHeritage/salle';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class RessourceMaterielleService {
 
-  url: string = 'http://localhost:8080/demo';
+  url: string = 'http://localhost:8080/factory';
   header: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -34,7 +35,7 @@ export class ArticleService {
     if (RessourceMaterielle.id) {
       return this.http.put(`${this.url}/rest/RessourceMaterielle/`, article, {headers: this.header});
     } else {
-      /* return this.http.post(`${this.url}/rest/adherent/`, adherent);*/
+
       if (RessourceMaterielle instanceof Ordinateur) {
         const o = {
           id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code,
@@ -42,16 +43,21 @@ export class ArticleService {
           disqueDur: RessourceMaterielle.disqueDur, anneeAchat: RessourceMaterielle.anneeAchat, StagiaireRattache: RessourceHumaine.id
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/RessourceMaterielle/`, o);
+        return this.http.post(`${this.url}/rest/RessourceMaterielle/VideoProjecteur`, o);
       } else if (article instanceof VideoProjecteur) {
         const o = {
-          id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code,
+          id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/article/`, o, {headers: this.header});
-
+        return this.http.post(`${this.url}/rest/RessourceMaterielleHeritage/Salle`, o, {headers: this.header});
+      } else if (article instanceof Salle) {
+        const o = {
+          id: RessourceMaterielle.id, coutUtilisation: RessourceMaterielle.coutUtilisation, code: RessourceMaterielle.code,
+          nbPersonne: Salle.nbPersonne
+        };
+        console.log(o);
+        return this.http.post(`${this.url}/rest/RessourceMaterielle/`, o, {headers: this.header});
       }
-
     }
   }
 

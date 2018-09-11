@@ -1,5 +1,5 @@
 import {RessourceHumaine} from '../ressource-humaine';
-import {Ordinateur} from '../RessourceMaterielle/ordinateur';
+import {Ordinateur} from '../RessourceMaterielleHeritage/ordinateur';
 import {Cursus} from '../cursus';
 
 export class Stagiaire extends RessourceHumaine {
