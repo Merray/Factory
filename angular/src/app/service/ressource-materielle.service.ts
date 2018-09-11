@@ -42,13 +42,13 @@ export class RessourceMaterielleService {
           disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressource/materielle/VideoProjecteur`, o);
+        return this.http.post(`${this.url}/rest/ressource/materielle/`, o);
       } else if (ressourceMaterielle instanceof VideoProjecteur) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressource/materielle/Salle`, o, {headers: this.header});
+        return this.http.post(`${this.url}/rest/ressource/materielle/`, o, {headers: this.header});
       } else if (ressourceMaterielle instanceof Salle) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
