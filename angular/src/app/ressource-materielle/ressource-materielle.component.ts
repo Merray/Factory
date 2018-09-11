@@ -22,4 +22,10 @@ export class RessourceMaterielleComponent implements OnInit {
       this.ressources = resp;
     }, error => console.log(error));
   }
+  public delete(id: number) {
+    this.ressourceMaterielleService.delete(id).subscribe(resp => {
+      this.list();
+    });
+  }
+  public sum
 }
