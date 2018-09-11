@@ -19,45 +19,45 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
-@Table(name="matiere")
+@Table(name = "matiere")
 @SequenceGenerator(name = "seqMatiere", sequenceName = "seq_matiere", initialValue = 1, allocationSize = 1)
 public class Matiere {
-	
+
 	@Id
-	@Column(name= "id_matiere")
+	@Column(name = "id_matiere")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMatiere")
 	@JsonView(JsonViews.Common.class)
 	private Integer id;
-	
+
 	@Version
 	private Integer version;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="niveau")
+	@Column(name = "niveau")
 	@JsonView(JsonViews.Common.class)
 	private Profil niveau;
-	
-	@Column(name= "duree")
+
+	@Column(name = "duree")
 	@JsonView(JsonViews.Common.class)
 	private Integer duree;
-	
-	@Column(name= "objectif")
+
+	@Column(name = "objectif")
 	@JsonView(JsonViews.Common.class)
 	private String objectif;
-		
-	@Column(name= "prerequis")
+
+	@Column(name = "prerequis")
 	@JsonView(JsonViews.Common.class)
 	private String prerequis;
-	
-	@Column(name= "contenu")
+
+	@Column(name = "contenu")
 	@JsonView(JsonViews.Common.class)
 	private String contenu;
 
-	@OneToMany(mappedBy="matiere",  fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
 	@JsonView(JsonViews.Common.class)
 	private Set<Lesson> lessons;
-	
-	@OneToMany(mappedBy="key.matiere")
+
+	@OneToMany(mappedBy = "key.matiere")
 	private Set<MatiereFormateur> formateurs;
 
 	public Matiere() {
@@ -160,5 +160,5 @@ public class Matiere {
 			return false;
 		return true;
 	}
-	
+
 }

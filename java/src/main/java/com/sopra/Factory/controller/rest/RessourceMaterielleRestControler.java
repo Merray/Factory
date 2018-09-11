@@ -6,9 +6,11 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,19 +21,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.Factory.model.Ordinateur;
 import com.sopra.Factory.model.RessourceMaterielle;
 import com.sopra.Factory.model.Salle;
 import com.sopra.Factory.model.VideoProjecteur;
+import com.sopra.Factory.model.view.JsonViews;
 import com.sopra.Factory.repositories.RessourceMaterielleRepository;
 
+@CrossOrigin(origins= {"*"})
 @RestController
-@RequestMapping("/rest/ressource/materielle")
+@RequestMapping("/rest/ressourcematerielle")
 public class RessourceMaterielleRestControler {
 
 	@Autowired
 	RessourceMaterielleRepository ressourceMaterielleRepository;
 
+	@JsonView(JsonViews.Common.class)
 	@GetMapping(path = { "", "/" })
 	public ResponseEntity<List<RessourceMaterielle>> findAll() {
 		ResponseEntity<List<RessourceMaterielle>> response = null;
@@ -39,6 +45,7 @@ public class RessourceMaterielleRestControler {
 		return response;
 	}
 
+	@JsonView(JsonViews.Common.class)
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<RessourceMaterielle> findById(@PathVariable(name = "id") Integer id) {
 		ResponseEntity<RessourceMaterielle> response = null;
@@ -51,7 +58,7 @@ public class RessourceMaterielleRestControler {
 		return response;
 	}
 
-	@PostMapping(path = { "/ordinateur", "" })
+	@PostMapping(path = { "/ordinateur", "/ordinateur/" })
 	public ResponseEntity<Void> createOrdinateur(@Valid @RequestBody Ordinateur ordinateur, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -59,15 +66,15 @@ public class RessourceMaterielleRestControler {
 			response = new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		} else {
 			ressourceMaterielleRepository.save(ordinateur);
-			// HttpHeaders header = new HttpHeaders();
+			HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/ordinateur/{id}").buildAndExpand(ordinateur.getId()).toUri());
+			header.setLocation(uCB.path("rest/ressourcematerielle/ordinateur/{id}").buildAndExpand(ordinateur.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;
 	}
 
-	@PostMapping(path = { "/projecteur", "" })
+	@PostMapping(path = { "/videoprojecteur", "/videoprojecteur/" })
 	public ResponseEntity<Void> createVideoProjecteur(@Valid @RequestBody VideoProjecteur videoProjecteur,
 			BindingResult br, UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -75,15 +82,15 @@ public class RessourceMaterielleRestControler {
 			response = new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		} else {
 			ressourceMaterielleRepository.save(videoProjecteur);
-			// HttpHeaders header = new HttpHeaders();
+			HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/projecteur/{id}").buildAndExpand(videoProjecteur.getId()).toUri());
+			header.setLocation(uCB.path("rest/ressourcematerielle/videoprojecteur/{id}").buildAndExpand(videoProjecteur.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;
 	}
 
-	@PostMapping(path = { "/salle", "" })
+	@PostMapping(path = { "/salle", "/salle/" })
 	public ResponseEntity<Void> createSalle(@Valid @RequestBody Salle salle, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -91,14 +98,15 @@ public class RessourceMaterielleRestControler {
 			response = new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		} else {
 			ressourceMaterielleRepository.save(salle);
-			// HttpHeaders header = new HttpHeaders();
+			HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/salle/{id}").buildAndExpand(ordinateur.getId()).toUri());
+			header.setLocation(uCB.path("rest/ressourcematerielle/salle/{id}").buildAndExpand(salle.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;
 	}
 	
+	@JsonView(JsonViews.Common.class)
 	@PutMapping(path = { "/", "" })
 	public ResponseEntity<RessourceMaterielle> update(@Valid @RequestBody RessourceMaterielle ressourceMaterielle, BindingResult br) {
 		if (br.hasErrors() || ressourceMaterielle.getId() == null) {
@@ -118,9 +126,11 @@ public class RessourceMaterielleRestControler {
 				((Ordinateur) ressourceMaterielleEnBase).setDisqueDur(((Ordinateur)ressourceMaterielle).getDisqueDur());
 				((Ordinateur) ressourceMaterielleEnBase).setAnneeAchat(((Ordinateur)ressourceMaterielle).getAnneeAchat());
 				((Ordinateur) ressourceMaterielleEnBase).setStagiaires(((Ordinateur)ressourceMaterielle).getStagiaires());
+			
 			} else if (RessourceMaterielle.class.getSimpleName() == "Salle") {
 				((Salle) ressourceMaterielleEnBase).setNbPersonne(((Salle)ressourceMaterielle).getNbPersonne());
 				((Salle) ressourceMaterielleEnBase).setCursus(((Salle)ressourceMaterielle).getCursus());
+			
 			} else if (RessourceMaterielle.class.getSimpleName() == "VideoProjecteur") {
 				((VideoProjecteur) ressourceMaterielleEnBase).setCursus(((VideoProjecteur)ressourceMaterielle).getCursus());
 			}

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -17,15 +19,13 @@ import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.Factory.model.view.JsonViews;
 
 @Entity
 @Table(name="lesson")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @SequenceGenerator(name = "seqLesson", sequenceName = "seq_lesson", initialValue = 1, allocationSize = 1)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
 public class Lesson {
 	
 	@Id
@@ -62,7 +62,7 @@ public class Lesson {
 	private Cursus cursus;
 
 	@Version
-	private Integer version;
+	private int version;
 	
 	public Lesson() {
 		super();
@@ -116,11 +116,11 @@ public class Lesson {
 		this.cursus = cursus;
 	}
 	
-	public Integer getVersion() {
+	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(Integer version) {
+	public void setVersion(int version) {
 		this.version = version;
 	}
 

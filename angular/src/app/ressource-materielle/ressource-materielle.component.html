@@ -2,12 +2,50 @@
 <table class="table">
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Code Ressource (SA:Salles,PC:Ordinateurs, VP:Videoprojecteurs)</th>
-    <th scope="col">Coût d'utilisation</th>
+    <th scope="col">Code Ressource</th>
+    <th scope="col">Coût d'utilisation à la journée</th>
   </tr>
   <tr *ngFor="let r of ressources">
     <td scope="rol">{{r.id}}</td>
     <td scope="rol">{{r.code}}</td>
     <td scope="rol">{{r.coutUtilisation}}</td>
   </tr>
+  <tr>
+    <th>Total du coût d'utilisation /jour:</th>
+  </tr>
+  <tr>
+    <td scope="rol">{{somme()}}</td>
+  </tr>
 </table>
+<h2>Liste des Ordinateurs</h2>
+<table class="table">
+<tr>
+  <th>Processeur</th>
+  <th>Ram</th>
+  <th>Disque Dur</th>
+  <th>Annee d'achat</th>
+</tr>
+  <tr *ngFor="let r of ressources">
+    <td>{{r.id}}</td>
+    <td>{{r.ram}}</td>
+    <td>{{r.disqueDur}}</td>
+    <td>{{r.anneeAchat}}</td>
+  </tr>
+</table>
+<h2>Liste des video-projecteurs</h2>
+<table class="table">
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</table>
+<h2>Liste des Salles</h2>
+<table class="table">
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</table>
+

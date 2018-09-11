@@ -9,12 +9,14 @@ import {RessourceMaterielleService} from '../service/ressource-materielle.servic
 })
 export class RessourceMaterielleComponent implements OnInit {
   ressources: RessourceMaterielle[];
+  calcul = 0;
 
   constructor(private ressourceMaterielleService: RessourceMaterielleService) {
   }
 
   ngOnInit() {
     this.list();
+    this.listO();
   }
 
   public list() {
@@ -22,4 +24,24 @@ export class RessourceMaterielleComponent implements OnInit {
       this.ressources = resp;
     }, error => console.log(error));
   }
+
+  public listO() {
+    this.ressourceMaterielleService.listO().subscribe(resp => {
+      this.ressources = resp;
+    }, error => console.log(error));
+  }
+
+  public delete(id: number) {
+    this.ressourceMaterielleService.delete(id).subscribe(resp => {
+      this.list();
+    });
+  }
+
+  public somme() {
+    for (let i = 0; i < this.ressources.length; i++) {
+      this.calcul = this.ressources[i].coutUtilisation + this.calcul;
+    }
+    return this.calcul;
+  }
 }
+

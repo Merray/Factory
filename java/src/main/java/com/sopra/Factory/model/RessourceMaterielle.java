@@ -13,6 +13,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sopra.Factory.model.view.JsonViews;
 
@@ -21,6 +25,8 @@ import com.sopra.Factory.model.view.JsonViews;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @SequenceGenerator(name = "seqRessourceMateriel", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = Ordinateur.class, name = "ordinateur"), @Type(value = Salle.class, name = "salle"), @Type(value = VideoProjecteur.class, name = "video_projecteur") })
 public abstract class RessourceMaterielle {
 	
 	@Id
