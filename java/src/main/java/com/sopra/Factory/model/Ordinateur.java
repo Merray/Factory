@@ -8,10 +8,13 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("ordinateur")
 public class Ordinateur extends RessourceMaterielle {
 	
+	@JsonView(JsonView.class)
 	@Column(name = "processeur")
 	private String processeur;
 	@Column(name = "ram")
