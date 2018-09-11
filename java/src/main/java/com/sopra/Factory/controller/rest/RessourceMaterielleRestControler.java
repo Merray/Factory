@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import com.sopra.Factory.model.Salle;
 import com.sopra.Factory.model.VideoProjecteur;
 import com.sopra.Factory.repositories.RessourceMaterielleRepository;
 
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/rest/ressource/materielle")
 public class RessourceMaterielleRestControler {
@@ -51,7 +53,7 @@ public class RessourceMaterielleRestControler {
 		return response;
 	}
 
-	@PostMapping(path = { "/ordinateur", "" })
+	@PostMapping(path = { "/ordinateur", "/ordinateur/" })
 	public ResponseEntity<Void> createOrdinateur(@Valid @RequestBody Ordinateur ordinateur, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -61,13 +63,13 @@ public class RessourceMaterielleRestControler {
 			ressourceMaterielleRepository.save(ordinateur);
 			// HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/ordinateur/{id}").buildAndExpand(ordinateur.getId()).toUri());
+			// header.setLocation(uCB.path("rest/ressource/materielle/ordinateur/{id}").buildAndExpand(ordinateur.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;
 	}
 
-	@PostMapping(path = { "/projecteur", "" })
+	@PostMapping(path = { "/projecteur", "/projecteur/" })
 	public ResponseEntity<Void> createVideoProjecteur(@Valid @RequestBody VideoProjecteur videoProjecteur,
 			BindingResult br, UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -77,13 +79,13 @@ public class RessourceMaterielleRestControler {
 			ressourceMaterielleRepository.save(videoProjecteur);
 			// HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/projecteur/{id}").buildAndExpand(videoProjecteur.getId()).toUri());
+			// header.setLocation(uCB.path("rest/ressource/materielle/projecteur/{id}").buildAndExpand(videoProjecteur.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;
 	}
 
-	@PostMapping(path = { "/salle", "" })
+	@PostMapping(path = { "/salle", "/salle/" })
 	public ResponseEntity<Void> createSalle(@Valid @RequestBody Salle salle, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
@@ -93,7 +95,7 @@ public class RessourceMaterielleRestControler {
 			ressourceMaterielleRepository.save(salle);
 			// HttpHeaders header = new HttpHeaders();
 
-			// header.setLocation(uCB.path("rest/salle/{id}").buildAndExpand(ordinateur.getId()).toUri());
+			// header.setLocation(uCB.path("rest/ressource/materielle/salle/{id}").buildAndExpand(ordinateur.getId()).toUri());
 			response = new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 		return response;

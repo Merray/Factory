@@ -62,7 +62,7 @@ public class Lesson {
 	private Cursus cursus;
 
 	@Version
-	private Integer version;
+	private int version;
 	
 	public Lesson() {
 		super();
@@ -116,11 +116,11 @@ public class Lesson {
 		this.cursus = cursus;
 	}
 	
-	public Integer getVersion() {
+	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(Integer version) {
+	public void setVersion(int version) {
 		this.version = version;
 	}
 

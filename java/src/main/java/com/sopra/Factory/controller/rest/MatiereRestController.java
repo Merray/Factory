@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,45 +21,44 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.sopra.Factory.model.MatiereFormateur;
-import com.sopra.Factory.model.MatiereFormateurPK;
+import com.sopra.Factory.model.Matiere;
 import com.sopra.Factory.model.view.JsonViews;
-import com.sopra.Factory.repositories.MatiereFormateurRepository;
+import com.sopra.Factory.repositories.MatiereRepository;
 
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins= {"*"})
 @RestController
-@RequestMapping("/rest/matiereformateur")
-public class MatiereFormateurRestController {
+@RequestMapping("/rest/matiere")
+public class MatiereRestController {
 
 	@Autowired
-	MatiereFormateurRepository matiereFormateurRepository;
-	
+	MatiereRepository matiereRepository;
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(path = { "/", "" })
-	public ResponseEntity<List<MatiereFormateur>> findAll() {
-		return new ResponseEntity<>(matiereFormateurRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Matiere>> findAll() {
+		return new ResponseEntity<>(matiereRepository.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping(path = { "/", "" })
-	public ResponseEntity<Void> createMatiereFormateur(@Valid @RequestBody MatiereFormateur matiereFormateur, BindingResult br,
+	public ResponseEntity<Void> createMatiere(@Valid @RequestBody Matiere matiere, BindingResult br,
 			UriComponentsBuilder uCB) {
 		ResponseEntity<Void> response = null;
 		if (br.hasErrors()) {
 			response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
-			matiereFormateurRepository.save(matiereFormateur);
-		HttpHeaders header = new HttpHeaders();
-		header.setLocation(uCB.path("/rest/matiereformateur/{id}").buildAndExpand(matiereFormateur.getKey()).toUri());
-			response = new ResponseEntity<Void>( HttpStatus.CREATED);
+			matiereRepository.save(matiere);
+			// HttpHeaders header = new HttpHeaders();
+			// header.setLocation(uCB.path("/rest/matiere/{id}").buildAndExpand(matiere.getId()).toUri());
+			response = new ResponseEntity<Void>(HttpStatus.CREATED); // ,header);
 		}
 		return response;
 	}
 
-	@GetMapping(value = "/{key}")
+	@GetMapping(value = "/{id}")
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<MatiereFormateur> findById(@PathVariable(name = "key") MatiereFormateurPK key) {
-		Optional<MatiereFormateur> opt = matiereFormateurRepository.findById(key);
-		ResponseEntity<MatiereFormateur> response = null;
+	public ResponseEntity<Matiere> findById(@PathVariable(name = "id") Integer id) {
+		Optional<Matiere> opt = matiereRepository.findById(id);
+		ResponseEntity<Matiere> response = null;
 		if (opt.isPresent()) {
 			response = new ResponseEntity<>(opt.get(), HttpStatus.OK);
 		} else {
@@ -71,28 +69,36 @@ public class MatiereFormateurRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@PutMapping(path = { "/", "" })
-	public ResponseEntity<MatiereFormateur> update(@Valid @RequestBody MatiereFormateur matiereFormateur, BindingResult br) {
-		if (br.hasErrors() || matiereFormateur.getKey() == null) {
+	public ResponseEntity<Matiere> update(@Valid @RequestBody Matiere matiere, BindingResult br) {
+		if (br.hasErrors() || matiere.getId() == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		Optional<MatiereFormateur> opt = matiereFormateurRepository.findById(matiereFormateur.getKey());
+		Optional<Matiere> opt = matiereRepository.findById(matiere.getId());
 		if (opt.isPresent()) {
 			// update possible
-			MatiereFormateur matiereFormateurEnBase = opt.get();
-			return new ResponseEntity<MatiereFormateur>(matiereFormateurEnBase, HttpStatus.OK);
+			Matiere matiereEnBase = opt.get();
+			matiereEnBase.setContenu(matiere.getContenu());
+			matiereEnBase.setDuree(matiere.getDuree());
+			matiereEnBase.setFormateurs(matiere.getFormateurs());
+			matiereEnBase.setLessons(matiere.getLessons());
+			matiereEnBase.setNiveau(matiere.getNiveau());
+			matiereEnBase.setObjectif(matiere.getObjectif());
+			matiereEnBase.setPrerequis(matiere.getPrerequis());
+			matiereRepository.save(matiereEnBase);
+			return new ResponseEntity<Matiere>(matiereEnBase, HttpStatus.OK);
 		} else {
-			// pas de cursus
+			// pas de matiere
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 	}
 
-	@DeleteMapping(value = "/{key}")
-	public ResponseEntity<Void> delete(@PathVariable(name = "key") MatiereFormateurPK key) {
-		Optional<MatiereFormateur> opt = matiereFormateurRepository.findById(key);
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable(name = "id") Integer id) {
+		Optional<Matiere> opt = matiereRepository.findById(id);
 		ResponseEntity<Void> response = null;
 		if (opt.isPresent()) {
-			matiereFormateurRepository.deleteById(key);
+			matiereRepository.deleteById(id);
 			response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} else {
 			response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

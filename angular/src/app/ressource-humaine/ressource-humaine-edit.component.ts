@@ -25,6 +25,7 @@ export class RessourceHumaineEditComponent implements OnInit {
         });
       }
     });
+
   }
 
   public save(type: string) {
