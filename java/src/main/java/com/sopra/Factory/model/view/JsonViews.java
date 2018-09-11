@@ -30,5 +30,11 @@ public class JsonViews {
 	public static class CursusByIdWithLessons extends Common {
 
 	};
+	public static class SalleByIdWithCursus extends Common {
+		
+	};
+	public static class CursusByIdWithVideoProjecteur extends Common {
+		
+	};
 
 }
