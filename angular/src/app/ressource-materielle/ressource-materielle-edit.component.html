@@ -1,3 +1,51 @@
-<p>
-  ressource-materielle-edit works!
-</p>
+<div class="container">
+  <form (ngSubmit)="save(ressourceMaterielle.type)" #form="ngForm">
+    <div class="form-group">
+      <label for="type">type :</label>
+      <input class="form-control" id="type" name="type" [(ngModel)]="ressourceMaterielle.type" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="id">id :</label>
+      <input id="id" name="id" class="form-control" [(ngModel)]="ressourceMaterielle.id" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="code">Code :</label>
+      <input id="code" name="code" class="form-control" required [(ngModel)]="ressourceMaterielle.code" #code="ngModel"/>
+      <div *ngIf="code.dirty&&code.hasError('required')">Code obligatoire</div>
+    </div>
+    <div class="form-group">
+      <label for="cout">Cout d'utilisation a la journee :</label>
+      <input class="cout" id="cout" name="cout" required [(ngModel)]="ressourceMaterielle.coutUtilisation"/>
+      <div *ngIf="cout.dirty&&cout.hasError('required')">Cout obligatoire</div>
+    </div>
+    <div class="form-group" *ngIf="ressourceMaterielle.type === 'video-projecteur'">
+      <label for="video">Cursus :</label>
+      <select class="form-control" id="video" name="video" [(ngModel)]="ressourceMaterielle.cursusgeres"
+              *ngFor="let r of ressources">
+        <option>{{r.cursus}}</option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="ressourceMaterielle.type === 'salle'">
+      <label for="Cursus">Cursus :</label>
+      <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceHumaine.cursusgeres"/>
+      <label for="nbPersonne">Nombre de Personnes dans la Salle:</label>
+      <input class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="ressourceMaterielle.nbPersonne">
+    </div>
+    <div class="form-group" *ngIf="ressourceMaterielle.type === 'ordinateur'">
+      <label for="processeur">Processeur :</label>
+      <input class="form-control" id="processeur" name="processeur" [(ngModel)]="ressourceMaterielle.processeur"/>
+      <label for="ram">Ram :</label>
+      <input class="form-control" id="ram" name="ram" [(ngModel)]="ressourceMaterielle.ram"/>
+      <label for="disqueDur">Capacite disque dur :</label>
+      <input class="form-control" id="disqueDur" name="disqueDur" [(ngModel)]="ressourceMaterielle.disqueDur"/>
+      <label for="anneeAchat">Annee d'achat :</label>
+      <input class="form-control" id="anneeAchat" name="anneeAchat" [(ngModel)]="ressourceMaterielle.processeur"/>
+      <select class="form-control" id="stagiaire" name="stagiaire" [(ngModel)]="ressourceMaterielle.stagiaire"
+              *ngFor="let r of ressources">
+        <option>{{r.stagiaires}}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+  </form>
+</div>
+

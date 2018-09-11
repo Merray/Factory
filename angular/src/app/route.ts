@@ -4,9 +4,12 @@ import {RessourceMaterielleComponent} from './ressource-materielle/ressource-mat
 import {RessourceHumaineComponent} from './ressource-humaine/ressource-humaine.component';
 import {RessourceHumaineEditComponent} from './ressource-humaine/ressource-humaine-edit.component';
 import {CursusComponent} from './cursus/cursus.component';
+import {RessourceMaterielleEditComponent} from './ressource-materielle/ressource-materielle-edit.component';
 
 export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'ressourcematerielle', component: RessourceMaterielleComponent},
+  {path: 'ressourcematerielle/edit/:id', component: RessourceMaterielleEditComponent},
+  {path: 'ressourcematerielle/create/:type', component: RessourceMaterielleEditComponent},
   {path: 'ressourcehumaine', component: RessourceHumaineComponent},
   {path: 'ressourcehumaine/edit/:id', component: RessourceHumaineEditComponent},
   {path: 'ressourcehumaine/create/:type', component: RessourceHumaineEditComponent},
