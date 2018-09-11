@@ -57,7 +57,7 @@ public abstract class RessourceHumaine {
 	private Adresse adresse;
 
 	@Version
-	private Integer version;
+	private int version;
 
 	public RessourceHumaine() {
 		super();
@@ -103,11 +103,11 @@ public abstract class RessourceHumaine {
 		this.adresse = adresse;
 	}
 
-	public Integer getVersion() {
+	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(Integer version) {
+	public void setVersion(int version) {
 		this.version = version;
 	}
 
