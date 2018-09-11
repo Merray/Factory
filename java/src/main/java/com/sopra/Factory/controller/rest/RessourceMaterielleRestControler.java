@@ -116,10 +116,11 @@ public class RessourceMaterielleRestControler {
 		if (opt.isPresent()) {
 			// update possible
 			RessourceMaterielle ressourceMaterielleEnBase = opt.get();
+			
 			ressourceMaterielleEnBase.setCode(ressourceMaterielle.getCode());
 			ressourceMaterielleEnBase.setCoutUtilisation(ressourceMaterielle.getCoutUtilisation());
 			
-			if (RessourceMaterielle.class.getSimpleName() == "Ordinateur") {
+			if (ressourceMaterielleEnBase.getClass().getSimpleName().equals("Ordinateur")) {
 
 				((Ordinateur) ressourceMaterielleEnBase).setProcesseur(((Ordinateur)ressourceMaterielle).getProcesseur());
 				((Ordinateur) ressourceMaterielleEnBase).setRam(((Ordinateur)ressourceMaterielle).getRam());
@@ -127,11 +128,11 @@ public class RessourceMaterielleRestControler {
 				((Ordinateur) ressourceMaterielleEnBase).setAnneeAchat(((Ordinateur)ressourceMaterielle).getAnneeAchat());
 				((Ordinateur) ressourceMaterielleEnBase).setStagiaires(((Ordinateur)ressourceMaterielle).getStagiaires());
 			
-			} else if (RessourceMaterielle.class.getSimpleName() == "Salle") {
+			} else if (ressourceMaterielleEnBase.getClass().getSimpleName().equals("Salle")) {
 				((Salle) ressourceMaterielleEnBase).setNbPersonne(((Salle)ressourceMaterielle).getNbPersonne());
 				((Salle) ressourceMaterielleEnBase).setCursus(((Salle)ressourceMaterielle).getCursus());
 			
-			} else if (RessourceMaterielle.class.getSimpleName() == "VideoProjecteur") {
+			} else if (ressourceMaterielleEnBase.getClass().getSimpleName().equals("VideoProjecteur")) {
 				((VideoProjecteur) ressourceMaterielleEnBase).setCursus(((VideoProjecteur)ressourceMaterielle).getCursus());
 			}
 
