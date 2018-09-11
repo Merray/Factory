@@ -11,6 +11,8 @@ import {RessourceMaterielleService} from './service/ressource-materielle.service
 import { RessourceHumaineComponent } from './ressource-humaine/ressource-humaine.component';
 import { RessourceHumaineEditComponent } from './ressource-humaine/ressource-humaine-edit.component';
 import {routes} from './route';
+import { CursusComponent } from './cursus/cursus.component';
+import { CursusEditComponent } from './cursus/cursus-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {routes} from './route';
     RessourceMaterielleComponent,
     RessourceMaterielleEditComponent,
     RessourceHumaineComponent,
-    RessourceHumaineEditComponent
+    RessourceHumaineEditComponent,
+    CursusComponent,
+    CursusEditComponent
   ],
   imports: [
     BrowserModule,
