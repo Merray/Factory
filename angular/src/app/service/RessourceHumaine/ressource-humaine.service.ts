@@ -36,9 +36,8 @@ export class RessourceHumaineService {
     return this.http.get(`${this.url}/rest/ressourcehumaine/${id}`, {headers: this.headers});
   }
 
-  public save(ressourceHumaine: Stagiaire): Observable<any> {
+  public save(ressourceHumaine: RessourceHumaine): Observable<any> {
     if (ressourceHumaine.id) {
-      console.log(ressourceHumaine);
       return this.http.put(`${this.url}/rest/ressourcehumaine/`, ressourceHumaine, {headers: this.headers});
     } else {
       if (ressourceHumaine instanceof Stagiaire) {

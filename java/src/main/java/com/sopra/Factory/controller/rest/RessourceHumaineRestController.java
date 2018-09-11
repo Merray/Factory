@@ -138,6 +138,8 @@ public class RessourceHumaineRestController {
 			RessourceHumaine ressourceHumaineEnBase = opt.get();
 			ressourceHumaineEnBase.setNom(ressourceHumaine.getNom());
 			ressourceHumaineEnBase.setPrenom(ressourceHumaine.getPrenom());
+			ressourceHumaineEnBase.setAdresse(ressourceHumaine.getAdresse());
+			ressourceHumaineEnBase.setCoordonnee(ressourceHumaine.getCoordonnee());
 
 			if (ressourceHumaineEnBase.getClass().getSimpleName().equals("Stagiaire")) {
 
@@ -147,12 +149,13 @@ public class RessourceHumaineRestController {
 				((Stagiaire) ressourceHumaineEnBase)
 						.setCursus(((Stagiaire) ressourceHumaine).getCursus());
 			
-			} else if (RessourceHumaine.class.getSimpleName() == "Technicien") {
+			} else if (ressourceHumaineEnBase.getClass().getSimpleName().equals("Technicien")) {
 				
-			} else if (RessourceHumaine.class.getSimpleName() == "Gestionnaire") {
+			} else if (ressourceHumaineEnBase.getClass().getSimpleName().equals("Gestionnaire")) {
 				((Gestionnaire) ressourceHumaineEnBase)
 						.setCursusGeres(((Gestionnaire) ressourceHumaine).getCursusGeres());
-			} else if (RessourceHumaine.class.getSimpleName() == "Formateur") {
+			
+			} else if (ressourceHumaine.getClass().getSimpleName().equals("Formateur")) {
 				((Formateur) ressourceHumaineEnBase).setLessons(((Formateur) ressourceHumaine).getLessons());
 				((Formateur) ressourceHumaineEnBase).setMatieres(((Formateur) ressourceHumaine).getMatieres());
 			}
