@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Cursus} from '../model/cursus';
 import {CursusService} from '../service/cursus/cursus.service';
-import {RessourceMaterielle} from '../model/ressourceMaterielle';
 
 @Component({
   selector: 'app-cursus',
