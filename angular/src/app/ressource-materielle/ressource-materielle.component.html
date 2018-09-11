@@ -2,23 +2,12 @@
 <table class="table">
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">NbDisques</th>
-    <th scope="col">Type</th>
-    <th scope="col">3D/Bonus</th>
-    <th scope="col">Options</th>
+    <th scope="col">Code Ressource (SA:Salles,PC:Ordinateurs, VP:Videoprojecteurs)</th>
+    <th scope="col">Coût d'utilisation</th>
   </tr>
-  <tr *ngFor="let article of articles">
-    <td scope="rol">{{article.id}}</td>
-    <td scope="rol">{{article.nbDisques}}</td>
-    <td scope="rol">{{article.type}}</td>
-    <td scope="rol" *ngIf="article.type == 'D'">{{article.bonus}}</td>
-    <td scope="rol" *ngIf="article.type == 'B'">{{article.troisD}}</td>
-    <td *ngIf="article.type == 'D'"><a href="" [routerLink]="['/article', 'dvd','edit',article.id]"
-                                       routerLinkActive="active" class="btn btn-info">edition</a></td>
-    <td *ngIf="article.type == 'B'"><a href="" [routerLink]="['/article', 'dvd','edit',article.id]"
-                                       routerLinkActive="active" class="btn btn-info">edition</a></td>
-    <td>
-      <button class="btn btn-danger" (click)="delete(article.id)">supprimer</button>
-    </td>
+  <tr *ngFor="let r of RessourceMaterielle">
+    <td scope="rol">{{r.id}}</td>
+    <td scope="rol">{{r.code}}</td>
+    <td scope="rol">{{r.coutUtilisation}}</td>
   </tr>
 </table>
