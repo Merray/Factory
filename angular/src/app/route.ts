@@ -9,10 +9,6 @@ export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'ressourcematerielle', component: RessourceMaterielleComponent},
   {path: 'ressourcehumaine', component: RessourceHumaineComponent},
   {path: 'ressourcehumaine/edit/:id', component: RessourceHumaineEditComponent},
-  {path: 'ressourcehumaine/create/stagiaire', component: RessourceHumaineEditComponent},
-  {path: 'ressourcehumaine/create/gestionnaire', component: RessourceHumaineEditComponent},
-  {path: 'ressourcehumaine/create/technicien', component: RessourceHumaineEditComponent},
-  {path: 'ressourcehumaine/create/formateur', component: RessourceHumaineEditComponent},
-
+  {path: 'ressourcehumaine/create/:type', component: RessourceHumaineEditComponent},
   {path: 'cursus', component: CursusComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}];

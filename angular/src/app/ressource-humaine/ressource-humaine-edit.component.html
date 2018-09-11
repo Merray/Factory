@@ -27,8 +27,12 @@
       </select>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Gestionnaire'">
-      <label for="Untest">Un test :</label>
-      <input class="form-control" id="Untest" name="Untest"/>
+      <label for="Cursus">Cursus :</label>
+      <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceHumaine.cursusgeres"/>
+    </div>
+    <div class="form-group" *ngIf="ressourceHumaine.type === 'Formateur'">
+      <label for="Matiere">Matière :</label>
+      <input class="form-control" id="Matiere" name="Matiere" [(ngModel)]="ressourceHumaine.matieres"/>
     </div>
     <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
   </form>
