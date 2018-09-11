@@ -26,8 +26,5 @@ export class RessourceHumaineEditComponent implements OnInit {
   }
 
   public save() {
-    this.adherentService.save(this.adherent).subscribe(resp => {
-      this.router.navigate(['/adherent']);
-    });
   }
 }
