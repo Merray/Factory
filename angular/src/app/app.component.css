@@ -1,0 +1,28 @@
+li {
+  text-align: center;
+}
+
+a {
+  color: ghostwhite;
+}
+
+.jumbotron {
+
+  text-align: center;
+}
+
+
+.logo {
+  width: 50px;
+  height: 120px;
+  padding: 0px;
+  margin-left: 20px;
+}
+
+.titre {
+  vertical-align: bottom;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+

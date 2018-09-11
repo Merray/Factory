@@ -141,7 +141,6 @@ public class RessourceHumaineRestController {
 			ressourceHumaineEnBase.setAdresse(ressourceHumaine.getAdresse());
 			ressourceHumaineEnBase.setCoordonnee(ressourceHumaine.getCoordonnee());
 
-			System.out.println(ressourceHumaineEnBase.getClass().getSimpleName());
 			if (ressourceHumaineEnBase.getClass().getSimpleName().equals("Stagiaire")) {
 
 				((Stagiaire) ressourceHumaineEnBase)

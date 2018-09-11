@@ -16,10 +16,17 @@ export class RessourceMaterielleComponent implements OnInit {
 
   ngOnInit() {
     this.list();
+    this.listO();
   }
 
   public list() {
     this.ressourceMaterielleService.list().subscribe(resp => {
+      this.ressources = resp;
+    }, error => console.log(error));
+  }
+
+  public listO() {
+    this.ressourceMaterielleService.listO().subscribe(resp => {
       this.ressources = resp;
     }, error => console.log(error));
   }
@@ -31,6 +38,7 @@ export class RessourceMaterielleComponent implements OnInit {
   }
 
   public somme() {
+    this.calcul = 0;
     for (let i = 0; i < this.ressources.length; i++) {
       this.calcul = this.ressources[i].coutUtilisation + this.calcul;
     }
