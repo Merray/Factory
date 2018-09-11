@@ -16,10 +16,17 @@ export class RessourceMaterielleComponent implements OnInit {
 
   ngOnInit() {
     this.list();
+    this.listO();
   }
 
   public list() {
     this.ressourceMaterielleService.list().subscribe(resp => {
+      this.ressources = resp;
+    }, error => console.log(error));
+  }
+
+  public listO() {
+    this.ressourceMaterielleService.listO().subscribe(resp => {
       this.ressources = resp;
     }, error => console.log(error));
   }

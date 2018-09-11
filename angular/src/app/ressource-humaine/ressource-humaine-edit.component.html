@@ -1,3 +1,31 @@
-<p>
-  ressource-humaine-edit works!
-</p>
+<div class="container">
+  <form (ngSubmit)="save(ressourceHumaine.type)" #form="ngForm">
+    <div class="form-group">
+      <label for="type">type :</label>
+      <input class="form-control" id="type" name="type" [(ngModel)]="ressourceHumaine.type"/>
+    </div>
+    <div class="form-group">
+      <label for="id">id :</label>
+      <input id="id" name="id" class="form-control" [(ngModel)]="ressourceHumaine.id" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="nom">nom :</label>
+      <input id="nom" name="nom" class="form-control" required [(ngModel)]="ressourceHumaine.nom" #nom="ngModel"/>
+      <div *ngIf="nom.dirty&&nom.hasError('required')">prenom obligatoire</div>
+    </div>
+    <div class="form-group">
+      <label for="prenom">prenom :</label>
+      <input class="form-control" id="prenom" name="prenom" required [(ngModel)]="ressourceHumaine.prenom"/>
+    </div>
+    <div class="form-group" *ngIf="ressourceHumaine.type === 'Stagiaire'">
+      <label for="profil">profil :</label>
+      <input class="form-control" id="profil" name="profil" [(ngModel)]="ressourceHumaine.profil"/>
+    </div>
+    <div class="form-group" *ngIf="ressourceHumaine.type === 'Gestionnaire'">
+      <label for="Untest">Un test :</label>
+      <input class="form-control" id="Untest" name="Untest"/>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+  </form>
+</div>
+
