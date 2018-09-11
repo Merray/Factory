@@ -3,7 +3,7 @@ import {Coordonnee} from './coordonnee';
 
 export abstract class RessourceHumaine {
   constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _coordonnee?: Coordonnee,
-              private _adresse?: Adresse) {
+              private _adresse?: Adresse, private _type?: string) {
 
   }
 
@@ -45,5 +45,13 @@ export abstract class RessourceHumaine {
 
   set adresse(value: Adresse) {
     this._adresse = value;
+  }
+
+  get type(): string {
+    return this._type;
+  }
+
+  set type(value: string) {
+    this._type = value;
   }
 }

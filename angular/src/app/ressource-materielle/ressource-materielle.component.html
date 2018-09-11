@@ -1,1 +1,24 @@
 <h1>Liste des Ressources Materielles</h1>
+<table class="table">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">NbDisques</th>
+    <th scope="col">Type</th>
+    <th scope="col">3D/Bonus</th>
+    <th scope="col">Options</th>
+  </tr>
+  <tr *ngFor="let article of articles">
+    <td scope="rol">{{article.id}}</td>
+    <td scope="rol">{{article.nbDisques}}</td>
+    <td scope="rol">{{article.type}}</td>
+    <td scope="rol" *ngIf="article.type == 'D'">{{article.bonus}}</td>
+    <td scope="rol" *ngIf="article.type == 'B'">{{article.troisD}}</td>
+    <td *ngIf="article.type == 'D'"><a href="" [routerLink]="['/article', 'dvd','edit',article.id]"
+                                       routerLinkActive="active" class="btn btn-info">edition</a></td>
+    <td *ngIf="article.type == 'B'"><a href="" [routerLink]="['/article', 'dvd','edit',article.id]"
+                                       routerLinkActive="active" class="btn btn-info">edition</a></td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(article.id)">supprimer</button>
+    </td>
+  </tr>
+</table>
