@@ -19,4 +19,16 @@ public class Gestionnaire extends RessourceHumaine {
 	@JsonView(JsonViews.Common.class)
 	private Set<Cursus> cursusGeres;
 
+	public Gestionnaire() {
+		super();
+	}
+
+	public Set<Cursus> getCursusGeres() {
+		return cursusGeres;
+	}
+
+	public void setCursusGeres(Set<Cursus> cursusGeres) {
+		this.cursusGeres = cursusGeres;
+	}
+	
 }
