@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "cursus")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@SequenceGenerator(name = "seqRessourceMateriel", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "seqCursus", sequenceName = "seq_cursus", initialValue = 1, allocationSize = 1)
 public class Cursus {
 
 	@Id
