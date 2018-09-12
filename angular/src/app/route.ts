@@ -34,7 +34,8 @@ export const routes: Routes = [
   {path: 'lesson/create', canActivate: [AuthGuardService], component: LessonEditComponent},
   {path: 'lesson/edit/:id', canActivate: [AuthGuardService],  component: LessonEditComponent},
   {path: 'login', canActivate: [AuthGuardService], component: LoginEditComponent},
+  {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {path: 'not-found', component: FourOhFourComponent},
-  {path: '**', redirectTo: 'not-found'},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'not-found'}
+  ,
 ];
