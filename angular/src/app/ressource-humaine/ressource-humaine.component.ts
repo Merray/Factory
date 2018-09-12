@@ -26,8 +26,10 @@ export class RessourceHumaineComponent implements OnInit {
   }
 
   public delete(id: number) {
-    this.ressourceHumaineService.delete(id).subscribe(resp => {
-      this.list();
-    });
+    if (confirm('Etes-vous sûr de vouloir supprimer cette ressource humaine?')) {
+      this.ressourceHumaineService.delete(id).subscribe(resp => {
+        this.list();
+      });
+    }
   }
 }
