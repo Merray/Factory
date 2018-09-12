@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Cursus} from '../model/cursus';
 import {CursusService} from '../service/cursus/cursus.service';
-import {RessourceMaterielle} from '../model/ressourceMaterielle';
 
 @Component({
   selector: 'app-cursus-edit',
@@ -11,7 +10,7 @@ import {RessourceMaterielle} from '../model/ressourceMaterielle';
 })
 export class CursusEditComponent implements OnInit {
 
-  constructor( private cursusSercive: CursusService, private ar: ActivatedRoute, private router: Router) {
+  constructor(private cursusService: CursusService, private ar: ActivatedRoute, private router: Router) {
   }
 
   cursus: Cursus;
@@ -19,7 +18,7 @@ export class CursusEditComponent implements OnInit {
   ngOnInit() {
     this.ar.params.subscribe(params => {
       if (params.id) {
-        this.cursusSercive.findById(params.id).subscribe(resp => {
+        this.cursusService.findById(params.id).subscribe(resp => {
           this.cursus = resp;
         });
       } else {
@@ -30,9 +29,14 @@ export class CursusEditComponent implements OnInit {
   }
 
   public save() {
-    this.cursusSercive.save(this.cursus).subscribe(resp => {
+    this.cursusService.save(this.cursus).subscribe(resp => {
       this.router.navigate([`/cursus`]);
     });
   }
 
+
+  /*   <div class="form-group" *ngFor="let number of [0,1,2,3,4]">
+        <label for="stagiaire">Ajout d'un stagiaire par Id :</label>
+        <input id="stagiaire" name="stagiaire" type="number" class="form-control" required [(ngModel)]="cursus.stagiaires[number].id" #nom="ngModel"/>
+      </div> */
 }

@@ -23,9 +23,14 @@ export class RessourceMaterielleService {
   }
 
   public listO(): Observable<Ordinateur[]> {
-    return this.http.get<Ordinateur[]>(`${this.url}/rest/ressourcematerielle/`, {headers: this.header});
+    return this.http.get<Ordinateur[]>(`${this.url}/rest/ressourcematerielle/ordinateur`, {headers: this.header});
   }
-
+  public listS(): Observable<Salle[]> {
+    return this.http.get<Salle[]>(`${this.url}/rest/ressourcematerielle/salle`, {headers: this.header});
+  }
+  public listV(): Observable<VideoProjecteur[]> {
+    return this.http.get<VideoProjecteur[]>(`${this.url}/rest/ressourcematerielle/videoprojecteur`, {headers: this.header});
+  }
   public delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}/rest/ressourcematerielle/${id}`, {headers: this.header});
   }

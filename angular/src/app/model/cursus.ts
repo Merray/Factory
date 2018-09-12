@@ -4,6 +4,8 @@ import {VideoProjecteur} from './RessourceMaterielleHeritage/videoProjecteur';
 import {Salle} from './RessourceMaterielleHeritage/salle';
 
 export class Cursus {
+
+
   constructor(private _id?: number, private _dateDebut?: Date, private _dateFin?: Date, private _nbStagiaire?: number,
               private _stagiaires?: Stagiaire[],
               private _salle?: Salle, private _videoProjecteur?: VideoProjecteur, private _lessons?: Lesson[]) {
