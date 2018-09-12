@@ -19,6 +19,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginEditComponent } from './login/login-edit.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { LessonEditComponent } from './lesson/lesson-edit.component';
+import {AuthGuardService} from './service/auth/auth-guard.service';
+import {AuthService} from './service/auth/auth.service';
+import {AuthComponent} from './auth/auth.component';
+import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { LessonEditComponent } from './lesson/lesson-edit.component';
     LoginComponent,
     LoginEditComponent,
     LessonComponent,
-    LessonEditComponent
+    LessonEditComponent,
+    AuthComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,7 @@ import { LessonEditComponent } from './lesson/lesson-edit.component';
     RouterModule.forRoot(routes),
     HttpClientModule,
   ],
-  providers: [RessourceMaterielleService],
+  providers: [RessourceMaterielleService, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
