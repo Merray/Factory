@@ -73,3 +73,4 @@ export class RessourceHumaineEditComponent implements OnInit {
       });
     }
   }
+}
