@@ -5,7 +5,7 @@
   </div>
   <div class="form-group">
     <label for="titre">Titre : </label>
-    <input id="titre" name="titre" type="text" [(ngModel)]="matiere.titre" class="form-control" required/>
+    <input id="titre" name="titre" type="text" [(ngModel)]="matiere.titre" class="form-control"/>
   </div>
   <div class="form-group">
     <label for="profil">Niveau : </label>
@@ -34,11 +34,11 @@
   </div>
   <div class="form-group">
     <label for="formateur">Formateur : </label>
-    <input id="formateur" name="formateur" [(ngModel)]="" class="form-control"/>
+    <input id="formateur" name="formateur"  class="form-control"/>
   </div>
   <div class="form-group">
     <label for="lesson">Leçons : </label>
-    <input id="lesson" name="lesson"[(ngModel)]="" class="form-control"/>
+    <input id="lesson" name="lesson" class="form-control"/>
   </div>
 
   <button type="submit" class="btn btn-success" [disabled]="variableRepresentantLeFormulaire.invalid">Enregistrer

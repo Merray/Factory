@@ -36,6 +36,10 @@ public class Matiere {
 	@Column(name = "niveau")
 	@JsonView(JsonViews.Common.class)
 	private Profil niveau;
+	
+	@Column(name = "titre")
+	@JsonView(JsonViews.Common.class)
+	private String titre;
 
 	@Column(name = "duree")
 	@JsonView(JsonViews.Common.class)
@@ -62,6 +66,14 @@ public class Matiere {
 
 	public Matiere() {
 		super();
+	}
+	
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
 
 	public Integer getId() {

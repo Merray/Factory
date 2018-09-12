@@ -27,7 +27,7 @@ export class MatiereEditComponent implements OnInit {
 
   public save() {
     this.matiereService.save(this.matiere).subscribe(resp => {
-        this.router.navigate(['/reservation']);
+        this.router.navigate(['/matiere']);
       }
     );
   }

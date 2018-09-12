@@ -13,7 +13,7 @@
     <th></th>
     <th></th>
   </tr>
-  <tr *ngFor="let m of matieress">
+  <tr *ngFor="let m of matieres">
     <td>{{m.id}}</td>
     <td>{{m.titre}}</td>
     <td>{{m.niveau}}</td>
@@ -21,8 +21,8 @@
     <td>{{m.objectif}}</td>
     <td>{{m.prerequis}}</td>
     <td>{{m.contenu}}</td>
-    <td>{{}}</td>
-    <td>{{}}</td>
+    <td></td>
+    <td></td>
     <td><a href="" [routerLink]="['/matiere', 'edit', m.id]" class="btn btn-info">Editer</a><td>
     <td><button (click)="delete(m.id)" class="btn btn-danger">Supprimer</button></td>
   </tr>
