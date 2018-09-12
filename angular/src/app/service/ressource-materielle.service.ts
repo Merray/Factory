@@ -43,20 +43,22 @@ export class RessourceMaterielleService {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
           processeur: ressourceMaterielle.processeur, ram: ressourceMaterielle.ram,
-          disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires
+          disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires,
+          type: ressourceMaterielle.type
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/ressourcematerielle/ordinateur`, o, {headers: this.header});
       } else if (ressourceMaterielle instanceof VideoProjecteur) {
         const o = {
-          id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code
+          id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
+          type: ressourceMaterielle.type
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/ressourcematerielle/videoprojecteur`, o, {headers: this.header});
       } else if (ressourceMaterielle instanceof Salle) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code,
-          nbPersonne: ressourceMaterielle.nbPersonne
+          nbPersonne: ressourceMaterielle.nbPersonne, type: ressourceMaterielle.type
         };
         console.log(o);
         return this.http.post(`${this.url}/rest/ressourcematerielle/salle`, o, {headers: this.header});
