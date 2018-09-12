@@ -3,11 +3,18 @@ import {Cursus} from './cursus';
 import {Matiere} from './matiere';
 
 export class Lesson {
-  constructor(private _dateDebut?: Date, private _dateFin?: Date, private _cursus?: Cursus, private _matiere?: Matiere,
+  constructor(private _id?: number, private _dateDebut?: Date, private _dateFin?: Date, private _cursus?: Cursus, private _matiere?: Matiere,
               private _formateur?: Formateur) {
 
   }
 
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
 
   get dateDebut(): Date {
     return this._dateDebut;

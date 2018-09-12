@@ -53,9 +53,11 @@ export class RessourceMaterielleComponent implements OnInit {
   }
 
   public delete(id: number) {
-    this.ressourceMaterielleService.delete(id).subscribe(resp => {
-      this.list();
-    });
+    if (confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+      this.ressourceMaterielleService.delete(id).subscribe(resp => {
+        this.list();
+      });
+    }
   }
 
   public somme() {
