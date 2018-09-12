@@ -17,4 +17,7 @@ export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'cursus', component: CursusComponent},
   {path: 'cursus/create', component: CursusEditComponent},
   {path: 'cursus/edit/:id', component: CursusEditComponent},
+  {path: 'matiere', component: MatiereComponent},
+  {path: 'matiere/create', component: MatiereEditComponent},
+  {path: 'matiere/edit/:id', component: MatiereEditComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}];
