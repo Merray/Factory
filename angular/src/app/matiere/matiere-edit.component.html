@@ -1,3 +1,46 @@
-<p>
-  matiere-edit works!
-</p>
+<form (ngSubmit)="save()" #variableRepresentantLeFormulaire="ngForm">
+  <div class="form-group">
+    <label for="id">Id : </label>
+    <input id="id" name="id" readonly="true" [(ngModel)]="matiere.id" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="titre">Titre : </label>
+    <input id="titre" name="titre" type="text" [(ngModel)]="matiere.titre" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="profil">Niveau : </label>
+    <select class="form-control" id="profil" name="profil" [(ngModel)]="matiere.niveau">
+      <option>Débutant</option>
+      <option>Intermédiaire</option>
+      <option>Avancé</option>
+      <option>Expert</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="duree">Durée : </label>
+    <input id="duree" name="duree" type="number" [(ngModel)]="matiere.duree" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="objectif">Objectif : </label>
+    <input id="objectif" name="objectif" type="text" [(ngModel)]="matiere.objectif" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="prerequis">Prérequis : </label>
+    <input id="prerequis" name="prerequis" type="text" [(ngModel)]="matiere.prerequis" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="contenu">Contenu : </label>
+    <input id="contenu" name="contenu" type="text" [(ngModel)]="matiere.contenu" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="formateur">Formateur : </label>
+    <input id="formateur" name="formateur"  class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="lesson">Leçons : </label>
+    <input id="lesson" name="lesson" class="form-control"/>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="variableRepresentantLeFormulaire.invalid">Enregistrer
+  </button>
+</form>

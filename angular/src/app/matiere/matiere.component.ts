@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatiereService} from '../service/matiere/matiere.service';
+import {Matiere} from '../model/matiere';
 
 @Component({
   selector: 'app-matiere',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatiereComponent implements OnInit {
 
-  constructor() { }
+  matieres: Matiere[];
 
-  ngOnInit() {
+  constructor(private matiereService: MatiereService) {
   }
 
+  ngOnInit() {
+    this.list();
+  }
+
+  public list() {
+    this.matiereService.list().subscribe(resp => {
+      this.matieres = resp;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  public delete(id: number) {
+    this.matiereService.delete(id).subscribe(resp => {
+      this.list();
+    });
+  }
 }
