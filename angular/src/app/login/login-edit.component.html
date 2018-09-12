@@ -1,3 +1,21 @@
-<p>
-  login-edit works!
-</p>
+<div class="container">
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="Username">Username :</label>
+      <input class="form-control" id="Username" name="Username" [(ngModel)]="user.username"/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password :</label>
+      <input id="password" name="password" class="form-control" [(ngModel)]="user.password"/>
+    </div>
+    <div class="form-group">
+      <label for="enable">Enable :</label>
+      <input type="checkbox" id="enable" name="enable" class="form-control" [(ngModel)]="user.enable"/>
+    </div>
+    <div class="form-group">
+      <label for="role">Role :</label>
+      <input  id="role" name="role" class="form-control" [(ngModel)]="user.role"/>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+  </form>
+</div>

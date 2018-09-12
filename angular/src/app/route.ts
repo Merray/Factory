@@ -10,6 +10,7 @@ import {MatiereComponent} from './matiere/matiere.component';
 import {MatiereEditComponent} from './matiere/matiere-edit.component';
 import {LessonComponent} from './lesson/lesson.component';
 import {LessonEditComponent} from './lesson/lesson-edit.component';
+import {LoginEditComponent} from './login/login-edit.component';
 
 export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'ressourcematerielle', component: RessourceMaterielleComponent},
@@ -27,4 +28,5 @@ export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'lesson', component: LessonComponent},
   {path: 'lesson/create', component: LessonEditComponent},
   {path: 'lesson/edit/:id', component: LessonEditComponent},
+  {path: 'login', component: LoginEditComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}];
