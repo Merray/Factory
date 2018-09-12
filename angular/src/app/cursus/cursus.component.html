@@ -5,6 +5,8 @@
     <td>Id :</td>
     <td>Date de début :</td>
     <td>Date de fin :</td>
+    <td>Salle :</td>
+    <td>Nombre de stagiaires :</td>
     <td></td>
     <td></td>
   </tr>
@@ -14,6 +16,8 @@
     <td>{{c.id}}</td>
     <td>{{c.dateDebut}}</td>
     <td>{{c.dateFin}}</td>
+    <td>{{c.salle.code}}</td>
+    <td>{{c.nbStagiaire}}</td>
     <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a></td>
     <td>
       <button class="btn btn-danger" (click)="delete(c.id)"> Supprimer</button>
