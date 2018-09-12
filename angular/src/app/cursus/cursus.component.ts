@@ -30,4 +30,8 @@ export class CursusComponent implements OnInit {
     });
   }
 
+  public compteur(id: number) {
+    console.log(this.cursus[id].stagiaires);
+  }
 }
+//  +this.cursus[id].stagiaires.length
