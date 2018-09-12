@@ -30,7 +30,7 @@ import { CursusEditComponent } from './cursus/cursus-edit.component';
     FormsModule,
     RouterModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [RessourceMaterielleService],
   bootstrap: [AppComponent]

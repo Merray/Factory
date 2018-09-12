@@ -3,7 +3,7 @@ import {Cursus} from '../cursus';
 
 
 export class VideoProjecteur extends RessourceMaterielle {
-  constructor(private _cursus: Cursus[]) {
+  constructor(private _cursus?: Cursus[]) {
     super();
   }
 
