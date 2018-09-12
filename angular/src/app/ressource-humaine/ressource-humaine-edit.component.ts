@@ -6,6 +6,10 @@ import {Stagiaire} from '../model/RessourceHumaineHeritage/stagiaire';
 import {Gestionnaire} from '../model/RessourceHumaineHeritage/gestionnaire';
 import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
+import {RessourceMaterielleService} from '../service/ressource-materielle.service';
+import {RessourceMaterielle} from '../model/ressourceMaterielle';
+import {resolveProjectModule} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/require-project-module';
+import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 
 @Component({
   selector: 'app-ressource-humaine-edit',
@@ -14,14 +18,18 @@ import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 })
 export class RessourceHumaineEditComponent implements OnInit {
 
-  constructor(private ressourceHumaineService: RessourceHumaineService, private ar: ActivatedRoute, private router: Router) {
+  constructor(private ressourceHumaineService: RessourceHumaineService, private ressourceMaterielservice: RessourceMaterielleService,
+              private ar: ActivatedRoute, private router: Router) {
   }
 
   ressourceHumaine: RessourceHumaine;
+  ressourceMaterielles: RessourceMaterielle[];
   stagiaire: Stagiaire;
   gestionnaire: Gestionnaire;
   technicien: Technicien;
   formateur: Formateur;
+  idOrdi: number;
+  ordina: Ordinateur;
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -43,15 +51,21 @@ export class RessourceHumaineEditComponent implements OnInit {
         this.ressourceHumaine.type = params.type;
       }
     });
-
+    this.ressourceMaterielservice.list().subscribe(resp => {
+      this.ressourceMaterielles = resp;
+    });
   }
 
   public save(type: string) {
     if (type === 'Stagiaire') {
       // @ts-ignore
       this.stagiaire = this.ressourceHumaine;
-      this.ressourceHumaineService.save(this.stagiaire).subscribe(resp => {
-        this.router.navigate(['/ressourcehumaine']);
+      this.ressourceMaterielservice.findById(this.idOrdi).subscribe(resp => {
+        // @ts-ignore
+        this.stagiaire.ordinateur = resp;
+        this.ressourceHumaineService.save(this.stagiaire).subscribe(resp => {
+          this.router.navigate(['/ressourcehumaine']);
+        });
       });
     } else if (type === 'Gestionnaire') {
       // @ts-ignore
@@ -72,5 +86,9 @@ export class RessourceHumaineEditComponent implements OnInit {
         this.router.navigate(['/ressourcehumaine']);
       });
     }
+  }
+
+  public filterRessourceMaterielleOfType(filtre: string) {
+    return this.ressourceMaterielles.filter(x => x.type === filtre);
   }
 }

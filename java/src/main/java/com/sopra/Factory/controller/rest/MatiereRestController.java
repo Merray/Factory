@@ -78,6 +78,7 @@ public class MatiereRestController {
 			// update possible
 			Matiere matiereEnBase = opt.get();
 			matiereEnBase.setContenu(matiere.getContenu());
+			matiereEnBase.setTitre(matiere.getTitre());
 			matiereEnBase.setDuree(matiere.getDuree());
 			matiereEnBase.setFormateurs(matiere.getFormateurs());
 			matiereEnBase.setLessons(matiere.getLessons());

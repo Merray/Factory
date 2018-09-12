@@ -1,0 +1,31 @@
+<h1>Liste des matieres</h1>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Niveau</th>
+    <th>Duree</th>
+    <th>Objectif</th>
+    <th>Prerequis</th>
+    <th>Contenu</th>
+    <th>Formateurs</th>
+    <th>Lessons</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let m of matieres">
+    <td>{{m.id}}</td>
+    <td>{{m.titre}}</td>
+    <td>{{m.niveau}}</td>
+    <td>{{m.duree}}</td>
+    <td>{{m.objectif}}</td>
+    <td>{{m.prerequis}}</td>
+    <td>{{m.contenu}}</td>
+    <td></td>
+    <td></td>
+    <td><a href="" [routerLink]="['/matiere', 'edit', m.id]" class="btn btn-info">Editer</a><td>
+    <td><button (click)="delete(m.id)" class="btn btn-danger">Supprimer</button></td>
+  </tr>
+</table>
+
+<a href="" [routerLink]="['/matiere', 'create']" class="btn btn-info">Ajouter</a>
