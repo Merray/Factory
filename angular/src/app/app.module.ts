@@ -15,6 +15,8 @@ import { CursusComponent } from './cursus/cursus.component';
 import { CursusEditComponent } from './cursus/cursus-edit.component';
 import { MatiereComponent } from './matiere/matiere.component';
 import { MatiereEditComponent } from './matiere/matiere-edit.component';
+import { LoginComponent } from './login/login.component';
+import { LoginEditComponent } from './login/login-edit.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { LessonEditComponent } from './lesson/lesson-edit.component';
 
@@ -30,6 +32,8 @@ import { LessonEditComponent } from './lesson/lesson-edit.component';
     CursusEditComponent,
     MatiereComponent,
     MatiereEditComponent,
+    LoginComponent,
+    LoginEditComponent,
     LessonComponent,
     LessonEditComponent
   ],
