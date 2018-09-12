@@ -13,6 +13,8 @@ import { RessourceHumaineEditComponent } from './ressource-humaine/ressource-hum
 import {routes} from './route';
 import { CursusComponent } from './cursus/cursus.component';
 import { CursusEditComponent } from './cursus/cursus-edit.component';
+import { MatiereComponent } from './matiere/matiere.component';
+import { MatiereEditComponent } from './matiere/matiere-edit/matiere-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CursusEditComponent } from './cursus/cursus-edit.component';
     RessourceHumaineComponent,
     RessourceHumaineEditComponent,
     CursusComponent,
-    CursusEditComponent
+    CursusEditComponent,
+    MatiereComponent,
+    MatiereEditComponent
   ],
   imports: [
     BrowserModule,
