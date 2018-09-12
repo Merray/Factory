@@ -6,6 +6,8 @@ import {RessourceHumaineEditComponent} from './ressource-humaine/ressource-humai
 import {CursusComponent} from './cursus/cursus.component';
 import {RessourceMaterielleEditComponent} from './ressource-materielle/ressource-materielle-edit.component';
 import {CursusEditComponent} from './cursus/cursus-edit.component';
+import {MatiereComponent} from './matiere/matiere.component';
+import {MatiereEditComponent} from './matiere/matiere-edit.component';
 
 export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'ressourcematerielle', component: RessourceMaterielleComponent},
@@ -17,4 +19,7 @@ export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'cursus', component: CursusComponent},
   {path: 'cursus/create', component: CursusEditComponent},
   {path: 'cursus/edit/:id', component: CursusEditComponent},
+  {path: 'matiere', component: MatiereComponent},
+  {path: 'matiere/create', component: MatiereEditComponent},
+  {path: 'matiere/edit/:id', component: MatiereEditComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}];
