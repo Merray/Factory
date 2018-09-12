@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Cursus} from '../model/cursus';
 import {CursusService} from '../service/cursus/cursus.service';
+import {RessourceMaterielleService} from '../service/ressource-materielle.service';
+import {RessourceMaterielle} from '../model/ressourceMaterielle';
 
 @Component({
   selector: 'app-cursus-edit',
@@ -10,10 +12,14 @@ import {CursusService} from '../service/cursus/cursus.service';
 })
 export class CursusEditComponent implements OnInit {
 
-  constructor(private cursusService: CursusService, private ar: ActivatedRoute, private router: Router) {
+  constructor(private cursusService: CursusService, private ressourceMaterielleService: RessourceMaterielleService, private ar: ActivatedRoute, private router: Router) {
   }
 
   cursus: Cursus;
+  idSalle: number;
+  idProjo: number;
+  ressourceSalle: RessourceMaterielle[];
+  ressourceProjo: RessourceMaterielle[];
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -26,17 +32,29 @@ export class CursusEditComponent implements OnInit {
 
       }
     });
-  }
-
-  public save() {
-    this.cursusService.save(this.cursus).subscribe(resp => {
-      this.router.navigate([`/cursus`]);
+    this.ressourceMaterielleService.listS().subscribe(resp => {
+      this.ressourceSalle = resp;
+    });
+    this.ressourceMaterielleService.listV().subscribe(resp => {
+      this.ressourceProjo = resp;
     });
   }
 
+  public save() {
+    this.ressourceMaterielleService.findById(this.idProjo).subscribe(resp => {
+      // @ts-ignore
+      this.cursus.videoProjecteur = resp;
 
-  /*   <div class="form-group" *ngFor="let number of [0,1,2,3,4]">
-        <label for="stagiaire">Ajout d'un stagiaire par Id :</label>
-        <input id="stagiaire" name="stagiaire" type="number" class="form-control" required [(ngModel)]="cursus.stagiaires[number].id" #nom="ngModel"/>
-      </div> */
+
+      this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp2 => {
+        // @ts-ignore
+        this.cursus.salle = resp2;
+
+
+        this.cursusService.save(this.cursus).subscribe(resp3 => {
+          this.router.navigate([`/cursus`]);
+        });
+      });
+    });
+  }
 }
