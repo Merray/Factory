@@ -6,6 +6,8 @@ import {Stagiaire} from '../model/RessourceHumaineHeritage/stagiaire';
 import {Gestionnaire} from '../model/RessourceHumaineHeritage/gestionnaire';
 import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
+import {RessourceMaterielleService} from '../service/ressource-materielle.service';
+import {RessourceMaterielle} from '../model/ressourceMaterielle';
 
 @Component({
   selector: 'app-ressource-humaine-edit',
@@ -14,10 +16,12 @@ import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 })
 export class RessourceHumaineEditComponent implements OnInit {
 
-  constructor(private ressourceHumaineService: RessourceHumaineService, private ar: ActivatedRoute, private router: Router) {
+  constructor(private ressourceHumaineService: RessourceHumaineService, private ressourceMaterielservice: RessourceMaterielleService,
+              private ar: ActivatedRoute, private router: Router) {
   }
 
   ressourceHumaine: RessourceHumaine;
+  ressourceMaterielles: RessourceMaterielle[];
   stagiaire: Stagiaire;
   gestionnaire: Gestionnaire;
   technicien: Technicien;
@@ -43,7 +47,9 @@ export class RessourceHumaineEditComponent implements OnInit {
         this.ressourceHumaine.type = params.type;
       }
     });
-
+    this.ressourceMaterielservice.list().subscribe(resp => {
+      this.ressourceMaterielles = resp;
+    });
   }
 
   public save(type: string) {
@@ -72,5 +78,9 @@ export class RessourceHumaineEditComponent implements OnInit {
         this.router.navigate(['/ressourcehumaine']);
       });
     }
+  }
+
+  public filterRessourceMaterielleOfType(filtre: string) {
+    return this.ressourceMaterielles.filter(x => x.type === filtre);
   }
 }
