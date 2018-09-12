@@ -8,6 +8,8 @@ import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
+import {resolveProjectModule} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/require-project-module';
+import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 
 @Component({
   selector: 'app-ressource-humaine-edit',
@@ -26,6 +28,8 @@ export class RessourceHumaineEditComponent implements OnInit {
   gestionnaire: Gestionnaire;
   technicien: Technicien;
   formateur: Formateur;
+  idOrdi: number;
+  ordina: Ordinateur;
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -56,8 +60,12 @@ export class RessourceHumaineEditComponent implements OnInit {
     if (type === 'Stagiaire') {
       // @ts-ignore
       this.stagiaire = this.ressourceHumaine;
-      this.ressourceHumaineService.save(this.stagiaire).subscribe(resp => {
-        this.router.navigate(['/ressourcehumaine']);
+      this.ressourceMaterielservice.findById(this.idOrdi).subscribe(resp => {
+        // @ts-ignore
+        this.stagiaire.ordinateur = resp;
+        this.ressourceHumaineService.save(this.stagiaire).subscribe(resp => {
+          this.router.navigate(['/ressourcehumaine']);
+        });
       });
     } else if (type === 'Gestionnaire') {
       // @ts-ignore

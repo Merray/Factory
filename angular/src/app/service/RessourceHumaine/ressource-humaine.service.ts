@@ -38,6 +38,7 @@ export class RessourceHumaineService {
       return this.http.put(`${this.url}/rest/ressourcehumaine/`, ressourceHumaine, {headers: this.headers});
     } else {
       if (ressourceHumaine instanceof Stagiaire) {
+        console.log(ressourceHumaine.ordinateur);
         const o = {
           id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: ressourceHumaine.coordonnee,
           adresse: ressourceHumaine.adresse, type: ressourceHumaine.type, profil: ressourceHumaine.profil,
