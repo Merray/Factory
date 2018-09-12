@@ -15,6 +15,8 @@ import { CursusComponent } from './cursus/cursus.component';
 import { CursusEditComponent } from './cursus/cursus-edit.component';
 import { MatiereComponent } from './matiere/matiere.component';
 import { MatiereEditComponent } from './matiere/matiere-edit.component';
+import { LoginComponent } from './login/login.component';
+import { LoginEditComponent } from './login/login-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { MatiereEditComponent } from './matiere/matiere-edit.component';
     CursusComponent,
     CursusEditComponent,
     MatiereComponent,
-    MatiereEditComponent
+    MatiereEditComponent,
+    LoginComponent,
+    LoginEditComponent
   ],
   imports: [
     BrowserModule,
