@@ -14,7 +14,7 @@ import {routes} from './route';
 import { CursusComponent } from './cursus/cursus.component';
 import { CursusEditComponent } from './cursus/cursus-edit.component';
 import { MatiereComponent } from './matiere/matiere.component';
-import { MatiereEditComponent } from './matiere/matiere-edit/matiere-edit.component';
+import { MatiereEditComponent } from './matiere/matiere-edit.component';
 
 @NgModule({
   declarations: [
