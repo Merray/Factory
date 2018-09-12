@@ -1,3 +1,36 @@
-<p>
-  cursus-edit works!
-</p>
+<div class="container">
+  <form (ngSubmit)="save(cursus)" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id :</label>
+      <input id="id" name="id" class="form-control" [(ngModel)]="cursus.id" readonly="true"/>
+    </div>
+    <div class="form-group">
+      <label for="dateDebut">nom :</label>
+      <input id="dateDebut" name="dateDebut" class="form-control" required [(ngModel)]="cursus.dateDebut"
+             #nom="ngModel"/>
+    </div>
+    <div class="form-group">
+      <label for="dateFin">nom :</label>
+      <input id="dateFin" name="dateFin" class="form-control" required [(ngModel)]="cursus.dateFin" #nom="ngModel"/>
+    </div>
+
+    <div>
+      <select [(ngModel)]="cursus.salle" *ngFor="let s of salles">
+        <option>{{s.code}}</option>
+      </select>
+    </div>
+
+    <div>
+      <select [(ngModel)]="cursus.videoProjecteur" *ngFor="let v of videoPojecteur">
+        <option>{{v.code}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="lessons">Matière :</label>
+      <input class="form-control" id="lessons" name="lessons" [(ngModel)]="cursus.lessons"/>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+  </form>
+</div>
