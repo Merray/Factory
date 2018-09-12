@@ -2,7 +2,7 @@ import {RessourceMaterielle} from '../ressourceMaterielle';
 import {Cursus} from '../cursus';
 
 export class Salle extends RessourceMaterielle {
-  constructor(private _nbPersonne: number, private _cursus: Cursus[]) {
+  constructor(private _nbPersonne?: number, private _cursus?: Cursus[]) {
     super();
   }
 

@@ -9,6 +9,7 @@ import {Stagiaire} from '../model/RessourceHumaineHeritage/stagiaire';
 import {Gestionnaire} from '../model/RessourceHumaineHeritage/gestionnaire';
 import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
+import {Cursus} from '../model/cursus';
 
 @Component({
   selector: 'app-ressource-materielle-edit',
@@ -20,9 +21,10 @@ export class RessourceMaterielleEditComponent implements OnInit {
   constructor(private ressourceMaterielleService: RessourceMaterielleService, private ar: ActivatedRoute, private router: Router) {
   }
 
+  ressources: RessourceMaterielle[];
   ressourceMaterielle: RessourceMaterielle;
   ordinateur: Ordinateur;
-  videoprojecteur: VideoProjecteur;
+  video_projecteur: VideoProjecteur;
   salle: Salle;
 
   ngOnInit() {
@@ -31,38 +33,39 @@ export class RessourceMaterielleEditComponent implements OnInit {
         this.ressourceMaterielleService.findById(params.id).subscribe(resp => {
           this.ressourceMaterielle = resp;
         });
-      } else if (params.type === 'Ordinateur') {
+      } else if (params.type === 'ordinateur') {
         this.ressourceMaterielle = new Ordinateur();
         this.ressourceMaterielle.type = params.type;
-      } else if (params.type === 'Videoprojecteur') {
+      } else if (params.type === 'video_projecteur') {
         this.ressourceMaterielle = new VideoProjecteur();
         this.ressourceMaterielle.type = params.type;
-      } else if (params.type === 'Salle') {
+      } else if (params.type === 'salle') {
         this.ressourceMaterielle = new Salle();
         this.ressourceMaterielle.type = params.type;
       }
     });
   }
+
   public save(type: string) {
-      if (type === 'Ordinateur') {
-        // @ts-ignore
-        this.ordinateur = this.ressourceMaterielle;
-        this.ressourceMaterielleService.save(this.ordinateur).subscribe(resp => {
-          this.router.navigate(['/ressourcematerielle']);
-        });
-      } else if (type === 'Videoprojecteur') {
-        // @ts-ignore
-        this.videoprojecteur = this.ressourceMaterielle;
-        this.ressourceMaterielleService.save(this.videoprojecteur).subscribe(resp => {
-          this.router.navigate(['/ressourcematerielle']);
-        });
-      } else if (type === 'Salle') {
-        // @ts-ignore
-        this.salle = this.ressourceMaterielle;
-        this.ressourceMaterielleService.save(this.salle).subscribe(resp => {
-          this.router.navigate(['/ressourcematerielle']);
-        });
-      }
+    if (type === 'ordinateur') {
+      // @ts-ignore
+      this.ordinateur = this.ressourceMaterielle;
+      this.ressourceMaterielleService.save(this.ordinateur).subscribe(resp => {
+        this.router.navigate(['/ressourcematerielle']);
+      });
+    } else if (type === 'video_projecteur') {
+      // @ts-ignore
+      this.videoprojecteur = this.ressourceMaterielle;
+      this.ressourceMaterielleService.save(this.video_projecteur).subscribe(resp => {
+        this.router.navigate(['/ressourcematerielle']);
+      });
+    } else if (type === 'salle') {
+      // @ts-ignore
+      this.salle = this.ressourceMaterielle;
+      this.ressourceMaterielleService.save(this.salle).subscribe(resp => {
+        this.router.navigate(['/ressourcematerielle']);
+      });
+    }
   }
 
 
