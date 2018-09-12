@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
+import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
+import {Salle} from '../model/RessourceMaterielleHeritage/salle';
+import {VideoProjecteur} from '../model/RessourceMaterielleHeritage/videoProjecteur';
 
 @Component({
   selector: 'app-ressource-materielle',
@@ -11,6 +14,9 @@ export class RessourceMaterielleComponent implements OnInit {
   ressources: RessourceMaterielle[];
   calcul = 0;
   value: string = '';
+  ordinateurs: Ordinateur[];
+  salles: Salle[];
+  videoprojecteurs: VideoProjecteur[];
 
   constructor(private ressourceMaterielleService: RessourceMaterielleService) {
   }
@@ -18,6 +24,8 @@ export class RessourceMaterielleComponent implements OnInit {
   ngOnInit() {
     this.list();
     this.listO();
+    this.listV();
+    this.listS();
   }
 
   public list() {
@@ -28,7 +36,19 @@ export class RessourceMaterielleComponent implements OnInit {
 
   public listO() {
     this.ressourceMaterielleService.listO().subscribe(resp => {
-      this.ressources = resp;
+      this.ordinateurs = resp;
+    }, error => console.log(error));
+  }
+
+  public listV() {
+    this.ressourceMaterielleService.listV().subscribe(resp => {
+      this.videoprojecteurs = resp;
+    }, error => console.log(error));
+  }
+
+  public listS() {
+    this.ressourceMaterielleService.listS().subscribe(resp => {
+      this.salles = resp;
     }, error => console.log(error));
   }
 
@@ -38,7 +58,7 @@ export class RessourceMaterielleComponent implements OnInit {
     });
   }
 
- public somme() {
+  public somme() {
     this.calcul = 0;
     for (let i = 0; i < this.ressources.length; i++) {
       this.calcul = this.ressources[i].coutUtilisation + this.calcul;
