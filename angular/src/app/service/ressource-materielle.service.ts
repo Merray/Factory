@@ -21,9 +21,11 @@ export class RessourceMaterielleService {
   public list(): Observable<RessourceMaterielle[]> {
     return this.http.get<RessourceMaterielle[]>(`${this.url}/rest/ressourcematerielle/`, {headers: this.header});
   }
+
   public listO(): Observable<Ordinateur[]> {
     return this.http.get<Ordinateur[]>(`${this.url}/rest/ressourcematerielle/`, {headers: this.header});
   }
+
   public delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}/rest/ressourcematerielle/${id}`, {headers: this.header});
   }
@@ -44,7 +46,7 @@ export class RessourceMaterielleService {
           disqueDur: ressourceMaterielle.disqueDur, anneeAchat: ressourceMaterielle.anneeAchat, stagiaires: ressourceMaterielle.stagiaires
         };
         console.log(o);
-        return this.http.post(`${this.url}/rest/ressourcematerielle/ordinateur`, o);
+        return this.http.post(`${this.url}/rest/ressourcematerielle/ordinateur`, o, {headers: this.header});
       } else if (ressourceMaterielle instanceof VideoProjecteur) {
         const o = {
           id: ressourceMaterielle.id, coutUtilisation: ressourceMaterielle.coutUtilisation, code: ressourceMaterielle.code
