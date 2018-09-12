@@ -28,8 +28,8 @@
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Stagiaire'">
       <label for="ordinateurs"> Ordinateur attribué :</label>
-      <select class="form-control" id="ordinateurs" name="ordinateurs" [(ngModel)]="idOrdi">
-        <option *ngFor="let ordi of filterRessourceMaterielleOfType('ordinateur')">{{ordi.id}}</option>
+      <select class="form-control" id="ordinateurs" name="ordinateurs" [(ngModel)]="idOrdi" >
+        <option *ngFor="let ordi of filterRessourceMaterielleOfType('ordinateur')" [value]="ordi.id">{{ordi.code}}</option>
       </select>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Gestionnaire'">

@@ -17,6 +17,8 @@ import { MatiereComponent } from './matiere/matiere.component';
 import { MatiereEditComponent } from './matiere/matiere-edit.component';
 import { LoginComponent } from './login/login.component';
 import { LoginEditComponent } from './login/login-edit.component';
+import { LessonComponent } from './lesson/lesson.component';
+import { LessonEditComponent } from './lesson/lesson-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { LoginEditComponent } from './login/login-edit.component';
     MatiereComponent,
     MatiereEditComponent,
     LoginComponent,
-    LoginEditComponent
+    LoginEditComponent,
+    LessonComponent,
+    LessonEditComponent
   ],
   imports: [
     BrowserModule,

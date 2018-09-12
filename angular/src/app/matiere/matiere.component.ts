@@ -27,8 +27,10 @@ export class MatiereComponent implements OnInit {
   }
 
   public delete(id: number) {
-    this.matiereService.delete(id).subscribe(resp => {
-      this.list();
-    });
+    if (confirm('Etes-vous sûr de vouloir supprimer cette matiere ?')) {
+      this.matiereService.delete(id).subscribe(resp => {
+        this.list();
+      });
+    }
   }
 }
