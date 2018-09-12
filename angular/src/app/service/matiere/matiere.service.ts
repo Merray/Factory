@@ -32,9 +32,17 @@ export class MatiereService {
       return this.http.put(`${this.url}/rest/matiere/`, matiere);
     } else {
       const o = {
-        id: matiere.id, titre: matiere.titre, niveau: matiere.niveau
+        id: matiere.id,
+        titre: matiere.titre,
+        niveau: matiere.niveau,
+        duree: matiere.duree,
+        objectif: matiere.objectif,
+        prerequis: matiere.prerequis,
+        contenu: matiere.contenu,
+        formateurs: matiere.formateurs,
+        lessons: matiere.lessons
       };
-      return this.http.post(`${this.url}/rest/reservation/`, o);
+      return this.http.post(`${this.url}/rest/matiere/`, o);
     }
   }
 }

@@ -2,7 +2,7 @@ import {Formateur} from './RessourceHumaineHeritage/formateur';
 import {Lesson} from './lesson';
 
 export class Matiere {
-  constructor(private _id?: number, private _titre?: string, private _niveau?: string, private _duree?: number, private _objectifs?: string,
+  constructor(private _id?: number, private _titre?: string, private _niveau?: string, private _duree?: number, private _objectif?: string,
               private _prerequis?: string, private _contenu?: string, private _formateurs?: Formateur[], private _lessons?: Lesson[]) {
   }
 
@@ -38,12 +38,12 @@ export class Matiere {
     this._duree = value;
   }
 
-  get objectifs(): string {
-    return this._objectifs;
+  get objectif(): string {
+    return this._objectif;
   }
 
-  set objectifs(value: string) {
-    this._objectifs = value;
+  set objectif(value: string) {
+    this._objectif = value;
   }
 
   get prerequis(): string {
