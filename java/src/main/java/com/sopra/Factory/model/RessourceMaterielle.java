@@ -23,49 +23,66 @@ import com.sopra.Factory.model.view.JsonViews;
 @Entity
 @Table(name = "ressource_materielle")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@SequenceGenerator(name = "seqRessourceMateriel", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "seqRessourceMaterielle", sequenceName = "seq_ressource_materielle", initialValue = 1, allocationSize = 1)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
-@JsonSubTypes({ @Type(value = Ordinateur.class, name = "ordinateur"), @Type(value = Salle.class, name = "salle"), @Type(value = VideoProjecteur.class, name = "video_projecteur") })
+@JsonSubTypes({ @Type(value = Ordinateur.class, name = "ordinateur"), @Type(value = Salle.class, name = "salle"),
+		@Type(value = VideoProjecteur.class, name = "video_projecteur") })
 public abstract class RessourceMaterielle {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRessourceMateriel")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRessourceMaterielle")
 	@Column(name = "id_ressource_materielle")
 	@JsonView(JsonViews.Common.class)
 	private Integer id;
+	
 	@Version
 	private int version;
+	
 	@Column(name = "code")
 	@JsonView(JsonViews.Common.class)
 	private String code;
+	
 	@Column(name = "cout_utilisation")
 	@JsonView(JsonViews.Common.class)
 	private Integer coutUtilisation;
+
+	public RessourceMaterielle() {
+		super();
+	}
+	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public int getVersion() {
 		return version;
 	}
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public Integer getCoutUtilisation() {
 		return coutUtilisation;
 	}
+
 	public void setCoutUtilisation(Integer coutUtilisation) {
 		this.coutUtilisation = coutUtilisation;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,6 +90,7 @@ public abstract class RessourceMaterielle {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -89,16 +107,5 @@ public abstract class RessourceMaterielle {
 			return false;
 		return true;
 	}
-	public RessourceMaterielle() {
-		super();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
