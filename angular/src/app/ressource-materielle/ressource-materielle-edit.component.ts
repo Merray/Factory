@@ -55,7 +55,7 @@ export class RessourceMaterielleEditComponent implements OnInit {
       });
     } else if (type === 'video_projecteur') {
       // @ts-ignore
-      this.videoprojecteur = this.ressourceMaterielle;
+      this.video_projecteur = this.ressourceMaterielle;
       this.ressourceMaterielleService.save(this.video_projecteur).subscribe(resp => {
         this.router.navigate(['/ressourcematerielle']);
       });
