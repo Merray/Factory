@@ -16,7 +16,22 @@
     </div>
     <div class="form-group">
       <label for="nbStagiaire">Capacité d'acceuil des stagiaires :</label>
-      <input id="nbStagiaire" name="nbStagiaire" type="number" class="form-control" required [(ngModel)]="cursus.nbStagiaire" #nom="ngModel"/>
+      <input id="nbStagiaire" name="nbStagiaire" type="number" class="form-control" [(ngModel)]="cursus.nbStagiaire" #nom="ngModel"/>
+    </div>
+
+    <div class="form-group" >
+      <label for="salle"> Salle attribué :</label>
+      <select class="form-control" id="salle" name="salle" [(ngModel)]="idSalle" >
+        <option *ngFor="let s of ressourceSalle" [value]="s.id">{{s.code}}</option>
+      </select>
+    </div>
+
+    <div class="form-group" >
+      <label for="video_projecteur"> Video-projecteur attribué :</label>
+      <select class="form-control" id="video_projecteur" name="video_projecteur" [(ngModel)]="idProjo" >
+        <option >sans vidéo-projecteur</option>
+        <option *ngFor="let vp of ressourceProjo" [value]="vp.id">{{vp.code}}</option>
+      </select>
     </div>
 
 
