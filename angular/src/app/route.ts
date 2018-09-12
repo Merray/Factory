@@ -6,6 +6,8 @@ import {RessourceHumaineEditComponent} from './ressource-humaine/ressource-humai
 import {CursusComponent} from './cursus/cursus.component';
 import {RessourceMaterielleEditComponent} from './ressource-materielle/ressource-materielle-edit.component';
 import {CursusEditComponent} from './cursus/cursus-edit.component';
+import {MatiereComponent} from './matiere/matiere.component';
+import {MatiereEditComponent} from './matiere/matiere-edit.component';
 
 export const routes: Routes = [{path: 'home', component: HomeComponent},
   {path: 'ressourcematerielle', component: RessourceMaterielleComponent},
