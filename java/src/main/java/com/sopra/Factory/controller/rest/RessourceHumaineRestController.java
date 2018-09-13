@@ -70,7 +70,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	@GetMapping(path = { "/technicien", "/technicien/" })
 	public ResponseEntity<List<Technicien>> findAllTechnicien() {
 		ResponseEntity<List<Technicien>> response = null;

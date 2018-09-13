@@ -24,6 +24,7 @@ export class RessourceMaterielleEditComponent implements OnInit {
   salle: Salle;
 
   ngOnInit() {
+    this.ressourceMaterielle = new Ordinateur();
     this.ar.params.subscribe(params => {
       if (params.id) {
         this.ressourceMaterielleService.findById(params.id).subscribe(resp => {
