@@ -1,5 +1,6 @@
 <h1>Liste des Ressources Materielles</h1>
 <table class="table">
+  <thead>
   <tr>
     <th scope="col">ID</th>
     <th scope="col">Code Ressource</th>
@@ -17,6 +18,7 @@
       <button class="btn btn-danger" (click)="delete(r.id)"> Supprimer</button>
     </td>
   </tr>
+  </thead>
   <br/>
   <tr>
     <th scope="rol">Total du coût d'utilisation /jour:</th>
@@ -24,11 +26,9 @@
   </tr>
 
   <tfoot>
-  <tr>
     <td><a href="" class="btn btn-primary" [routerLink]="['create', 'salle']">Ajout Salle</a></td>
     <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'ordinateur']">Ajout Ordinateur</a></td>
     <td><a href="" class="btn btn-primary" [routerLink]="['create', 'video_projecteur']">Ajout Video-projecteur</a></td>
-  </tr>
   </tfoot>
 
 </table>
@@ -45,6 +45,7 @@
       <th>Ram</th>
       <th>Disque Dur</th>
       <th>Annee d'achat</th>
+      <th>Stagiaire Attribué</th>
     </tr>
 
     <tr *ngFor="let o of ordinateurs">
@@ -54,6 +55,7 @@
       <td>{{o.ram}}</td>
       <td>{{o.disqueDur}}</td>
       <td>{{o.anneeAchat}}</td>
+      <td>{{o.stagiaires}}</td>
     </tr>
   </table>
 </div>

@@ -1,7 +1,7 @@
-import {Role} from './role.enum';
+import {UserRole} from './user-role';
 
 export class User {
-  constructor(private _username?: string, private _password?: string, private _enable?: boolean, private _roles?: Role[]) {
+  constructor(private _username?: string, private _password?: string, private _enable?: boolean, private _roles?: UserRole[]) {
   }
 
 
@@ -29,12 +29,11 @@ export class User {
     this._enable = value;
   }
 
-
-  get roles(): Role[] {
+  get roles(): UserRole[] {
     return this._roles;
   }
 
-  set roles(value: Role[]) {
+  set roles(value: UserRole[]) {
     this._roles = value;
   }
 }
