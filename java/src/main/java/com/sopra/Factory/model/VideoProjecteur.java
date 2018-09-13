@@ -16,7 +16,7 @@ public class VideoProjecteur extends RessourceMaterielle {
 	
 	
 	@OneToMany(mappedBy="videoProjecteur", fetch = FetchType.LAZY)
-	@JsonView(JsonViews.VideoProjecteurByIdWithCursus.class)
+	@JsonView(JsonViews.VideoProjecteurCustomWithAll.class)
     private Set<Cursus> cursus;
 	
 	public VideoProjecteur() {

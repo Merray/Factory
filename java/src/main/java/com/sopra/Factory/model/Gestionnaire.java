@@ -16,7 +16,7 @@ public class Gestionnaire extends RessourceHumaine {
 	
 	
 	@OneToMany(mappedBy = "gestionnaire", fetch = FetchType.LAZY)
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.GestionnaireCustomWithAll.class)
 	private Set<Cursus> cursusGeres;
 
 	public Gestionnaire() {

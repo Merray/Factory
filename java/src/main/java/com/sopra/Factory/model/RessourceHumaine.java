@@ -49,11 +49,11 @@ public abstract class RessourceHumaine {
 	private String prenom;
 
 	@Embedded
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Coordonnee coordonnee;
 
 	@Embedded
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Adresse adresse;
 
 	@Version
