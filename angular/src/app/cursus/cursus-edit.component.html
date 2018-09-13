@@ -33,15 +33,8 @@
 
     <div class="form-group">
       <label for="projecteur"> Vidéo-projecteur attribué :</label>
-      <select class="form-control" id="projecteur" name="projecteur" [(ngModel)]="idProjo">
+      <select class="form-control" id="projecteur" name="projecteur" [(ngModel)]="idProjo" >
         <option *ngFor="let p of ressourceProjo" [value]="p.id">{{p.code}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="gestionnaire"> En gestion du cursus :</label>
-      <select class="form-control" id="gestionnaire" name="gestionnaire" [(ngModel)]="idGestionnaire">
-        <option *ngFor="let g of ressourceGestionnaire" [value]="g.id">{{g.nom}}</option>
       </select>
     </div>
 

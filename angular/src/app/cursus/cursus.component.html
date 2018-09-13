@@ -3,9 +3,10 @@
   <thead>
   <tr>
     <th>Id :</th>
-    <th>Date de début :</th>
-    <th>Date de fin :</th>
-    <th>Capacité d'acceuil de stagiaire :</th>
+    <th>Dates du cursus :</th>
+    <th>Capacité d'acceuil (cursus/salle) :</th>
+    <th>Salle :</th>
+    <th>Vidéo Projecteur :</th>
 
 
     <th></th>
@@ -15,10 +16,18 @@
   <tbody>
   <tr *ngFor="let c of cursus">
     <td>{{c.id}}</td>
-    <td>{{c.dateDebut}}</td>
-    <td>{{c.dateFin}}</td>
-    <td>{{c.nbStagiaire}}</td>
+    <td>{{c.dateDebut}} / {{c.dateFin}}</td>
+
+    <td *ngIf="c.salle">{{c.nbStagiaire}} / {{c.salle.nbPersonne}}</td>
+    <td *ngIf="!c.salle">{{c.nbStagiaire}} / NA </td>
+
     <td *ngIf="c.salle">{{c.salle.code}}</td>
+    <td *ngIf="!c.salle"></td>
+
+    <td *ngIf="c.videoProjecteur">{{c.videoProjecteur.code}}</td>
+    <td *ngIf="!c.videoProjecteur"></td>
+
+
 
 
     <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a></td>

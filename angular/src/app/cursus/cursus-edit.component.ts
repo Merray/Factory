@@ -16,17 +16,14 @@ import {RessourceHumaineService} from '../service/RessourceHumaine/ressource-hum
 export class CursusEditComponent implements OnInit {
 
   constructor(private cursusService: CursusService, private ressourceMaterielleService: RessourceMaterielleService
-    , private ressourceHumaineService: RessourceHumaineService
     , private ar: ActivatedRoute, private router: Router) {
   }
 
   cursus: Cursus;
   ressourceSalle: Salle[];
-  ressourceGestionnaire: Gestionnaire[];
   ressourceProjo: VideoProjecteur[];
   idSalle: number;
   idProjo: number;
-  idGestionnaire: number;
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -47,10 +44,6 @@ export class CursusEditComponent implements OnInit {
       this.ressourceProjo = resp;
 
     });
-    this.ressourceHumaineService.listGestionnaire().subscribe(resp => {
-      this.ressourceGestionnaire = resp;
-
-    });
   }
 
 
@@ -61,12 +54,8 @@ export class CursusEditComponent implements OnInit {
       this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp1 => {
         // @ts-ignore
         this.cursus.salle = resp1;
-        this.ressourceHumaineService.findById(this.idGestionnaire).subscribe(resp2 => {
-          // @ts-ignore
-          this.cursus.gestionnaire = resp2;
-          this.cursusService.save(this.cursus).subscribe(resp3 => {
-            this.router.navigate([`/cursus`]);
-          });
+        this.cursusService.save(this.cursus).subscribe(resp3 => {
+          this.router.navigate([`/cursus`]);
         });
       });
     });
