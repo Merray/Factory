@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url("./assets/images/pattern_brick_resize.png");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}

@@ -1,9 +1,24 @@
+.contient {
+  background-image: url("../assets/images/pattern_gris_clair_resize.png");
+  background-color: #cccccc;
+
+  background-repeat: repeat;
+  font-size: 150%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+  background-color: grey;
+  font-size: 150%;
+}
+
+
 li {
   text-align: center;
 }
 
 a {
-  color: ghostwhite;
+  color: black;
 }
 
 .jumbotron {

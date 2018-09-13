@@ -11,6 +11,14 @@ export class AuthComponent implements OnInit {
 
   authStatus: boolean;
 
+  username: String = 'admin';
+
+  password: String = 'admin';
+
+  usernameAuth: String = '';
+
+  passwordAuth: String = '';
+
   constructor(private authService: AuthService, private router: Router) {
   }
 
@@ -19,13 +27,18 @@ export class AuthComponent implements OnInit {
   }
 
   onSignIn() {
-    this.authService.signIn().then(
-      () => {
-        console.log('Sign in successful!');
-        this.authStatus = this.authService.isAuth;
-        this.router.navigate(['home']);
-      }
-    );
+
+    if ((this.username === this.usernameAuth) && (this.password === this.passwordAuth)) {
+      this.authService.signIn().then(
+        () => {
+          console.log('Sign in successful!');
+          this.authStatus = this.authService.isAuth;
+          this.router.navigate(['home']);
+        }
+      );
+    } else {
+      alert('Mauvais identifiants');
+    }
   }
 
   onSignOut() {
