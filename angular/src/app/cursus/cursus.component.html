@@ -18,6 +18,7 @@
     <td>{{c.dateDebut}}</td>
     <td>{{c.dateFin}}</td>
     <td>{{c.nbStagiaire}}</td>
+    <td *ngIf="c.salle">{{c.salle.code}}</td>
 
 
     <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a></td>

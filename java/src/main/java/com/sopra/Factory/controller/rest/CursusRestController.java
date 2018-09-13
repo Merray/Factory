@@ -33,11 +33,12 @@ public class CursusRestController {
 	@Autowired
 	CursusRepository cursusRepository;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	@GetMapping(path = { "/", "" })
-	public ResponseEntity<List<Cursus>> findAll() {
-		return new ResponseEntity<>(cursusRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Cursus>> findAllWithAll() {
+		return new ResponseEntity<>(cursusRepository.findCustomAllWithAll(), HttpStatus.OK);
 	}
+
 
 	@PostMapping(path = { "/", "" })
 	public ResponseEntity<Void> createCursus(@Valid @RequestBody Cursus cursus, BindingResult br,
@@ -57,7 +58,7 @@ public class CursusRestController {
 	@GetMapping(value = "/{id}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Cursus> findById(@PathVariable(name = "id") Integer id) {
-		Optional<Cursus> opt = cursusRepository.findById(id);
+		Optional<Cursus> opt = cursusRepository.findCustomByIdWithAll(id);
 		ResponseEntity<Cursus> response = null;
 		if (opt.isPresent()) {
 			response = new ResponseEntity<>(opt.get(), HttpStatus.OK);
@@ -106,5 +107,7 @@ public class CursusRestController {
 		}
 		return response;
 	}
+	
+
 
 }

@@ -51,12 +51,12 @@ public class Cursus {
 
 	@ManyToOne
 	@JoinColumn(name = "id_video_projecteur")
-//	@JsonView(JsonViews.CursusByIdWithVideoProjecteur.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	private VideoProjecteur videoProjecteur;
 
 	@ManyToOne
 	@JoinColumn(name = "id_salle")
-	@JsonView(JsonViews.CursusByIdWithSalle.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	private Salle salle;
 
 	@Column(name = "nb_stagiaire")
@@ -64,16 +64,16 @@ public class Cursus {
 	private Integer nbStagiaire;
 
 	@OneToMany(mappedBy = "cursus", fetch = FetchType.LAZY)
-	@JsonView(JsonViews.CursusByIdWithStagiaires.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	private Set<Stagiaire> stagiaires;
 
 	@ManyToOne
 	@JoinColumn(name = "id_gestionnaire")
-	@JsonView(JsonViews.CursusByIdWithGestionnaire.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	private Gestionnaire gestionnaire;
 
 	@OneToMany(mappedBy = "cursus", fetch = FetchType.LAZY)
-	@JsonView(JsonViews.CursusByIdWithLessons.class)
+	@JsonView(JsonViews.CursusCustomWithAll.class)
 	private Set<Lesson> lessons;
 
 	public Integer getId() {
