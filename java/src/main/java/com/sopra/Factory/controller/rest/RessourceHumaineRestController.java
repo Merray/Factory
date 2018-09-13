@@ -62,7 +62,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
-	@JsonView(JsonViews.StagiaireCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	@GetMapping(path = { "/stagiaire", "/stagiaire/" })
 	public ResponseEntity<List<Stagiaire>> findAllStagiaire() {
 		ResponseEntity<List<Stagiaire>> response = null;

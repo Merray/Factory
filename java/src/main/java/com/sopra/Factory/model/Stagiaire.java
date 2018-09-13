@@ -22,12 +22,12 @@ public class Stagiaire extends RessourceHumaine {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_ressource_materielle")
-	@JsonView(JsonViews.StagiaireCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Ordinateur ordinateur;
 	
 	@ManyToOne
 	@JoinColumn(name="id_cursus")
-	@JsonView(JsonViews.StagiaireCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Cursus cursus;
 
 	public Stagiaire() {
