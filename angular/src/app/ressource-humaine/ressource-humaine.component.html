@@ -1,13 +1,12 @@
-<h1>Les Ressources Humaines</h1>
+<h1 style="background-color: darkgrey; padding-left: 5px">Ressources Humaines</h1>
 <table class="table">
-  <thead>
+  <thead class="thead-dark">
   <tr>
-    <td>Id :</td>
-    <td>nom :</td>
-    <td>prenom :</td>
-    <td>role :</td>
-    <td></td>
-    <td></td>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Rôle</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -16,18 +15,18 @@
     <td>{{rh.nom}}</td>
     <td>{{rh.prenom}}</td>
     <td>{{rh.type}}</td>
-    <td><a href="" class="btn btn-info" [routerLink]="['/ressourcehumaine', 'edit', rh.id]">Editer</a></td>
     <td>
-      <button class="btn btn-danger" (click)="delete(rh.id)"> Supprimer</button>
+      <a href="" class="btn btn-info" [routerLink]="['/ressourcehumaine', 'edit', rh.id]">Editer</a>
+      <button class="btn btn-danger supr" (click)="delete(rh.id)"> Supprimer</button>
     </td>
   </tr>
   </tbody>
   <tfoot>
   <tr>
-    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Stagiaire']">Stagiaire</a></td>
-    <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'Gestionnaire']">Gestionnaire</a></td>
-    <td><a href="" class="btn btn-success" [routerLink]="['create', 'Technicien']">Technicien</a></td>
-    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Formateur']">Formateur</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Stagiaire']">Ajout Stagiaire</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Gestionnaire']">Ajout Gestionnaire</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Technicien']">Ajout Technicien</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'Formateur']">Ajout Formateur</a></td>
   </tr>
   </tfoot>
 
