@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sopra.Factory.model.User;
+import com.sopra.Factory.model.UserRole;
+import com.sopra.Factory.repositories.UserRoleRepository;
 import com.sopra.Factory.repositories.UsersRepository;
 
 @CrossOrigin(origins = {"*"})
@@ -26,6 +28,9 @@ import com.sopra.Factory.repositories.UsersRepository;
 public class UserRestController {
 @Autowired
 private UsersRepository userRepository;
+
+@Autowired
+private UserRoleRepository userRoleRepository;
 
 
 	@PostMapping(path = {"/", ""})
@@ -36,6 +41,11 @@ private UsersRepository userRepository;
         } else {
         	user.setPassword(getPasswordEncoder().encode(user.getPassword()));
             userRepository.save(user);
+            for (UserRole u : user.getRoles()) {
+            	u.setUser(user);
+            	System.out.println(u.getRole());
+            }
+            userRoleRepository.saveAll(user.getRoles());
             HttpHeaders header = new HttpHeaders();
             header.setLocation(uCB.path("/rest/user/technicien/{id}").buildAndExpand(user.getUsername()).toUri());
             response = new ResponseEntity<Void>(HttpStatus.CREATED);
