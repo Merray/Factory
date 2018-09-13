@@ -1,9 +1,21 @@
+.contient {
+  background-image: url("../assets/images/pattern_gris_clair_resize.png");
+  background-color: #cccccc;
+
+  background-repeat: repeat;
+}
+
+footer {
+  background-color: grey;
+}
+
+
 li {
   text-align: center;
 }
 
 a {
-  color: ghostwhite;
+  color: black;
 }
 
 .jumbotron {
