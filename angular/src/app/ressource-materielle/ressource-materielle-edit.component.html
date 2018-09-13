@@ -1,21 +1,21 @@
 <div class="container">
   <form (ngSubmit)="save(ressourceMaterielle.type)" #form="ngForm">
     <div class="form-group">
-      <label for="type">type :</label>
+      <label for="type" style="background-color: darkgrey; padding-left: 5px">Type</label>
       <input class="form-control" id="type" name="type" [(ngModel)]="ressourceMaterielle.type" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="id">id :</label>
+      <label for="id" style="background-color: darkgrey; padding-left: 5px">ID</label>
       <input id="id" name="id" class="form-control" [(ngModel)]="ressourceMaterielle.id" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="code">Code :</label>
+      <label for="code" style="background-color: darkgrey; padding-left: 5px">Code</label>
       <input id="code" name="code" class="form-control" required [(ngModel)]="ressourceMaterielle.code"
              #code="ngModel"/>
-      <div *ngIf="code.dirty&&code.hasError('required')">Code obligatoire</div>
+      <div *ngIf="code.dirty&&code.hasError('required')" style="background-color: darkgrey; padding-left: 5px">Code obligatoire</div>
     </div>
     <div class="form-group">
-      <label for="cout">Cout d'utilisation a la journee :</label>
+      <label for="cout" style="background-color: darkgrey; padding-left: 5px">Cout d'utilisation à la journee &nbsp;</label>
       <input class="cout" id="cout" name="cout" required [(ngModel)]="ressourceMaterielle.coutUtilisation"/>
       <!--      <div *ngIf="ressourceMaterielle.coutUtilisation.dirty&&ressourceMaterielle.coutUtilisation.hasError('required')">
               Cout obligatoire
@@ -31,7 +31,7 @@
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'salle'" id="demo">
  <!-- <label for="Cursus">Cursus :</label>
   <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceMaterielle.cursus"/>&ndash;&gt;-->
-    <label for="nbPersonne">Nombre de Personnes dans la Salle:</label>
+    <label for="nbPersonne">Nombre de personnes dans la Salle </label>
     <input class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="ressourceMaterielle.nbPersonne">
 </div>
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'ordinateur'">

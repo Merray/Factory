@@ -8,7 +8,6 @@ import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
-import {resolveProjectModule} from '@angular-devkit/build-angular/src/angular-cli-files/utilities/require-project-module';
 import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 
 @Component({

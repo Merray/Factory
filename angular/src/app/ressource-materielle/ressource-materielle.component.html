@@ -1,53 +1,59 @@
-<h1>Liste des Ressources Materielles</h1>
+<h1 style="background-color: darkgrey; padding-left: 5px">Ressources Materielles</h1>
 <table class="table">
-  <thead>
+  <thead class="thead-dark">
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Code Ressource</th>
-    <th scope="col">Coût d'utilisation à la journée</th>
-    <th scope="col">Type de ressource</th>
-    <th><input type='text' [(ngModel)]="value"></th>
+    <th scope="col">Code</th>
+    <th scope="col">Coût</th>
+    <th scope="col">Type</th>
+    <th><input style="color: black" type='text' [(ngModel)]="value"></th>
   </tr>
+  </thead>
   <tr *ngFor="let r of testNom(), let index=index">
     <td scope="rol">{{r.id}}</td>
     <td scope="rol">{{r.code}}</td>
     <td scope="rol">{{r.coutUtilisation}}</td>
     <td scope="rol">{{r.type}}</td>
-    <td><a href="" class="btn btn-info" [routerLink]="['/ressourcematerielle', 'edit', r.id]">Editer</a></td>
     <td>
-      <button class="btn btn-danger" (click)="delete(r.id)"> Supprimer</button>
+      <a href="" class="btn btn-info" [routerLink]="['/ressourcematerielle', 'edit', r.id]">Editer</a>
+      <button class="btn btn-danger supr" (click)="delete(r.id)"> Supprimer</button>
     </td>
+
+
   </tr>
-  </thead>
+
   <br/>
   <tr>
-    <th scope="rol">Total du coût d'utilisation /jour:</th>
+    <th scope="rol" class="cout">Total du coût d'utilisation /jour:</th>
     <td scope="rol">{{somme()}}</td>
   </tr>
 
   <tfoot>
-    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'salle']">Ajout Salle</a></td>
-    <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'ordinateur']">Ajout Ordinateur</a></td>
-    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'video_projecteur']">Ajout Video-projecteur</a></td>
+    <td>
+      <a href="" class="btn btn-primary" [routerLink]="['create', 'salle']">Ajout Salle</a>
+      <a href="" class="btn btn-primary supr" [routerLink]="['create', 'ordinateur']">Ajout Ordinateur</a>
+      <a href="" class="btn btn-primary supr" [routerLink]="['create', 'video_projecteur']">Ajout Video-projecteur</a>
+    </td>
   </tfoot>
 
 </table>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo" class="btn btn-warning">Liste des ordinateurs</button>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-success">Liste des ordinateurs</button>
 <div id="demo" class="panel-collapse collapse">
-  <h2>Liste des Ordinateurs</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Ordinateurs</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
-      <th>ID materiel</th>
-      <th>Code materiel</th>
+      <th>ID</th>
+      <th>Code</th>
       <th>Processeur</th>
       <th>Ram</th>
       <th>Disque Dur</th>
-      <th>Annee d'achat</th>
+      <th>Date d'achat</th>
       <th>Stagiaire Attribué</th>
     </tr>
-
+    </thead>
     <tr *ngFor="let o of ordinateurs">
       <td>{{o.id}}</td>
       <td>{{o.code}}</td>
@@ -61,15 +67,17 @@
 </div>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo2" class="btn btn-warning">Liste des Video-Projecteurs</button>
+<button data-toggle="collapse" data-target="#demo2" class="btn btn-success">Liste des Video-Projecteurs</button>
 <div id="demo2" class="panel-collapse collapse">
-  <h2>Liste des video-projecteurs</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des video-projecteurs</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
-      <th>ID materiel</th>
-      <th>Code materiel</th>
+      <th>ID</th>
+      <th>Code</th>
       <th>ID Cursus</th>
     </tr>
+    </thead>
     <tr *ngFor="let v of videoprojecteurs">
       <td>{{v.id}}</td>
       <td>{{v.code}}</td>
@@ -79,16 +87,18 @@
 </div>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo3" class="btn btn-warning">Liste des Salles</button>
+<button data-toggle="collapse" data-target="#demo3" class="btn btn-success">Liste des Salles</button>
 <div id="demo3" class="panel-collapse collapse">
-  <h2>Liste des Salles</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Salles</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
-      <th>Id Salle</th>
+      <th>ID Salle</th>
       <th>Code</th>
       <th>Nombre de personnes</th>
       <th>ID Cursus</th>
     </tr>
+    </thead>
     <tr *ngFor="let s of salles">
       <td>{{s.id}}</td>
       <td>{{s.code}}</td>
