@@ -56,7 +56,7 @@
       <td>{{s.id}}</td>
       <td>{{s.nom}}</td>
       <td>{{s.prenom}}</td>
-      <td>{{s.adresse.numero}} {{s.adresse.rue}}</td>
+      <td *ngIf="s.adresse">{{s.adresse.numero}} {{s.adresse.rue}}</td>
       <td>{{s.coordonnee.mail}}</td>
       <td>{{s.profil}}</td>
       <td>{{s.ordinateur.code}}</td>
