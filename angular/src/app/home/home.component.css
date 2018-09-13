@@ -28,4 +28,16 @@ a {
 
 li {
   margin: 5px;
+  margin-top: 10px;
+}
+
+.sous-photo {
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+
+}
+
+.bot {
+  padding-bottom: 10px;
 }
