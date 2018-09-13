@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.sopra.Factory.model.Formateur;
-import com.sopra.Factory.model.Gestionnaire;
 
 public interface FormateurRepository extends JpaRepository<Formateur, Integer> {
 	@Query("select f from Formateur f left join fetch f.lessons left join fetch f.matieres left join fetch f.adresse left join fetch f.coordonnee ")
