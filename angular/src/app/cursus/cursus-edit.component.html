@@ -1,16 +1,16 @@
 <div class="container">
   <form (ngSubmit)="save(cursus)" #form="ngForm">
     <div class="form-group">
-      <label for="id">id :</label>
+      <label for="id">ID</label>
       <input id="id" name="id" class="form-control" [(ngModel)]="cursus.id" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="dateDebut">Date début :</label>
+      <label for="dateDebut">Date début</label>
       <input id="dateDebut" name="dateDebut" type="date" class="form-control" required [(ngModel)]="cursus.dateDebut"
              #nom="ngModel"/>
     </div>
     <div class="form-group">
-      <label for="dateFin">Date fin :</label>
+      <label for="dateFin">Date fin</label>
       <input id="dateFin" name="dateFin" type="date" class="form-control" required min="{{cursus.dateDebut}}"
              [(ngModel)]="cursus.dateFin" #nom="ngModel"/>
       <div style="color: red" *ngIf="cursus.dateFin<=cursus.dateDebut " required="min">Vous avez selectionné UN seul
@@ -18,27 +18,27 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="nbStagiaire">Capacité d'acceuil des stagiaires :</label>
+      <label for="nbStagiaire">Capacité d'acceuil des stagiaires</label>
       <input id="nbStagiaire" name="nbStagiaire" type="number" class="form-control" [(ngModel)]="cursus.nbStagiaire"
              #nom="ngModel"/>
     </div>
 
 
     <div class="form-group">
-      <label for="salle"> Salle attribué :</label>
+      <label for="salle"> Salle attribué</label>
       <select class="form-control" id="salle" name="salle" [(ngModel)]="idSalle">
         <option *ngFor="let s of ressourceSalle" [value]="s.id">{{s.code}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="projecteur"> Vidéo-projecteur attribué :</label>
+      <label for="projecteur"> Vidéo-projecteur attribué</label>
       <select class="form-control" id="projecteur" name="projecteur" [(ngModel)]="idProjo" >
         <option *ngFor="let p of ressourceProjo" [value]="p.id">{{p.code}}</option>
       </select>
     </div>
 
 
-    <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">Enregistrer</button>
   </form>
 </div>
