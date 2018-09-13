@@ -78,7 +78,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
-	@JsonView(JsonViews.GestionnaireCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	@GetMapping(path = { "/gestionnaire", "/gestionnaire/" })
 	public ResponseEntity<List<Gestionnaire>> findAllGestionnaire() {
 		ResponseEntity<List<Gestionnaire>> response = null;
@@ -86,7 +86,7 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
-	@JsonView(JsonViews.FormateurCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	@GetMapping(path = { "/formateur", "/formateur/" })
 	public ResponseEntity<List<Formateur>> findAllFormateur() {
 		ResponseEntity<List<Formateur>> response = null;

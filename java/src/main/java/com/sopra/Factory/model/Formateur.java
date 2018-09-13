@@ -14,11 +14,11 @@ import com.sopra.Factory.model.view.JsonViews;
 public class Formateur extends RessourceHumaine {
 	
 	@OneToMany(mappedBy="key.formateur")
-	@JsonView(JsonViews.FormateurCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Set<MatiereFormateur> matieres;
 	
 	@OneToMany(mappedBy="formateur")
-	@JsonView(JsonViews.FormateurCustomWithAll.class)
+	@JsonView(JsonViews.RessourceHumaineCustomWithAll.class)
 	private Set<Lesson> lessons;
 
 	public Formateur() {
