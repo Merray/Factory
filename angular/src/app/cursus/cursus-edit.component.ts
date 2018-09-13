@@ -41,20 +41,20 @@ export class CursusEditComponent implements OnInit {
   }
 
   public save() {
-    this.ressourceMaterielleService.findById(this.idProjo).subscribe(resp => {
-      // @ts-ignore
-      this.cursus.videoProjecteur = resp;
+    /* this.ressourceMaterielleService.findById(this.idProjo).subscribe(resp => {
+       // @ts-ignore
+       this.cursus.videoProjecteur = resp;
 
 
-      this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp2 => {
-        // @ts-ignore
-        this.cursus.salle = resp2;
+       this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp2 => {
+         // @ts-ignore
+         this.cursus.salle = resp2;*/
 
 
-        this.cursusService.save(this.cursus).subscribe(resp3 => {
-          this.router.navigate([`/cursus`]);
-        });
-      });
+    this.cursusService.save(this.cursus).subscribe(resp3 => {
+      this.router.navigate([`/cursus`]);
     });
+    /*  });
+    });*/
   }
 }
