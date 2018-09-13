@@ -3,7 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Cursus} from '../model/cursus';
 import {CursusService} from '../service/cursus/cursus.service';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
-import {RessourceMaterielle} from '../model/ressourceMaterielle';
+import {Salle} from '../model/RessourceMaterielleHeritage/salle';
+import {VideoProjecteur} from '../model/RessourceMaterielleHeritage/videoProjecteur';
+import {Gestionnaire} from '../model/RessourceHumaineHeritage/gestionnaire';
+import {RessourceHumaineService} from '../service/RessourceHumaine/ressource-humaine.service';
 
 @Component({
   selector: 'app-cursus-edit',
@@ -12,14 +15,18 @@ import {RessourceMaterielle} from '../model/ressourceMaterielle';
 })
 export class CursusEditComponent implements OnInit {
 
-  constructor(private cursusService: CursusService, private ressourceMaterielleService: RessourceMaterielleService, private ar: ActivatedRoute, private router: Router) {
+  constructor(private cursusService: CursusService, private ressourceMaterielleService: RessourceMaterielleService
+    , private ressourceHumaineService: RessourceHumaineService
+    , private ar: ActivatedRoute, private router: Router) {
   }
 
   cursus: Cursus;
+  ressourceSalle: Salle[];
+  ressourceGestionnaire: Gestionnaire[];
+  ressourceProjo: VideoProjecteur[];
   idSalle: number;
   idProjo: number;
-  ressourceSalle: RessourceMaterielle[];
-  ressourceProjo: RessourceMaterielle[];
+  idGestionnaire: number;
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -34,27 +41,34 @@ export class CursusEditComponent implements OnInit {
     });
     this.ressourceMaterielleService.listS().subscribe(resp => {
       this.ressourceSalle = resp;
+
     });
     this.ressourceMaterielleService.listV().subscribe(resp => {
       this.ressourceProjo = resp;
+
+    });
+    this.ressourceHumaineService.listGestionnaire().subscribe(resp => {
+      this.ressourceGestionnaire = resp;
+
     });
   }
 
+
   public save() {
-    /* this.ressourceMaterielleService.findById(this.idProjo).subscribe(resp => {
-       // @ts-ignore
-       this.cursus.videoProjecteur = resp;
-
-
-       this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp2 => {
-         // @ts-ignore
-         this.cursus.salle = resp2;*/
-
-
-    this.cursusService.save(this.cursus).subscribe(resp3 => {
-      this.router.navigate([`/cursus`]);
+    this.ressourceMaterielleService.findById(this.idProjo).subscribe(resp => {
+      // @ts-ignore
+      this.cursus.videoProjecteur = resp;
+      this.ressourceMaterielleService.findById(this.idSalle).subscribe(resp1 => {
+        // @ts-ignore
+        this.cursus.salle = resp1;
+        this.ressourceHumaineService.findById(this.idGestionnaire).subscribe(resp2 => {
+          // @ts-ignore
+          this.cursus.gestionnaire = resp2;
+          this.cursusService.save(this.cursus).subscribe(resp3 => {
+            this.router.navigate([`/cursus`]);
+          });
+        });
+      });
     });
-    /*  });
-    });*/
   }
 }

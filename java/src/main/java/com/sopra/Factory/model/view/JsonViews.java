@@ -15,7 +15,7 @@ public class JsonViews {
 
 	};
 
-	public static class CursusByIdWithSalle extends Common {
+	public static class CursusCustomWithAll extends Common {
 
 	};
 

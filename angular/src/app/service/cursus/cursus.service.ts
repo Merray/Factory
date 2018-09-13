@@ -19,6 +19,7 @@ export class CursusService {
     return this.http.get<Cursus[]>(`${this.url}/rest/cursus/`, {headers: this.headers});
   }
 
+
   public delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}/rest/cursus/${id}`, {headers: this.headers});
 

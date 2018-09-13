@@ -20,7 +20,6 @@ export class CursusComponent implements OnInit {
   public list() {
     this.cursusService.list().subscribe(resp => {
       this.cursus = resp;
-      console.log(resp);
     });
   }
 
