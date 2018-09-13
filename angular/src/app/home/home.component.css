@@ -13,8 +13,19 @@ a {
   text-align: center;
 }
 
-img {
-  width: 100px;
-  height: 150px;
 
+
+.carousel {
+  border: antiquewhite solid 2px;
+  margin-left: 25px;
+}
+
+.col-9 {
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 0px;
+}
+
+li {
+  margin: 5px;
 }
