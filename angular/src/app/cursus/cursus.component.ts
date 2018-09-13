@@ -25,13 +25,16 @@ export class CursusComponent implements OnInit {
   }
 
   public delete(id: number) {
-    this.cursusService.delete(id).subscribe(resp => {
-      this.list();
-    });
+    if (confirm('Etes-vous sûr de vouloir supprimer ce cursus?')) {
+      this.cursusService.delete(id).subscribe(resp => {
+        this.list();
+      });
+    }
   }
 
   public compteur(id: number) {
     console.log(this.cursus[id].stagiaires);
   }
 }
+
 //  +this.cursus[id].stagiaires.length
