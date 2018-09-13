@@ -69,7 +69,7 @@ export class RessourceMaterielleComponent implements OnInit {
   }
 
   testNom() {
-    return this.ressources.filter(c => c.type.indexOf(this.value) !== -1);
+    return this.ressources.filter(c => c.code.indexOf(this.value) !== -1);
   }
 }
 
