@@ -1,24 +1,24 @@
 <div class="container">
   <form (ngSubmit)="save(ressourceHumaine.type)" #form="ngForm">
     <div class="form-group">
-      <label for="type">type :</label>
+      <label for="type" style="background-color: darkgrey; padding-left: 5px">Type&nbsp;</label>
       <input class="form-control" id="type" name="type" [(ngModel)]="ressourceHumaine.type" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="id">id :</label>
+      <label for="id" style="background-color: darkgrey; padding-left: 5px">ID&nbsp;</label>
       <input id="id" name="id" class="form-control" [(ngModel)]="ressourceHumaine.id" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="nom">nom :</label>
+      <label for="nom" style="background-color: darkgrey; padding-left: 5px">Nom&nbsp;</label>
       <input id="nom" name="nom" class="form-control" required [(ngModel)]="ressourceHumaine.nom" #nom="ngModel"/>
       <div *ngIf="nom.dirty&&nom.hasError('required')">prenom obligatoire</div>
     </div>
     <div class="form-group">
-      <label for="prenom">prenom :</label>
+      <label for="prenom" style="background-color: darkgrey; padding-left: 5px">Prenom&nbsp;</label>
       <input class="form-control" id="prenom" name="prenom" required [(ngModel)]="ressourceHumaine.prenom"/>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Stagiaire'">
-      <label for="profil">profil :</label>
+      <label for="profil" style="background-color: darkgrey; padding-left: 5px">Profil&nbsp;</label>
       <select class="form-control" id="profil" name="profil" [(ngModel)]="ressourceHumaine.profil">
         <option>Débutant</option>
         <option>Intermédiaire</option>
@@ -27,57 +27,60 @@
       </select>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Stagiaire'">
-      <label for="ordinateurs"> Ordinateur attribué :</label>
+      <label for="ordinateurs" style="background-color: darkgrey; padding-left: 5px"> Ordinateur attribué&nbsp;</label>
       <select class="form-control" id="ordinateurs" name="ordinateurs" [(ngModel)]="idOrdi">
         <option *ngFor="let ordi of filterRessourceMaterielleOfType('ordinateur')" [value]="ordi.id">{{ordi.code}}
         </option>
       </select>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Gestionnaire'">
-      <label for="Cursus">Cursus :</label>
+      <label for="Cursus" style="background-color: darkgrey; padding-left: 5px">Cursus&nbsp;</label>
       <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceHumaine.cursusgeres"/>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Formateur'">
-      <label for="Matiere">Matière :</label>
+      <label for="Matiere" style="background-color: darkgrey; padding-left: 5px">Matière&nbsp;</label>
       <input class="form-control" id="Matiere" name="Matiere" [(ngModel)]="ressourceHumaine.matieres"/>
     </div>
 
-    <div><h2> Adresse : </h2></div>
+    <div><h2 style="background-color: darkgrey; padding-left: 5px"> Adresse</h2></div>
 
     <div class="form-group">
-      <label for="num">numero de rue :</label>
+      <label for="num" style="background-color: darkgrey; padding-left: 5px">Numero&nbsp;</label>
       <input type="number" id="num" name="num" class="form-control" [(ngModel)]="ressourceHumaine.adresse.numero"/>
     </div>
 
     <div class="form-group">
-      <label for="rue">rue :</label>
+      <label for="rue" style="background-color: darkgrey; padding-left: 5px">Rue&nbsp;</label>
       <input id="rue" name="rue" class="form-control" [(ngModel)]="ressourceHumaine.adresse.rue"/>
     </div>
 
     <div class="form-group">
-      <label for="cp">Code Postal :</label>
+      <label for="cp" style="background-color: darkgrey; padding-left: 5px">Code Postal&nbsp;</label>
       <input id="cp" name="cp" class="form-control" [(ngModel)]="ressourceHumaine.adresse.cp"/>
     </div>
 
     <div class="form-group">
-      <label for="ville">Ville :</label>
+      <label for="ville" style="background-color: darkgrey; padding-left: 5px">Ville&nbsp;</label>
       <input id="ville" name="ville" class="form-control" [(ngModel)]="ressourceHumaine.adresse.ville"/>
     </div>
-    <div><h2> Coordonnées : </h2></div>
+
+    <div><h2 style="background-color: darkgrey; padding-left: 5px"> Coordonnées</h2></div>
+
     <div class="form-group">
-      <label for="telfix"> Téléphone fixe :</label>
+      <label for="telfix" style="background-color: darkgrey; padding-left: 5px"> Téléphone fixe&nbsp;</label>
       <input id="telfix" name="telfix" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.telFixe"/>
     </div>
 
     <div class="form-group">
-      <label for="telport"> Téléphone portable :</label>
-      <input id="telport" name="telport" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.telPortable"/>
+    <label for="telport" style="background-color: darkgrey; padding-left: 5px"> Téléphone portable&nbsp;</label>
+    <input id="telport" name="telport" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.telPortable"/>
     </div>
 
     <div class="form-group">
-      <label for="mail">Adresse e-mail :</label>
-      <input type="email" id="mail" name="mail" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.mail"/>
-    </div>
+    <label for="mail" style="background-color: darkgrey; padding-left: 5px">Adresse e-mail&nbsp;</label>
+    <input type="email" id="mail" name="mail" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.mail"/>
+  </div>
+
 
     <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
   </form>

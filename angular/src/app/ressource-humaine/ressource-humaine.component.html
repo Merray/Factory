@@ -36,10 +36,11 @@
 
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo" class="btn btn-warning">Liste des stagiaires</button>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-success">Liste des stagiaires</button>
 <div id="demo" class="panel-collapse collapse">
-  <h2>Liste des Stagiaires</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Stagiaires</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th>ID</th>
       <th>Nom</th>
@@ -50,7 +51,7 @@
       <th>Ordinateur Attribué</th>
       <th>Cursus suivi</th>
     </tr>
-
+    </thead>
     <tr *ngFor="let s of stagiaires">
       <td>{{s.id}}</td>
       <td>{{s.nom}}</td>
@@ -65,10 +66,11 @@
 </div>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo2" class="btn btn-warning">Liste des techniciens</button>
+<button data-toggle="collapse" data-target="#demo2" class="btn btn-success">Liste des techniciens</button>
 <div id="demo2" class="panel-collapse collapse">
-  <h2>Liste des Techniciens</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Techniciens</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th>ID</th>
       <th>Nom</th>
@@ -76,7 +78,7 @@
       <th>Adresse</th>
       <th>Coordonnees</th>
     </tr>
-
+    </thead>
     <tr *ngFor="let t of techniciens">
       <td>{{t.id}}</td>
       <td>{{t.nom}}</td>
@@ -88,10 +90,11 @@
 </div>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo3" class="btn btn-warning">Liste des gestionnaires</button>
+<button data-toggle="collapse" data-target="#demo3" class="btn btn-success">Liste des gestionnaires</button>
 <div id="demo3" class="panel-collapse collapse">
-  <h2>Liste des Gestionnaires</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Gestionnaires</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th>ID</th>
       <th>Nom</th>
@@ -100,7 +103,7 @@
       <th>Coordonnees</th>
       <th>Cursus géré</th>
     </tr>
-
+    </thead>
     <tr *ngFor="let g of gestionnaires">
       <td>{{g.id}}</td>
       <td>{{g.nom}}</td>
@@ -113,10 +116,11 @@
 </div>
 <br/>
 <br/>
-<button data-toggle="collapse" data-target="#demo4" class="btn btn-warning">Liste des formateurs</button>
+<button data-toggle="collapse" data-target="#demo4" class="btn btn-success">Liste des formateurs</button>
 <div id="demo4" class="panel-collapse collapse">
-  <h2>Liste des Formateurs</h2>
+  <h2 class="padtop" style="background-color: darkgrey; padding-left: 5px">Liste des Formateurs</h2>
   <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th>ID</th>
       <th>Nom</th>
@@ -126,7 +130,7 @@
       <th>Matières enseignées</th>
       <th>Leçons données</th>
     </tr>
-
+    </thead>
     <tr *ngFor="let f of formateurs">
       <td>{{f.id}}</td>
       <td>{{f.nom}}</td>

@@ -1,21 +1,21 @@
 <div class="container">
   <form (ngSubmit)="save(ressourceMaterielle.type)" #form="ngForm">
     <div class="form-group">
-      <label for="type" style="background-color: darkgrey; padding-left: 5px">Type</label>
+      <label for="type" style="background-color: darkgrey; padding-left: 5px">Type &nbsp;</label>
       <input class="form-control" id="type" name="type" [(ngModel)]="ressourceMaterielle.type" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="id" style="background-color: darkgrey; padding-left: 5px">ID</label>
+      <label for="id" style="background-color: darkgrey; padding-left: 5px">ID&nbsp;</label>
       <input id="id" name="id" class="form-control" [(ngModel)]="ressourceMaterielle.id" readonly="true"/>
     </div>
     <div class="form-group">
-      <label for="code" style="background-color: darkgrey; padding-left: 5px">Code</label>
+      <label for="code" style="background-color: darkgrey; padding-left: 5px">Code&nbsp;</label>
       <input id="code" name="code" class="form-control" required [(ngModel)]="ressourceMaterielle.code"
              #code="ngModel"/>
       <div *ngIf="code.dirty&&code.hasError('required')" style="background-color: darkgrey; padding-left: 5px">Code obligatoire</div>
     </div>
     <div class="form-group">
-      <label for="cout" style="background-color: darkgrey; padding-left: 5px">Cout d'utilisation à la journee &nbsp;</label>
+      <label for="cout" style="background-color: darkgrey; padding-left: 5px">Cout d'utilisation à la journee &nbsp;</label><br>
       <input class="cout" id="cout" name="cout" required [(ngModel)]="ressourceMaterielle.coutUtilisation"/>
       <!--      <div *ngIf="ressourceMaterielle.coutUtilisation.dirty&&ressourceMaterielle.coutUtilisation.hasError('required')">
               Cout obligatoire
@@ -31,7 +31,7 @@
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'salle'" id="demo">
  <!-- <label for="Cursus">Cursus :</label>
   <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceMaterielle.cursus"/>&ndash;&gt;-->
-    <label for="nbPersonne">Nombre de personnes dans la Salle </label>
+    <label for="nbPersonne" style="background-color: darkgrey; padding-left: 5px">Nombre de personnes dans la Salle &nbsp;</label>
     <input class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="ressourceMaterielle.nbPersonne">
 </div>
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'ordinateur'">
@@ -49,7 +49,7 @@
   </select>
 -->
 </div>
-<button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
+<button type="submit" [disabled]="form.invalid" class="btn btn-success">Enregistrer</button>
 </form>
 </div>
 
