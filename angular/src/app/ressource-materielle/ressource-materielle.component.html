@@ -1,6 +1,6 @@
 <h1>Liste des Ressources Materielles</h1>
 <table class="table">
-  <tr >
+  <tr>
     <th scope="col">ID</th>
     <th scope="col">Code Ressource</th>
     <th scope="col">Coût d'utilisation à la journée</th>
@@ -13,69 +13,86 @@
     <td scope="rol">{{r.coutUtilisation}}</td>
     <td scope="rol">{{r.type}}</td>
     <td><a href="" class="btn btn-info" [routerLink]="['/ressourcematerielle', 'edit', r.id]">Editer</a></td>
-    <td><button class="btn btn-danger" (click)="delete(r.id)"> Supprimer</button></td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(r.id)"> Supprimer</button>
+    </td>
   </tr>
+  <br/>
   <tr>
-    <th>Total du coût d'utilisation /jour:</th>
+    <th scope="rol">Total du coût d'utilisation /jour:</th>
     <td scope="rol">{{somme()}}</td>
   </tr>
 
-    <tfoot>
+  <tfoot>
+  <tr>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'salle']">Ajout Salle</a></td>
+    <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'ordinateur']">Ajout Ordinateur</a></td>
+    <td><a href="" class="btn btn-primary" [routerLink]="['create', 'video_projecteur']">Ajout Video-projecteur</a></td>
+  </tr>
+  </tfoot>
+
+</table>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-warning">Liste des ordinateurs</button>
+<div id="demo" class="panel-collapse collapse">
+  <h2>Liste des Ordinateurs</h2>
+  <table class="table">
     <tr>
-      <td><a href="" class="btn btn-primary" [routerLink]="['create', 'salle']">Ajout Salle</a></td>
-      <td><a href="" class="btn btn-secondary" [routerLink]="['create', 'ordinateur']">Ajout Ordinateur</a></td>
-      <td><a href="" class="btn btn-primary" [routerLink]="['create', 'video_projecteur']">Ajout Video-projecteur</a></td>
+      <th>ID materiel</th>
+      <th>Code materiel</th>
+      <th>Processeur</th>
+      <th>Ram</th>
+      <th>Disque Dur</th>
+      <th>Annee d'achat</th>
     </tr>
-    </tfoot>
 
-</table>
-<h2>Liste des Ordinateurs</h2>
-<table class="table">
-<tr>
-  <th>ID materiel</th>
-  <th>Code materiel</th>
-  <th>Processeur</th>
-  <th>Ram</th>
-  <th>Disque Dur</th>
-  <th>Annee d'achat</th>
-</tr>
-  <tr *ngFor="let o of ordinateurs">
-    <td>{{o.id}}</td>
-    <td>{{o.code}}</td>
-    <td>{{o.processeur}}</td>
-    <td>{{o.ram}}</td>
-    <td>{{o.disqueDur}}</td>
-    <td>{{o.anneeAchat}}</td>
-  </tr>
-</table>
-<h2>Liste des video-projecteurs</h2>
-<table class="table">
-  <tr>
-    <th>ID materiel</th>
-    <th>Code materiel</th>
-    <th>ID Cursus</th>
-  </tr>
-  <tr *ngFor="let v of videoprojecteurs">
-    <td>{{v.id}}</td>
-    <td>{{v.code}}</td>
-    <td>{{v.cursus}}</td>
-  </tr>
+    <tr *ngFor="let o of ordinateurs">
+      <td>{{o.id}}</td>
+      <td>{{o.code}}</td>
+      <td>{{o.processeur}}</td>
+      <td>{{o.ram}}</td>
+      <td>{{o.disqueDur}}</td>
+      <td>{{o.anneeAchat}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo2" class="btn btn-warning">Liste des Video-Projecteurs</button>
+<div id="demo2" class="panel-collapse collapse">
+  <h2>Liste des video-projecteurs</h2>
+  <table class="table">
+    <tr>
+      <th>ID materiel</th>
+      <th>Code materiel</th>
+      <th>ID Cursus</th>
+    </tr>
+    <tr *ngFor="let v of videoprojecteurs">
+      <td>{{v.id}}</td>
+      <td>{{v.code}}</td>
+      <td>{{v.cursus}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo3" class="btn btn-warning">Liste des Salles</button>
+<div id="demo3" class="panel-collapse collapse">
+  <h2>Liste des Salles</h2>
+  <table class="table">
+    <tr>
+      <th>Id Salle</th>
+      <th>Code</th>
+      <th>Nombre de personnes</th>
+      <th>ID Cursus</th>
+    </tr>
+    <tr *ngFor="let s of salles">
+      <td>{{s.id}}</td>
+      <td>{{s.code}}</td>
+      <td>{{s.nbPersonne}}</td>
+      <td>{{s.cursus}}</td>
+    </tr>
 
-</table>
-<h2>Liste des Salles</h2>
-<table class="table">
-  <tr>
-    <th>Id Salle</th>
-    <th>Code</th>
-    <th>Nombre de personnes</th>
-    <th>ID Cursus</th>
-  </tr>
-  <tr *ngFor="let s of salles">
-    <td>{{s.id}}</td>
-    <td>{{s.code}}</td>
-    <td>{{s.nbPersonne}}</td>
-    <td>{{s.cursus}}</td>
-  </tr>
-
-</table>
+  </table>
 
