@@ -12,3 +12,32 @@ a {
   margin-bottom: 10px;
   text-align: center;
 }
+
+
+
+.carousel {
+  border: antiquewhite solid 2px;
+  margin-left: 25px;
+}
+
+.col-9 {
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 0px;
+}
+
+li {
+  margin: 5px;
+  margin-top: 10px;
+}
+
+.sous-photo {
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+
+}
+
+.bot {
+  padding-bottom: 10px;
+}

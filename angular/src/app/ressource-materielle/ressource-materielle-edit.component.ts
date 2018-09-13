@@ -5,11 +5,7 @@ import {RessourceMaterielle} from '../model/ressourceMaterielle';
 import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 import {VideoProjecteur} from '../model/RessourceMaterielleHeritage/videoProjecteur';
 import {Salle} from '../model/RessourceMaterielleHeritage/salle';
-import {Stagiaire} from '../model/RessourceHumaineHeritage/stagiaire';
-import {Gestionnaire} from '../model/RessourceHumaineHeritage/gestionnaire';
-import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
-import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
-import {Cursus} from '../model/cursus';
+
 
 @Component({
   selector: 'app-ressource-materielle-edit',

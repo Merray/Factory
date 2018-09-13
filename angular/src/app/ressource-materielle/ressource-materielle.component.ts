@@ -17,7 +17,7 @@ export class RessourceMaterielleComponent implements OnInit {
   ordinateurs: Ordinateur[];
   salles: Salle[];
   videoprojecteurs: VideoProjecteur[];
-
+  idOrdi: number;
   constructor(private ressourceMaterielleService: RessourceMaterielleService) {
   }
 
