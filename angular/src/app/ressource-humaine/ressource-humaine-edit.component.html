@@ -28,8 +28,9 @@
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Stagiaire'">
       <label for="ordinateurs"> Ordinateur attribué :</label>
-      <select class="form-control" id="ordinateurs" name="ordinateurs" [(ngModel)]="idOrdi" >
-        <option *ngFor="let ordi of filterRessourceMaterielleOfType('ordinateur')" [value]="ordi.id">{{ordi.code}}</option>
+      <select class="form-control" id="ordinateurs" name="ordinateurs" [(ngModel)]="idOrdi">
+        <option *ngFor="let ordi of filterRessourceMaterielleOfType('ordinateur')" [value]="ordi.id">{{ordi.code}}
+        </option>
       </select>
     </div>
     <div class="form-group" *ngIf="ressourceHumaine.type === 'Gestionnaire'">
@@ -40,6 +41,45 @@
       <label for="Matiere">Matière :</label>
       <input class="form-control" id="Matiere" name="Matiere" [(ngModel)]="ressourceHumaine.matieres"/>
     </div>
+
+    <div><h2> Adresse : </h2></div>
+
+    <div class="form-group">
+      <label for="num">numero de rue :</label>
+      <input type="number" id="num" name="num" class="form-control" [(ngModel)]="ressourceHumaine.adresse.numero"/>
+    </div>
+
+    <div class="form-group">
+      <label for="rue">rue :</label>
+      <input id="rue" name="rue" class="form-control" [(ngModel)]="ressourceHumaine.adresse.rue"/>
+    </div>
+
+    <div class="form-group">
+      <label for="cp">Code Postal :</label>
+      <input id="cp" name="cp" class="form-control" [(ngModel)]="ressourceHumaine.adresse.cp"/>
+    </div>
+
+    <div class="form-group">
+      <label for="ville">Ville :</label>
+      <input id="ville" name="ville" class="form-control" [(ngModel)]="ressourceHumaine.adresse.ville"/>
+    </div>
+
+    <div><h2> Coordonnées : </h2></div>
+    <div class="form-group">
+      <label for="telfix"> Téléphone fixe :</label>
+      <input id="telfix" name="telfix" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.telFixe"/>
+    </div>
+
+    <div class="form-group">
+    <label for="telport"> Téléphone portable :</label>
+    <input id="telport" name="telport" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.telPortable"/>
+    </div>
+
+    <div class="form-group">
+    <label for="mail">Adresse e-mail :</label>
+    <input type="email" id="mail" name="mail" class="form-control" [(ngModel)]="ressourceHumaine.coordonnee.mail"/>
+  </div>
+
     <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
   </form>
 </div>

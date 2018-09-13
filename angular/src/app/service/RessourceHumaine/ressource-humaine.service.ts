@@ -28,19 +28,19 @@ export class RessourceHumaineService {
   }
 
   public listStagiaire(): Observable<Stagiaire[]> {
-    return this.http.get<Stagiaire[]>(`${this.url}/rest/ressourcematerielle/stagiaire`, {headers: this.headers});
+    return this.http.get<Stagiaire[]>(`${this.url}/rest/ressourcehumaine/stagiaire`, {headers: this.headers});
   }
 
   public listTechnicien(): Observable<Technicien[]> {
-    return this.http.get<Technicien[]>(`${this.url}/rest/ressourcematerielle/technicien`, {headers: this.headers});
+    return this.http.get<Technicien[]>(`${this.url}/rest/ressourcehumaine/technicien`, {headers: this.headers});
   }
 
   public listGestionnaire(): Observable<Gestionnaire[]> {
-    return this.http.get<Gestionnaire[]>(`${this.url}/rest/ressourcematerielle/gestionnaire`, {headers: this.headers});
+    return this.http.get<Gestionnaire[]>(`${this.url}/rest/ressourcehumaine/gestionnaire`, {headers: this.headers});
   }
 
   public listFormateur(): Observable<Formateur[]> {
-    return this.http.get<Formateur[]>(`${this.url}/rest/ressourcematerielle/formateur`, {headers: this.headers});
+    return this.http.get<Formateur[]>(`${this.url}/rest/ressourcehumaine/formateur`, {headers: this.headers});
   }
 
   public delete(id: number): Observable<any> {

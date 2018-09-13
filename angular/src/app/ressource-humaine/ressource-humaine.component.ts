@@ -18,12 +18,17 @@ export class RessourceHumaineComponent implements OnInit {
   techniciens: Technicien[];
   gestionnaires: Gestionnaire[];
   formateurs: Formateur[];
+
   constructor(private ressourceHumaineService: RessourceHumaineService) {
 
   }
 
   ngOnInit() {
     this.list();
+    this.listStagiaire();
+    this.listTechnicien();
+    this.listGestionnaire();
+    this.listFormateur();
   }
 
   public list() {
