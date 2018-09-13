@@ -9,6 +9,8 @@ import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
 import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
+import {Adresse} from '../model/adresse';
+import {Coordonnee} from '../model/coordonnee';
 
 @Component({
   selector: 'app-ressource-humaine-edit',
@@ -49,6 +51,8 @@ export class RessourceHumaineEditComponent implements OnInit {
         this.ressourceHumaine = new Formateur();
         this.ressourceHumaine.type = params.type;
       }
+      this.ressourceHumaine.adresse = new Adresse();
+      this.ressourceHumaine.coordonnee = new Coordonnee();
     });
     this.ressourceMaterielservice.list().subscribe(resp => {
       this.ressourceMaterielles = resp;
