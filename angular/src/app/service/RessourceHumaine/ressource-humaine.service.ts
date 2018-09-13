@@ -56,30 +56,36 @@ export class RessourceHumaineService {
     if (ressourceHumaine.id) {
       return this.http.put(`${this.url}/rest/ressourcehumaine/`, ressourceHumaine, {headers: this.headers});
     } else {
+      const adr = { numero: ressourceHumaine.adresse.numero, rue: ressourceHumaine.adresse.rue, cp: ressourceHumaine.adresse.cp,
+        ville: ressourceHumaine.adresse.ville
+      };
+      const coo = { telFixe: ressourceHumaine.coordonnee.telFixe, telPort: ressourceHumaine.coordonnee.telPortable,
+        mail: ressourceHumaine.coordonnee.mail
+      };
       if (ressourceHumaine instanceof Stagiaire) {
         console.log(ressourceHumaine.ordinateur);
         const o = {
-          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: ressourceHumaine.coordonnee,
-          adresse: ressourceHumaine.adresse, type: ressourceHumaine.type, profil: ressourceHumaine.profil,
+          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: coo,
+          adresse: adr, type: ressourceHumaine.type, profil: ressourceHumaine.profil,
           ordinateur: ressourceHumaine.ordinateur, cursus: ressourceHumaine.cursus
         };
         return this.http.post(`${this.url}/rest/ressourcehumaine/stagiaire`, o, {headers: this.headers});
       } else if (ressourceHumaine instanceof Gestionnaire) {
         const o = {
-          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: ressourceHumaine.coordonnee,
-          adresse: ressourceHumaine.adresse, type: ressourceHumaine.type, cursusGeres: ressourceHumaine.cursusGeres
+          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: coo,
+          adresse: adr, type: ressourceHumaine.type, cursusGeres: ressourceHumaine.cursusGeres
         };
         return this.http.post(`${this.url}/rest/ressourcehumaine/gestionnaire`, o, {headers: this.headers});
       } else if (ressourceHumaine instanceof Technicien) {
         const o = {
-          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: ressourceHumaine.coordonnee,
-          adresse: ressourceHumaine.adresse, type: ressourceHumaine.type
+          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: coo,
+          adresse: adr, type: ressourceHumaine.type
         };
         return this.http.post(`${this.url}/rest/ressourcehumaine/technicien`, o, {headers: this.headers});
       } else if (ressourceHumaine instanceof Formateur) {
         const o = {
-          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: ressourceHumaine.coordonnee,
-          adresse: ressourceHumaine.adresse, type: ressourceHumaine.type, lessons: ressourceHumaine.lessons,
+          id: ressourceHumaine.id, nom: ressourceHumaine.nom, prenom: ressourceHumaine.prenom, coordonnee: coo,
+          adresse: adr, type: ressourceHumaine.type, lessons: ressourceHumaine.lessons,
           matieres: ressourceHumaine.matieres
         };
         return this.http.post(`${this.url}/rest/ressourcehumaine/formateur`, o, {headers: this.headers});

@@ -55,8 +55,8 @@
       <td>{{s.id}}</td>
       <td>{{s.nom}}</td>
       <td>{{s.prenom}}</td>
-      <td>{{s.adresse}}</td>
-      <td>{{s.coordonnee}}</td>
+      <td>{{s.adresse.numero}} {{s.adresse.rue}}</td>
+      <td>{{s.coordonnee.mail}}</td>
       <td>{{s.profil}}</td>
       <td>{{s.ordinateur.code}}</td>
       <td>{{s.cursus}}</td>
@@ -81,8 +81,8 @@
       <td>{{t.id}}</td>
       <td>{{t.nom}}</td>
       <td>{{t.prenom}}</td>
-      <td>{{t.adresse}}</td>
-      <td>{{t.coordonnee}}</td>
+      <td>{{t.adresse.numero}} {{t.adresse.rue}}</td>
+      <td>{{t.coordonnee.mail}}</td>
     </tr>
   </table>
 </div>
@@ -105,8 +105,8 @@
       <td>{{g.id}}</td>
       <td>{{g.nom}}</td>
       <td>{{g.prenom}}</td>
-      <td>{{g.adresse}}</td>
-      <td>{{g.coordonnee}}</td>
+      <td>{{g.adresse.numero}} {{g.adresse.rue}}</td>
+      <td>{{g.coordonnee.mail}}</td>
       <td>{{g.cursusGeres}}</td>
     </tr>
   </table>
@@ -131,8 +131,8 @@
       <td>{{f.id}}</td>
       <td>{{f.nom}}</td>
       <td>{{f.prenom}}</td>
-      <td>{{f.adresse}}</td>
-      <td>{{f.coordonnee}}</td>
+      <td>{{f.adresse.numero}} {{f.adresse.rue}}</td>
+      <td>{{f.coordonnee.mail}}</td>
       <td>{{f.matieres}}</td>
       <td>{{f.lessons}}</td>
     </tr>
