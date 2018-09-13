@@ -48,17 +48,17 @@ public class Lesson {
 	
 	@ManyToOne
 	@JoinColumn(name="id_ressource_humaine")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.LessonCustomWithAll.class)
 	private Formateur formateur;
 	
 	@ManyToOne
 	@JoinColumn(name="id_matiere")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.LessonCustomWithAll.class)
 	private Matiere matiere;
 	
 	@ManyToOne
 	@JoinColumn(name="id_cursus")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.LessonCustomWithAll.class)
 	private Cursus cursus;
 
 	@Version

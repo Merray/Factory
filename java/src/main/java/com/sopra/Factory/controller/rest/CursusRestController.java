@@ -36,7 +36,7 @@ public class CursusRestController {
 	@JsonView(JsonViews.CursusCustomWithAll.class)
 	@GetMapping(path = { "/", "" })
 	public ResponseEntity<List<Cursus>> findAllWithAll() {
-		return new ResponseEntity<>(cursusRepository.findCustomAllWithAll(), HttpStatus.OK);
+		return new ResponseEntity<>(cursusRepository.findCustomAllCursusWithAll(), HttpStatus.OK);
 	}
 
 
@@ -58,7 +58,7 @@ public class CursusRestController {
 	@GetMapping(value = "/{id}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Cursus> findById(@PathVariable(name = "id") Integer id) {
-		Optional<Cursus> opt = cursusRepository.findCustomByIdWithAll(id);
+		Optional<Cursus> opt = cursusRepository.findCustomCursusByIdWithAll(id);
 		ResponseEntity<Cursus> response = null;
 		if (opt.isPresent()) {
 			response = new ResponseEntity<>(opt.get(), HttpStatus.OK);

@@ -54,19 +54,19 @@ public class RessourceHumaineRestController {
 	@Autowired
 	FormateurRepository formateurRepository;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.RessourceHumaineCustomWithAll.class, JsonViews.StagiaireCustomWithAll.class,JsonViews.FormateurCustomWithAll.class,JsonViews.GestionnaireCustomWithAll.class})
 	@GetMapping(path = { "", "/" })
 	public ResponseEntity<List<RessourceHumaine>> findAll() {
 		ResponseEntity<List<RessourceHumaine>> response = null;
-		response = new ResponseEntity<>(ressourceHumaineRepository.findAll(), HttpStatus.OK);
+		response = new ResponseEntity<>(ressourceHumaineRepository.findCustomAllRessourceHumaineWithAll(), HttpStatus.OK);
 		return response;
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.StagiaireCustomWithAll.class)
 	@GetMapping(path = { "/stagiaire", "/stagiaire/" })
 	public ResponseEntity<List<Stagiaire>> findAllStagiaire() {
 		ResponseEntity<List<Stagiaire>> response = null;
-		response = new ResponseEntity<>(stagiaireRepository.findAll(), HttpStatus.OK);
+		response = new ResponseEntity<>(stagiaireRepository.findCustomAllStagiaireWithAll(), HttpStatus.OK);
 		return response;
 	}
 	
@@ -78,27 +78,27 @@ public class RessourceHumaineRestController {
 		return response;
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.GestionnaireCustomWithAll.class)
 	@GetMapping(path = { "/gestionnaire", "/gestionnaire/" })
 	public ResponseEntity<List<Gestionnaire>> findAllGestionnaire() {
 		ResponseEntity<List<Gestionnaire>> response = null;
-		response = new ResponseEntity<>(gestionnaireRepository.findAll(), HttpStatus.OK);
+		response = new ResponseEntity<>(gestionnaireRepository.findCustomAllGestionnaireWithAll(), HttpStatus.OK);
 		return response;
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.FormateurCustomWithAll.class)
 	@GetMapping(path = { "/formateur", "/formateur/" })
 	public ResponseEntity<List<Formateur>> findAllFormateur() {
 		ResponseEntity<List<Formateur>> response = null;
-		response = new ResponseEntity<>(formateurRepository.findAll(), HttpStatus.OK);
+		response = new ResponseEntity<>(formateurRepository.findCustomAllFormateurWithAll(), HttpStatus.OK);
 		return response;
 	}
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.RessourceHumaineCustomWithAll.class, JsonViews.StagiaireCustomWithAll.class,JsonViews.FormateurCustomWithAll.class,JsonViews.GestionnaireCustomWithAll.class})
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<RessourceHumaine> findById(@PathVariable(name = "id") Integer id) {
 		ResponseEntity<RessourceHumaine> response = null;
-		Optional<RessourceHumaine> opt = ressourceHumaineRepository.findById(id);
+		Optional<RessourceHumaine> opt = ressourceHumaineRepository.findCustomRessourceHumaineByIdWithAll(id);
 		if (opt.isPresent()) {
 			response = new ResponseEntity<>(opt.get(), HttpStatus.OK);
 		} else {
