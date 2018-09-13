@@ -30,10 +30,7 @@
 
 
 
-    <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a></td>
-    <td>
-      <button class="btn btn-danger" (click)="delete(c.id)"> Supprimer</button>
-    </td>
+    <td><a href="" class="btn btn-info" [routerLink]="['/cursus', 'edit', c.id]">Editer</a> <button class="btn btn-danger supr" (click)="delete(c.id)"> Supprimer</button></td>
   </tr>
   </tbody>
   <tfoot>
