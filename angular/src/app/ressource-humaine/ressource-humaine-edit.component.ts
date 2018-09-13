@@ -8,7 +8,6 @@ import {Technicien} from '../model/RessourceHumaineHeritage/technicien';
 import {Formateur} from '../model/RessourceHumaineHeritage/formateur';
 import {RessourceMaterielleService} from '../service/ressource-materielle.service';
 import {RessourceMaterielle} from '../model/ressourceMaterielle';
-import {Ordinateur} from '../model/RessourceMaterielleHeritage/ordinateur';
 import {Adresse} from '../model/adresse';
 import {Coordonnee} from '../model/coordonnee';
 
@@ -30,9 +29,9 @@ export class RessourceHumaineEditComponent implements OnInit {
   technicien: Technicien;
   formateur: Formateur;
   idOrdi: number;
-  ordina: Ordinateur;
 
   ngOnInit() {
+    this.ressourceHumaine = new Stagiaire();
     this.ar.params.subscribe(params => {
       if (params.id) {
         this.ressourceHumaineService.findById(params.id).subscribe(resp => {
