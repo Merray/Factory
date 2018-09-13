@@ -2,11 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user';
 import {Observable} from 'rxjs';
-import {forEach} from '@angular/router/src/utils/collection';
 import {UserRole} from '../model/user-role';
-import {a, b} from '@angular/core/src/render3';
-import Any = jasmine.Any;
-import {Role} from '../model/role.enum';
 
 @Injectable({
   providedIn: 'root'
