@@ -2,10 +2,10 @@
 <table class="table">
   <thead>
   <tr>
-    <td>Id :</td>
-    <td>nom :</td>
-    <td>prenom :</td>
-    <td>role :</td>
+    <td>Id</td>
+    <td>Nom</td>
+    <td>Prenom</td>
+    <td>Role</td>
     <td></td>
     <td></td>
   </tr>
@@ -32,3 +32,111 @@
   </tfoot>
 
 </table>
+
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-warning">Liste des stagiaires</button>
+<div id="demo" class="panel-collapse collapse">
+  <h2>Liste des Stagiaires</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Adresse</th>
+      <th>Coordonnees</th>
+      <th>Profil</th>
+      <th>Ordinateur Attribué</th>
+      <th>Cursus suivi</th>
+    </tr>
+
+    <tr *ngFor="let s of stagiaires">
+      <td>{{s.id}}</td>
+      <td>{{s.nom}}</td>
+      <td>{{s.prenom}}</td>
+      <td>{{s.adresse}}</td>
+      <td>{{s.coordonnee}}</td>
+      <td>{{s.profil}}</td>
+      <td>{{s.ordinateur}}</td>
+      <td>{{s.cursus}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo2" class="btn btn-warning">Liste des techniciens</button>
+<div id="demo2" class="panel-collapse collapse">
+  <h2>Liste des Techniciens</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Adresse</th>
+      <th>Coordonnees</th>
+    </tr>
+
+    <tr *ngFor="let t of techniciens">
+      <td>{{t.id}}</td>
+      <td>{{t.nom}}</td>
+      <td>{{t.prenom}}</td>
+      <td>{{t.adresse}}</td>
+      <td>{{t.coordonnee}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo3" class="btn btn-warning">Liste des gestionnaires</button>
+<div id="demo3" class="panel-collapse collapse">
+  <h2>Liste des Gestionnaires</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Adresse</th>
+      <th>Coordonnees</th>
+      <th>Cursus géré</th>
+    </tr>
+
+    <tr *ngFor="let g of gestionnaires">
+      <td>{{g.id}}</td>
+      <td>{{g.nom}}</td>
+      <td>{{g.prenom}}</td>
+      <td>{{g.adresse}}</td>
+      <td>{{g.coordonnee}}</td>
+      <td>{{g.cursusGeres}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button data-toggle="collapse" data-target="#demo4" class="btn btn-warning">Liste des formateurs</button>
+<div id="demo4" class="panel-collapse collapse">
+  <h2>Liste des Formateurs</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Adresse</th>
+      <th>Coordonnees</th>
+      <th>Matières enseignées</th>
+      <th>Leçons données</th>
+    </tr>
+
+    <tr *ngFor="let f of formateurs">
+      <td>{{f.id}}</td>
+      <td>{{f.nom}}</td>
+      <td>{{f.prenom}}</td>
+      <td>{{f.adresse}}</td>
+      <td>{{f.coordonnee}}</td>
+      <td>{{f.matieres}}</td>
+      <td>{{f.lessons}}</td>
+    </tr>
+  </table>
+</div>
+
+
+
