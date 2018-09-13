@@ -58,10 +58,11 @@ public class Matiere {
 	private String contenu;
 
 	@OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.MatierieCustomWithAll.class)
 	private Set<Lesson> lessons;
 
 	@OneToMany(mappedBy = "key.matiere")
+	@JsonView(JsonViews.MatierieCustomWithAll.class)
 	private Set<MatiereFormateur> formateurs;
 
 	public Matiere() {

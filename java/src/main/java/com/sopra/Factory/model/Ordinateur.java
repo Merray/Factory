@@ -31,7 +31,7 @@ public class Ordinateur extends RessourceMaterielle {
 	private Date anneeAchat;
 	
 	@OneToMany(mappedBy="ordinateur" , fetch = FetchType.LAZY)
-	@JsonView(JsonViews.OrdinateurByIdWithStagiaires.class)
+	@JsonView(JsonViews.OrdinateurCustomWithAll.class)
     private Set<Stagiaire> stagiaires;
 	
 	public String getProcesseur() {
