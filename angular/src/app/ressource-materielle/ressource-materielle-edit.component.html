@@ -28,12 +28,11 @@
     <option>{{r.cursus}}</option>
   </select>
 </div>-->
-    <button data-toggle="collapse" data-target="#demo">Collapsible</button>
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'salle'" id="demo">
-  <label for="Cursus">Cursus :</label>
-  <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceMaterielle.cursus"/>
-  <label for="nbPersonne">Nombre de Personnes dans la Salle:</label>
-  <input class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="ressourceMaterielle.nbPersonne">
+ <!-- <label for="Cursus">Cursus :</label>
+  <input class="form-control" id="Cursus" name="Cursus" [(ngModel)]="ressourceMaterielle.cursus"/>&ndash;&gt;-->
+    <label for="nbPersonne">Nombre de Personnes dans la Salle:</label>
+    <input class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="ressourceMaterielle.nbPersonne">
 </div>
 <div class="form-group" *ngIf="ressourceMaterielle.type === 'ordinateur'">
   <label for="processeur">Processeur :</label>
@@ -44,10 +43,11 @@
   <input class="form-control" id="disqueDur" name="disqueDur" [(ngModel)]="ressourceMaterielle.disqueDur"/>
   <label for="anneeAchat">Annee d'achat :</label>
   <input class="form-control" type="date" id="anneeAchat" name="anneeAchat" [(ngModel)]="ressourceMaterielle.anneeAchat"/>
-  <select class="form-control" id="stagiaire" name="stagiaire" [(ngModel)]="ressourceMaterielle.stagiaire"
+ <!-- <select class="form-control" id="stagiaire" name="stagiaire" [(ngModel)]="ressourceMaterielle.stagiaire"
           *ngFor="let r of ressources">
     <option>{{r.stagiaires}}</option>
   </select>
+-->
 </div>
 <button type="submit" [disabled]="form.invalid" class="btn btn-success">save</button>
 </form>
